@@ -67,7 +67,9 @@
   /* ---------- Nav active state au scroll ---------- */
   const navLinks = document.querySelectorAll('.street-nav-link');
   const sections = Array.from(navLinks)
-    .map((l) => document.querySelector(l.getAttribute('href')))
+    .map((l) => l.getAttribute('href'))
+    .filter((href) => href && href.startsWith('#') && href.length > 1)
+    .map((href) => document.querySelector(href))
     .filter(Boolean);
 
   if ('IntersectionObserver' in window && sections.length) {
