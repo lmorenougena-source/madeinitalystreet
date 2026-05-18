@@ -1,0 +1,147 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="1200" viewBox="0 0 1200 1200" fill="none">
+  <title>Seamless Italian street-food vector pattern</title>
+  <desc>Transparent seamless SVG tile with black hand-drawn line-art elements: smashburger, limoncello, gelato, panini, arancini, basil, tomato and olive oil.</desc>
+  <defs>
+    <style><![CDATA[
+      .ink{stroke:#111;stroke-width:3.2;stroke-linecap:round;stroke-linejoin:round;vector-effect:non-scaling-stroke;fill:none;}
+      .fine{stroke:#111;stroke-width:1.7;stroke-linecap:round;stroke-linejoin:round;vector-effect:non-scaling-stroke;fill:none;}
+      .dot{fill:#111;stroke:none;}
+      .txt{font-family: Georgia, 'Times New Roman', serif;font-size:16px;letter-spacing:1px;fill:#111;stroke:none;}
+    ]]></style>
+
+    <symbol id="smashburger" viewBox="0 0 240 170">
+      <path class="ink" d="M22 65c3-32 42-51 88-52 50-1 96 20 105 55-45 11-145 10-193-3z"/>
+      <ellipse class="dot" cx="76" cy="34" rx="3" ry="1.7" transform="rotate(-15 76 34)"/>
+      <ellipse class="dot" cx="111" cy="28" rx="3" ry="1.7" transform="rotate(18 111 28)"/>
+      <ellipse class="dot" cx="150" cy="39" rx="3" ry="1.7" transform="rotate(-20 150 39)"/>
+      <ellipse class="dot" cx="53" cy="50" rx="2.8" ry="1.6" transform="rotate(22 53 50)"/>
+      <ellipse class="dot" cx="185" cy="55" rx="2.8" ry="1.6" transform="rotate(15 185 55)"/>
+      <path class="ink" d="M30 74c13 13 27-8 41 5 13 13 30-5 45 5 15 11 34-8 50 3 13 9 26-2 44-1"/>
+      <path class="ink" d="M36 91c24-11 53-8 82-4 24 3 51-5 78 4"/>
+      <path class="ink" d="M44 94l33 23 29-24 31 28 28-26 36 21"/>
+      <path class="ink" d="M34 122c40 13 94 13 177-2"/>
+      <path class="ink" d="M34 134c35 19 132 21 180 1 2 10-10 19-38 22-44 5-111 3-134-4-14-4-17-10-8-19z"/>
+      <path class="fine" d="M68 80c7 5 16 5 24 1M127 80c9 4 20 4 30 0M57 128c29 8 90 10 129 0"/>
+    </symbol>
+
+    <symbol id="limoncello" viewBox="0 0 190 230">
+      <path class="ink" d="M72 26h44M81 26c-2 22-1 40 2 51-20 9-34 33-34 68v49c0 13 11 21 45 21 34 0 47-8 47-21v-49c0-35-15-60-36-68 3-12 4-30 2-51"/>
+      <path class="ink" d="M84 10h22c7 0 10 7 8 16H77c-3-9 0-16 7-16z"/>
+      <rect class="ink" x="64" y="112" width="63" height="52" rx="10"/>
+      <text class="txt" x="71" y="143">LIM</text>
+      <circle class="fine" cx="122" cy="78" r="12"/>
+      <path class="fine" d="M122 66v24M110 78h24M114 70l17 16M131 70l-17 16"/>
+      <path class="ink" d="M18 177c10-14 39-13 48 0l-7 39H25z"/>
+      <path class="fine" d="M24 177h36M30 192c8 5 17 5 25 0"/>
+      <circle class="ink" cx="33" cy="80" r="22"/>
+      <path class="fine" d="M33 58v44M11 80h44M18 65l31 31M49 65L18 96"/>
+    </symbol>
+
+    <symbol id="gelato" viewBox="0 0 190 230">
+      <path class="ink" d="M41 105c-11-15 3-37 22-34 3-21 33-31 51-16 18-16 48-6 51 17 19 0 32 22 20 39-14 21-121 22-144-6z"/>
+      <path class="ink" d="M50 117h112l-50 98c-5 9-17 9-22 0z"/>
+      <path class="fine" d="M63 137l65 61M83 123l52 49M114 121l28 27M154 137l-65 61M131 124l-51 47"/>
+      <path class="fine" d="M69 85c12 8 23 8 35 1M120 74c10 7 21 8 33 2M88 57c6 9 17 12 28 7"/>
+      <circle class="dot" cx="74" cy="99" r="2.3"/><circle class="dot" cx="122" cy="91" r="2.3"/><circle class="dot" cx="151" cy="102" r="2.3"/>
+    </symbol>
+
+    <symbol id="panini" viewBox="0 0 240 170">
+      <path class="ink" d="M27 76c30-35 72-53 121-50 36 2 61 19 74 43-54 18-132 23-195 7z"/>
+      <path class="ink" d="M31 84c32 28 93 38 178 14"/>
+      <path class="ink" d="M37 96c23 18 53 24 89 24 35 0 62-6 78-18"/>
+      <path class="ink" d="M52 104l24 25 27-18 27 25 29-23 23 16"/>
+      <path class="fine" d="M65 57c7-9 19-15 33-18M111 43c16-6 37-4 52 4M167 55c12 4 22 10 31 20"/>
+      <path class="fine" d="M77 91c12 7 28 9 46 8M139 96c18 0 34-3 49-10"/>
+      <circle class="fine" cx="78" cy="112" r="10"/><circle class="fine" cx="167" cy="106" r="9"/>
+    </symbol>
+
+    <symbol id="arancini" viewBox="0 0 210 190">
+      <path class="ink" d="M51 125c-16-30 16-77 47-90 26 28 46 67 40 92-7 29-68 32-87-2z"/>
+      <path class="ink" d="M130 137c-10-24 18-58 45-67 21 23 34 54 26 74-10 25-59 20-71-7z"/>
+      <path class="fine" d="M74 123c12 9 34 8 48-3M155 139c9 6 23 6 34-2"/>
+      <circle class="dot" cx="82" cy="69" r="2"/><circle class="dot" cx="104" cy="58" r="2"/><circle class="dot" cx="118" cy="87" r="2"/><circle class="dot" cx="75" cy="98" r="2"/><circle class="dot" cx="101" cy="114" r="2"/>
+      <circle class="dot" cx="159" cy="101" r="2"/><circle class="dot" cx="181" cy="92" r="2"/><circle class="dot" cx="190" cy="122" r="2"/>
+      <path class="fine" d="M96 35c-10 21-14 45-9 70M173 70c-9 16-12 36-8 55"/>
+      <path class="ink" d="M41 147c40 17 116 19 166 0"/>
+    </symbol>
+
+    <symbol id="basil" viewBox="0 0 170 210">
+      <path class="ink" d="M82 190C82 145 78 91 91 24"/>
+      <path class="ink" d="M84 152c-27-4-51-18-61-42 29-12 54-6 68 18"/>
+      <path class="fine" d="M32 111c22 10 39 18 52 41"/>
+      <path class="ink" d="M88 122c29-3 51-19 62-45-31-10-54 1-65 26"/>
+      <path class="fine" d="M142 79c-20 13-36 25-53 43"/>
+      <path class="ink" d="M91 91c-23-8-40-24-45-50 28-3 47 9 52 34"/>
+      <path class="fine" d="M54 43c16 14 28 29 37 48"/>
+      <path class="ink" d="M96 66c20-9 33-24 36-45-23-2-39 8-43 30"/>
+      <path class="fine" d="M127 23c-15 13-24 26-31 43"/>
+    </symbol>
+
+    <symbol id="tomato" viewBox="0 0 210 170">
+      <circle class="ink" cx="65" cy="83" r="42"/>
+      <path class="ink" d="M65 42c7 2 13 1 21-7-1 12-6 20-18 21 1 10-2 18-9 25 1-13-2-20-10-24-11 2-20-1-28-7 13-3 24-7 31-16 3 7 7 9 13 8z"/>
+      <circle class="ink" cx="145" cy="87" r="38"/>
+      <circle class="fine" cx="145" cy="87" r="16"/>
+      <path class="fine" d="M145 49v76M107 87h76M118 60l54 54M172 60l-54 54"/>
+      <circle class="dot" cx="134" cy="81" r="2"/><circle class="dot" cx="154" cy="80" r="2"/><circle class="dot" cx="136" cy="97" r="2"/><circle class="dot" cx="156" cy="98" r="2"/>
+    </symbol>
+
+    <symbol id="oliveoil" viewBox="0 0 170 240">
+      <path class="ink" d="M70 20h34M76 20c-3 30-1 49 5 61-22 12-34 35-34 72v49c0 15 11 23 40 23 29 0 41-8 41-23v-49c0-37-13-61-35-72 5-13 7-31 5-61"/>
+      <path class="ink" d="M76 6h24c7 0 10 6 9 14H67c-1-8 2-14 9-14z"/>
+      <rect class="ink" x="62" y="118" width="51" height="62" rx="14"/>
+      <path class="fine" d="M88 131c-9 13-14 25-14 34 0 10 7 16 14 16s15-6 15-16c0-9-6-21-15-34z"/>
+      <text class="txt" x="70" y="204">OLIO</text>
+      <ellipse class="ink" cx="34" cy="196" rx="14" ry="20" transform="rotate(-24 34 196)"/>
+      <ellipse class="ink" cx="136" cy="201" rx="13" ry="19" transform="rotate(27 136 201)"/>
+      <path class="ink" d="M26 172c-14-13-20-27-18-45 21 5 34 17 40 36"/>
+      <path class="ink" d="M142 176c14-12 22-27 22-44-22 3-36 15-43 34"/>
+    </symbol>
+  </defs>
+
+  <!-- Transparent SVG tile: no background rectangle is used. -->
+  <g id="tile-art">
+    <use href="#smashburger" width="240" height="170" transform="matrix(0.86067 0.26313 -0.26313 0.86067 -282.0 -210.0)"/>
+    <use href="#basil" width="170" height="210" transform="matrix(0.60040 -0.31924 0.31924 0.60040 -68.0 -158.0)"/>
+    <use href="#panini" width="240" height="170" transform="matrix(0.85745 0.19796 -0.19796 0.85745 -162.0 64.0)"/>
+    <use href="#arancini" width="210" height="190" transform="matrix(0.80754 -0.14239 0.14239 0.80754 -105.0 280.0)"/>
+    <use href="#limoncello" width="190" height="230" transform="matrix(0.69211 -0.19846 0.19846 0.69211 -270.0 485.0)"/>
+    <use href="#oliveoil" width="170" height="240" transform="matrix(0.69547 0.18635 -0.18635 0.69547 -155.0 728.0)"/>
+    <use href="#smashburger" width="240" height="170" transform="matrix(0.86067 0.26313 -0.26313 0.86067 -282.0 990.0)"/>
+    <use href="#basil" width="170" height="210" transform="matrix(0.60040 -0.31924 0.31924 0.60040 -68.0 1042.0)"/>
+    <use href="#tomato" width="210" height="170" transform="matrix(0.61629 0.28738 -0.28738 0.61629 -20.0 565.0)"/>
+    <use href="#limoncello" width="190" height="230" transform="matrix(0.65778 -0.23941 0.23941 0.65778 30.0 -246.0)"/>
+    <use href="#gelato" width="190" height="230" transform="matrix(0.76296 0.16217 -0.16217 0.76296 330.0 -225.0)"/>
+    <use href="#panini" width="240" height="170" transform="matrix(0.80754 -0.14239 0.14239 0.80754 612.0 -205.0)"/>
+    <use href="#smashburger" width="240" height="170" transform="matrix(0.86067 0.26313 -0.26313 0.86067 918.0 -210.0)"/>
+    <use href="#basil" width="170" height="210" transform="matrix(0.60040 -0.31924 0.31924 0.60040 1132.0 -158.0)"/>
+    <use href="#oliveoil" width="170" height="240" transform="matrix(0.65638 0.06899 -0.06899 0.65638 520.0 -75.0)"/>
+    <use href="#smashburger" width="240" height="170" transform="matrix(0.97437 -0.22495 0.22495 0.97437 95.0 75.0)"/>
+    <use href="#limoncello" width="190" height="230" transform="matrix(0.74182 0.24103 -0.24103 0.74182 395.0 28.0)"/>
+    <use href="#gelato" width="190" height="230" transform="matrix(0.76085 -0.24721 0.24721 0.76085 670.0 70.0)"/>
+    <use href="#panini" width="240" height="170" transform="matrix(0.85745 0.19796 -0.19796 0.85745 1038.0 64.0)"/>
+    <use href="#tomato" width="210" height="170" transform="matrix(0.69211 0.19846 -0.19846 0.69211 235.0 230.0)"/>
+    <use href="#basil" width="170" height="210" transform="matrix(0.69539 -0.28095 0.28095 0.69539 535.0 255.0)"/>
+    <use href="#oliveoil" width="170" height="240" transform="matrix(0.71299 0.10020 -0.10020 0.71299 817.0 247.0)"/>
+    <use href="#arancini" width="210" height="190" transform="matrix(0.80754 -0.14239 0.14239 0.80754 1095.0 280.0)"/>
+    <use href="#gelato" width="190" height="230" transform="matrix(0.73231 0.23794 -0.23794 0.73231 -58.0 415.0)"/>
+    <use href="#panini" width="240" height="170" transform="matrix(0.78417 -0.23974 0.23974 0.78417 293.0 436.0)"/>
+    <use href="#smashburger" width="240" height="170" transform="matrix(0.82669 0.23705 -0.23705 0.82669 592.0 468.0)"/>
+    <use href="#limoncello" width="190" height="230" transform="matrix(0.69211 -0.19846 0.19846 0.69211 930.0 485.0)"/>
+    <use href="#arancini" width="210" height="190" transform="matrix(0.77040 0.12202 -0.12202 0.77040 146.0 700.0)"/>
+    <use href="#basil" width="170" height="210" transform="matrix(0.68598 0.24967 -0.24967 0.68598 438.0 696.0)"/>
+    <use href="#tomato" width="210" height="170" transform="matrix(0.68206 -0.15747 0.15747 0.68206 710.0 728.0)"/>
+    <use href="#oliveoil" width="170" height="240" transform="matrix(0.69547 0.18635 -0.18635 0.69547 1045.0 728.0)"/>
+    <use href="#limoncello" width="190" height="230" transform="matrix(0.65778 -0.23941 0.23941 0.65778 30.0 954.0)"/>
+    <use href="#gelato" width="190" height="230" transform="matrix(0.76296 0.16217 -0.16217 0.76296 330.0 975.0)"/>
+    <use href="#panini" width="240" height="170" transform="matrix(0.80754 -0.14239 0.14239 0.80754 612.0 995.0)"/>
+    <use href="#smashburger" width="240" height="170" transform="matrix(0.86067 0.26313 -0.26313 0.86067 918.0 990.0)"/>
+    <use href="#basil" width="170" height="210" transform="matrix(0.60040 -0.31924 0.31924 0.60040 1132.0 1042.0)"/>
+    <use href="#oliveoil" width="170" height="240" transform="matrix(0.65638 0.06899 -0.06899 0.65638 520.0 1125.0)"/>
+    <use href="#tomato" width="210" height="170" transform="matrix(0.61629 0.28738 -0.28738 0.61629 1180.0 565.0)"/>
+    <use href="#limoncello" width="190" height="230" transform="matrix(0.74182 0.24103 -0.24103 0.74182 395.0 1228.0)"/>
+    <use href="#limoncello" width="190" height="230" transform="matrix(0.65778 -0.23941 0.23941 0.65778 1230.0 -246.0)"/>
+    <use href="#gelato" width="190" height="230" transform="matrix(0.73231 0.23794 -0.23794 0.73231 1142.0 415.0)"/>
+    <use href="#limoncello" width="190" height="230" transform="matrix(0.65778 -0.23941 0.23941 0.65778 1230.0 954.0)"/>
+  </g>
+</svg>
