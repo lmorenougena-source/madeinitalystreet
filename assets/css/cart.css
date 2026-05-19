@@ -637,6 +637,88 @@ body.mis-cart-open { overflow: hidden; }
   pointer-events: none;
 }
 
+/* =========================================================
+   LANGUAGE SWITCHER (drapeaux)
+========================================================= */
+.mis-lang-switcher {
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  font-family: 'Inter', system-ui, sans-serif;
+  z-index: 50;
+}
+.mis-lang-toggle {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  padding: 6px 10px 6px 8px;
+  border-radius: 999px;
+  border: 1.5px solid rgba(244, 233, 214, .25);
+  background: rgba(14, 14, 15, .35);
+  color: var(--cream, #F4E9D6);
+  cursor: pointer;
+  font-size: 12px;
+  font-weight: 800;
+  letter-spacing: .04em;
+  line-height: 1;
+  transition: background .15s ease, border-color .15s ease, transform .15s ease;
+  -webkit-tap-highlight-color: transparent;
+}
+.mis-lang-toggle:hover { background: rgba(14, 14, 15, .55); border-color: rgba(244, 233, 214, .45); transform: translateY(-1px); }
+.mis-lang-toggle:focus-visible { outline: 3px solid var(--gold, #F5B335); outline-offset: 2px; }
+.mis-lang-toggle .mis-lang-flag { font-size: 16px; line-height: 1; }
+.mis-lang-toggle .mis-lang-code { font-weight: 800; }
+.mis-lang-toggle .mis-lang-caret { opacity: .7; transition: transform .2s ease; }
+.mis-lang-toggle[aria-expanded="true"] .mis-lang-caret { transform: rotate(180deg); }
+
+.mis-lang-list {
+  position: absolute;
+  top: calc(100% + 8px);
+  right: 0;
+  margin: 0;
+  padding: 6px;
+  list-style: none;
+  background: #fff;
+  color: #111;
+  border-radius: 14px;
+  box-shadow: 0 22px 50px -20px rgba(0, 0, 0, .55), 0 0 0 1px rgba(0, 0, 0, .08);
+  min-width: 170px;
+  z-index: 60;
+  animation: misLangFade .15s ease;
+}
+@keyframes misLangFade {
+  from { opacity: 0; transform: translateY(-4px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+.mis-lang-list li { margin: 0; padding: 0; }
+.mis-lang-item {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  width: 100%;
+  padding: 9px 12px;
+  border: 0;
+  background: transparent;
+  border-radius: 10px;
+  font-size: 14px;
+  font-weight: 600;
+  color: inherit;
+  cursor: pointer;
+  text-align: left;
+  -webkit-tap-highlight-color: transparent;
+  transition: background .12s ease;
+}
+.mis-lang-item:hover { background: rgba(0, 0, 0, .06); }
+.mis-lang-item.is-active { background: rgba(200, 16, 46, .1); color: var(--red, #C8102E); }
+.mis-lang-item:focus-visible { outline: 2px solid var(--gold, #F5B335); outline-offset: -2px; }
+.mis-lang-item .mis-lang-flag { font-size: 18px; line-height: 1; }
+.mis-lang-item .mis-lang-name { font-weight: 700; letter-spacing: .01em; }
+
+/* Variante : switcher dans le menu mobile (fond clair sur fond sombre déjà) */
+.street-mobile-menu .mis-lang-switcher { width: 100%; margin-top: 12px; }
+.street-mobile-menu .mis-lang-toggle { width: 100%; justify-content: center; padding: 12px 16px; font-size: 14px; }
+.street-mobile-menu .mis-lang-list { right: auto; left: 0; right: 0; }
+
 /* Reduced motion */
 @media (prefers-reduced-motion: reduce) {
   .mis-cart-drawer,
@@ -648,5 +730,8 @@ body.mis-cart-open { overflow: hidden; }
   .mis-status-pill,
   .mis-status-pill .mis-status-dot::after,
   .mis-upsell-item,
-  .mis-upsell-add { transition: none !important; animation: none !important; }
+  .mis-upsell-add,
+  .mis-lang-toggle,
+  .mis-lang-list,
+  .mis-lang-caret { transition: none !important; animation: none !important; }
 }

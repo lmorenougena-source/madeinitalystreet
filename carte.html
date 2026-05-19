@@ -3,8 +3,8 @@
 <head>
 <meta charset="utf-8" />
 <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover" />
-<title>La Carte — Made in Italy Street | Smash Burgers, Panini, Loaded Fries à Lourdes</title>
-<meta name="description" content="Découvre la carte complète Made in Italy Street : smash burgers, panini, loaded fries, combos, antipasti, dolci, bibite. Italian street food à Lourdes." />
+<title data-i18n-title="meta.carte.title">La Carte — Made in Italy Street | Smash Burgers, Panini, Loaded Fries à Lourdes</title>
+<meta name="description" data-i18n-content="meta.carte.desc" content="Découvre la carte complète Made in Italy Street : smash burgers, panini, loaded fries, combos, antipasti, dolci, bibite. Italian street food à Lourdes." />
 <meta name="theme-color" content="#0E0E0F" />
 
 <!-- Sécurité : durcissement headers (équivalents meta) -->
@@ -39,7 +39,7 @@
 
 <!-- Style custom Street -->
 <link rel="stylesheet" href="assets/css/street.css?v=20260518-icon-colors" />
-<link rel="stylesheet" href="assets/css/cart.css?v=20260519-cart-v2" />
+<link rel="stylesheet" href="assets/css/cart.css?v=20260520-i18n-v1" />
 </head>
 
 <body class="street-body">
@@ -329,46 +329,48 @@
     </a>
 
     <nav class="street-nav" aria-label="Navigation principale">
-      <a href="index.html#accueil" class="street-nav-link">Accueil</a>
-      <a href="carte.html" class="street-nav-link is-active">Menu</a>
-      <a href="index.html#concept" class="street-nav-link">Concept</a>
-      <a href="index.html#click-collect" class="street-nav-link">Click &amp; Collect</a>
-      <a href="index.html#contact" class="street-nav-link">Contact</a>
+      <a href="index.html#accueil" class="street-nav-link" data-i18n="nav.home">Accueil</a>
+      <a href="carte.html" class="street-nav-link is-active" data-i18n="nav.menu">Menu</a>
+      <a href="index.html#concept" class="street-nav-link" data-i18n="nav.concept">Concept</a>
+      <a href="index.html#click-collect" class="street-nav-link" data-i18n="nav.cc">Click &amp; Collect</a>
+      <a href="index.html#contact" class="street-nav-link" data-i18n="nav.contact">Contact</a>
     </nav>
 
     <div class="street-header-cta">
       <a href="index.html#click-collect" class="street-btn street-btn-pill is-sm">
         <svg width="16" height="16"><use href="#i-vespa"/></svg>
-        Click &amp; Collect
+        <span data-i18n="nav.cc">Click &amp; Collect</span>
       </a>
       <button type="button" data-mis-open class="street-btn street-btn-pill is-primary is-sm">
         <svg width="16" height="16"><use href="#i-cart"/></svg>
-        Mon panier
+        <span data-i18n="nav.myCart">Mon panier</span>
       </button>
+      <div data-mis-lang-switcher></div>
     </div>
 
-    <button class="street-burger" id="street-burger" aria-label="Ouvrir le menu" aria-expanded="false">
+    <button class="street-burger" id="street-burger" data-i18n-attr="aria-label:nav.openMenu" aria-label="Ouvrir le menu" aria-expanded="false">
       <span></span><span></span><span></span>
     </button>
   </div>
 
   <div class="street-mobile-menu" id="street-mobile-menu" aria-hidden="true">
     <nav class="street-mobile-nav" aria-label="Navigation mobile">
-      <a href="index.html#accueil" class="street-mobile-link">Accueil</a>
-      <a href="carte.html" class="street-mobile-link">Menu</a>
-      <a href="index.html#concept" class="street-mobile-link">Concept</a>
-      <a href="index.html#click-collect" class="street-mobile-link">Click &amp; Collect</a>
-      <a href="index.html#contact" class="street-mobile-link">Contact</a>
+      <a href="index.html#accueil" class="street-mobile-link" data-i18n="nav.home">Accueil</a>
+      <a href="carte.html" class="street-mobile-link" data-i18n="nav.menu">Menu</a>
+      <a href="index.html#concept" class="street-mobile-link" data-i18n="nav.concept">Concept</a>
+      <a href="index.html#click-collect" class="street-mobile-link" data-i18n="nav.cc">Click &amp; Collect</a>
+      <a href="index.html#contact" class="street-mobile-link" data-i18n="nav.contact">Contact</a>
     </nav>
     <div class="street-mobile-cta">
       <a href="index.html#click-collect" class="street-btn street-btn-ghost street-btn-lg">
         <svg width="18" height="18"><use href="#i-vespa"/></svg>
-        Click &amp; Collect
+        <span data-i18n="nav.cc">Click &amp; Collect</span>
       </a>
       <button type="button" data-mis-open class="street-btn street-btn-primary street-btn-lg">
         <svg width="18" height="18"><use href="#i-cart"/></svg>
-        Mon panier
+        <span data-i18n="nav.myCart">Mon panier</span>
       </button>
+      <div data-mis-lang-switcher></div>
     </div>
   </div>
 </header>
@@ -379,16 +381,19 @@
 <section class="street-menu-hero">
   <div class="street-menu-hero-inner">
     <h1 class="street-menu-title">
-      <span class="street-sticker size-xl is-cream has-shadow">Notre carte</span>
+      <span class="street-sticker size-xl is-cream has-shadow" data-i18n="cm.title">Notre carte</span>
       <span class="hand">la nostra carta</span>
     </h1>
-    <p class="street-menu-subtitle">
+    <p class="street-menu-subtitle" data-i18n="cm.subtitle">
       Smash burgers, panini généreux, loaded fries, antipasti, dolci.
       Tout est préparé sur place, fatto con amore.
     </p>
+    <div style="display:flex;justify-content:center;margin:18px 0 6px">
+      <div class="mis-status-pill mis-status-hero" data-mis-open-status></div>
+    </div>
     <div class="street-menu-notice">
       <svg><use href="#i-info"/></svg>
-      Nous travaillons avec des produits frais, nous avons parfois des produits indisponibles dû au rythme des saisons.
+      <span data-i18n="cm.notice">Nous travaillons avec des produits frais, nous avons parfois des produits indisponibles dû au rythme des saisons.</span>
     </div>
   </div>
 </section>
@@ -398,13 +403,13 @@
 ========================================================= -->
 <nav class="street-menu-tabs" aria-label="Catégories de la carte" id="street-menu-tabs">
   <div class="street-menu-tabs-inner">
-    <a href="#burgers" class="street-menu-tab is-active" data-tab="burgers">Burgers</a>
-    <a href="#panini" class="street-menu-tab" data-tab="panini">Panini</a>
-    <a href="#fries" class="street-menu-tab" data-tab="fries">Loaded Fries</a>
-    <a href="#combos" class="street-menu-tab" data-tab="combos">Combos</a>
-    <a href="#antipasti" class="street-menu-tab" data-tab="antipasti">Antipasti</a>
-    <a href="#dolci" class="street-menu-tab" data-tab="dolci">Dolci</a>
-    <a href="#bibite" class="street-menu-tab" data-tab="bibite">Boissons</a>
+    <a href="#burgers" class="street-menu-tab is-active" data-tab="burgers" data-i18n="tab.burgers">Burgers</a>
+    <a href="#panini" class="street-menu-tab" data-tab="panini" data-i18n="tab.panini">Panini</a>
+    <a href="#fries" class="street-menu-tab" data-tab="fries" data-i18n="tab.fries">Loaded Fries</a>
+    <a href="#combos" class="street-menu-tab" data-tab="combos" data-i18n="tab.combos">Combos</a>
+    <a href="#antipasti" class="street-menu-tab" data-tab="antipasti" data-i18n="tab.antipasti">Antipasti</a>
+    <a href="#dolci" class="street-menu-tab" data-tab="dolci" data-i18n="tab.dolci">Dolci</a>
+    <a href="#bibite" class="street-menu-tab" data-tab="bibite" data-i18n="tab.bibite">Boissons</a>
   </div>
 </nav>
 
@@ -417,7 +422,7 @@
     <!-- =========== BURGERS =========== -->
     <section id="burgers" class="street-menu-category">
       <header class="street-menu-category-head">
-        <h2 class="street-menu-category-title">Nos Burgers</h2>
+        <h2 class="street-menu-category-title" data-i18n="cat.burgers.title">Nos Burgers</h2>
         <span class="street-menu-category-italic">i Burger</span>
         <span class="street-menu-category-line" aria-hidden="true"></span>
       </header>
@@ -426,27 +431,27 @@
 
         <article class="street-menu-card" data-product-id="burger-italiano" data-product-name="Burger Italiano">
           <div class="street-menu-card-media">
-            <span class="street-menu-card-badge is-mama">Plat de la mama</span>
+            <span class="street-menu-card-badge is-mama" data-i18n="badge.mamaPlat">Plat de la mama</span>
             <div class="street-menu-card-illu" aria-hidden="true"><svg><use href="#illu-burger"/></svg></div>
             <span class="street-menu-card-price">13,90 €</span>
           </div>
           <div class="street-menu-card-body">
             <h3 class="street-menu-card-title">Burger Italiano</h3>
-            <p class="street-menu-card-desc">Sauce maison, pancetta, mozzarella, roquette</p>
-            <button type="button" class="street-menu-card-add" data-mis-add aria-label="Ajouter au panier">Ajouter <svg><use href="#i-plus"/></svg></button>
+            <p class="street-menu-card-desc" data-i18n="p.burger-italiano.desc">Sauce maison, pancetta, mozzarella, roquette</p>
+            <button type="button" class="street-menu-card-add" data-mis-add data-i18n-attr="aria-label:card.addAria" aria-label="Ajouter au panier"><span data-i18n="card.add">Ajouter</span> <svg><use href="#i-plus"/></svg></button>
           </div>
         </article>
 
         <article class="street-menu-card" data-product-id="burger-diavolo" data-product-name="Burger Diavolo">
           <div class="street-menu-card-media">
-            <span class="street-menu-card-badge is-hot">🌶 Spicy</span>
+            <span class="street-menu-card-badge is-hot" data-i18n="badge.spicy">🌶 Spicy</span>
             <div class="street-menu-card-illu" aria-hidden="true"><svg><use href="#illu-burger"/></svg></div>
             <span class="street-menu-card-price">13,90 €</span>
           </div>
           <div class="street-menu-card-body">
             <h3 class="street-menu-card-title">Burger Diavolo</h3>
-            <p class="street-menu-card-desc">'Nduja, oignons rouges, cheddar, sauce spicy</p>
-            <button type="button" class="street-menu-card-add" data-mis-add aria-label="Ajouter au panier">Ajouter <svg><use href="#i-plus"/></svg></button>
+            <p class="street-menu-card-desc" data-i18n="p.burger-diavolo.desc">'Nduja, oignons rouges, cheddar, sauce spicy</p>
+            <button type="button" class="street-menu-card-add" data-mis-add data-i18n-attr="aria-label:card.addAria" aria-label="Ajouter au panier"><span data-i18n="card.add">Ajouter</span> <svg><use href="#i-plus"/></svg></button>
           </div>
         </article>
 
@@ -457,21 +462,21 @@
           </div>
           <div class="street-menu-card-body">
             <h3 class="street-menu-card-title">Burger Parmigiano</h3>
-            <p class="street-menu-card-desc">Crème de parmesan, jambon de Parme, roquette</p>
-            <button type="button" class="street-menu-card-add" data-mis-add aria-label="Ajouter au panier">Ajouter <svg><use href="#i-plus"/></svg></button>
+            <p class="street-menu-card-desc" data-i18n="p.burger-parmigiano.desc">Crème de parmesan, jambon de Parme, roquette</p>
+            <button type="button" class="street-menu-card-add" data-mis-add data-i18n-attr="aria-label:card.addAria" aria-label="Ajouter au panier"><span data-i18n="card.add">Ajouter</span> <svg><use href="#i-plus"/></svg></button>
           </div>
         </article>
 
         <article class="street-menu-card" data-product-id="burger-tartufo" data-product-name="Burger Tartufo">
           <div class="street-menu-card-media">
-            <span class="street-menu-card-badge is-new">Gourmet</span>
+            <span class="street-menu-card-badge is-new" data-i18n="badge.gourmet">Gourmet</span>
             <div class="street-menu-card-illu" aria-hidden="true"><svg><use href="#illu-burger"/></svg></div>
             <span class="street-menu-card-price">16,90 €</span>
           </div>
           <div class="street-menu-card-body">
             <h3 class="street-menu-card-title">Burger Tartufo</h3>
-            <p class="street-menu-card-desc">Crème de truffe, champignons, fontina, oeuf</p>
-            <button type="button" class="street-menu-card-add" data-mis-add aria-label="Ajouter au panier">Ajouter <svg><use href="#i-plus"/></svg></button>
+            <p class="street-menu-card-desc" data-i18n="p.burger-tartufo.desc">Crème de truffe, champignons, fontina, oeuf</p>
+            <button type="button" class="street-menu-card-add" data-mis-add data-i18n-attr="aria-label:card.addAria" aria-label="Ajouter au panier"><span data-i18n="card.add">Ajouter</span> <svg><use href="#i-plus"/></svg></button>
           </div>
         </article>
 
@@ -482,21 +487,21 @@
           </div>
           <div class="street-menu-card-body">
             <h3 class="street-menu-card-title">Double Smash Classic</h3>
-            <p class="street-menu-card-desc">Double steak smashé, double cheddar, oignons confits</p>
-            <button type="button" class="street-menu-card-add" data-mis-add aria-label="Ajouter au panier">Ajouter <svg><use href="#i-plus"/></svg></button>
+            <p class="street-menu-card-desc" data-i18n="p.double-smash-classic.desc">Double steak smashé, double cheddar, oignons confits</p>
+            <button type="button" class="street-menu-card-add" data-mis-add data-i18n-attr="aria-label:card.addAria" aria-label="Ajouter au panier"><span data-i18n="card.add">Ajouter</span> <svg><use href="#i-plus"/></svg></button>
           </div>
         </article>
 
         <article class="street-menu-card" data-product-id="burger-vegetariano" data-product-name="Burger Vegetariano">
           <div class="street-menu-card-media">
-            <span class="street-menu-card-badge is-veggie">Veggie</span>
+            <span class="street-menu-card-badge is-veggie" data-i18n="badge.veggie">Veggie</span>
             <div class="street-menu-card-illu" aria-hidden="true"><svg><use href="#illu-burger"/></svg></div>
             <span class="street-menu-card-price">12,90 €</span>
           </div>
           <div class="street-menu-card-body">
             <h3 class="street-menu-card-title">Burger Vegetariano</h3>
-            <p class="street-menu-card-desc">Galette aubergine grillée, mozza, pesto, tomate</p>
-            <button type="button" class="street-menu-card-add" data-mis-add aria-label="Ajouter au panier">Ajouter <svg><use href="#i-plus"/></svg></button>
+            <p class="street-menu-card-desc" data-i18n="p.burger-vegetariano.desc">Galette aubergine grillée, mozza, pesto, tomate</p>
+            <button type="button" class="street-menu-card-add" data-mis-add data-i18n-attr="aria-label:card.addAria" aria-label="Ajouter au panier"><span data-i18n="card.add">Ajouter</span> <svg><use href="#i-plus"/></svg></button>
           </div>
         </article>
 
@@ -507,21 +512,21 @@
           </div>
           <div class="street-menu-card-body">
             <h3 class="street-menu-card-title">Burger Bambino</h3>
-            <p class="street-menu-card-desc">Mini steak, cheddar fondu, sauce douce (pour les enfants)</p>
-            <button type="button" class="street-menu-card-add" data-mis-add aria-label="Ajouter au panier">Ajouter <svg><use href="#i-plus"/></svg></button>
+            <p class="street-menu-card-desc" data-i18n="p.burger-bambino.desc">Mini steak, cheddar fondu, sauce douce (pour les enfants)</p>
+            <button type="button" class="street-menu-card-add" data-mis-add data-i18n-attr="aria-label:card.addAria" aria-label="Ajouter au panier"><span data-i18n="card.add">Ajouter</span> <svg><use href="#i-plus"/></svg></button>
           </div>
         </article>
 
         <article class="street-menu-card" data-product-id="burger-del-mese" data-product-name="Burger del Mese">
           <div class="street-menu-card-media">
-            <span class="street-menu-card-badge is-new">Nouveau</span>
+            <span class="street-menu-card-badge is-new" data-i18n="badge.newShort">Nouveau</span>
             <div class="street-menu-card-illu" aria-hidden="true"><svg><use href="#illu-burger"/></svg></div>
             <span class="street-menu-card-price">14,90 €</span>
           </div>
           <div class="street-menu-card-body">
             <h3 class="street-menu-card-title">Burger del Mese</h3>
-            <p class="street-menu-card-desc">La création surprise du chef, changeant chaque mois</p>
-            <button type="button" class="street-menu-card-add" data-mis-add aria-label="Ajouter au panier">Ajouter <svg><use href="#i-plus"/></svg></button>
+            <p class="street-menu-card-desc" data-i18n="p.burger-del-mese.desc">La création surprise du chef, changeant chaque mois</p>
+            <button type="button" class="street-menu-card-add" data-mis-add data-i18n-attr="aria-label:card.addAria" aria-label="Ajouter au panier"><span data-i18n="card.add">Ajouter</span> <svg><use href="#i-plus"/></svg></button>
           </div>
         </article>
 
@@ -531,7 +536,7 @@
     <!-- =========== PANINI =========== -->
     <section id="panini" class="street-menu-category">
       <header class="street-menu-category-head">
-        <h2 class="street-menu-category-title">Nos Panini</h2>
+        <h2 class="street-menu-category-title" data-i18n="cat.panini.title">Nos Panini</h2>
         <span class="street-menu-category-italic">i Panini</span>
         <span class="street-menu-category-line" aria-hidden="true"></span>
       </header>
@@ -540,14 +545,14 @@
 
         <article class="street-menu-card" data-product-id="crousty-pollo-pesto" data-product-name="Crousty Pollo Pesto">
           <div class="street-menu-card-media">
-            <span class="street-menu-card-badge is-fresh">Hype</span>
+            <span class="street-menu-card-badge is-fresh" data-i18n="badge.hype">Hype</span>
             <div class="street-menu-card-illu" aria-hidden="true"><svg><use href="#illu-panino"/></svg></div>
             <span class="street-menu-card-price">8,90 €</span>
           </div>
           <div class="street-menu-card-body">
             <h3 class="street-menu-card-title">Crousty Pollo Pesto</h3>
-            <p class="street-menu-card-desc">Poulet croustillant, pesto genovese, mozzarella, roquette</p>
-            <button type="button" class="street-menu-card-add" data-mis-add aria-label="Ajouter au panier">Ajouter <svg><use href="#i-plus"/></svg></button>
+            <p class="street-menu-card-desc" data-i18n="p.crousty-pollo-pesto.desc">Poulet croustillant, pesto genovese, mozzarella, roquette</p>
+            <button type="button" class="street-menu-card-add" data-mis-add data-i18n-attr="aria-label:card.addAria" aria-label="Ajouter au panier"><span data-i18n="card.add">Ajouter</span> <svg><use href="#i-plus"/></svg></button>
           </div>
         </article>
 
@@ -558,47 +563,47 @@
           </div>
           <div class="street-menu-card-body">
             <h3 class="street-menu-card-title">Panino Caprese</h3>
-            <p class="street-menu-card-desc">Mozzarella fior di latte, tomate, basilic, huile d'olive</p>
-            <button type="button" class="street-menu-card-add" data-mis-add aria-label="Ajouter au panier">Ajouter <svg><use href="#i-plus"/></svg></button>
+            <p class="street-menu-card-desc" data-i18n="p.panino-caprese.desc">Mozzarella fior di latte, tomate, basilic, huile d'olive</p>
+            <button type="button" class="street-menu-card-add" data-mis-add data-i18n-attr="aria-label:card.addAria" aria-label="Ajouter au panier"><span data-i18n="card.add">Ajouter</span> <svg><use href="#i-plus"/></svg></button>
           </div>
         </article>
 
         <article class="street-menu-card" data-product-id="panino-parma" data-product-name="Panino Parma">
           <div class="street-menu-card-media">
-            <span class="street-menu-card-badge is-mama">Plat de la mama</span>
+            <span class="street-menu-card-badge is-mama" data-i18n="badge.mamaPlat">Plat de la mama</span>
             <div class="street-menu-card-illu" aria-hidden="true"><svg><use href="#illu-panino"/></svg></div>
             <span class="street-menu-card-price">9,90 €</span>
           </div>
           <div class="street-menu-card-body">
             <h3 class="street-menu-card-title">Panino Parma</h3>
-            <p class="street-menu-card-desc">Jambon de Parme 18 mois, mozza, roquette, crème balsamique</p>
-            <button type="button" class="street-menu-card-add" data-mis-add aria-label="Ajouter au panier">Ajouter <svg><use href="#i-plus"/></svg></button>
+            <p class="street-menu-card-desc" data-i18n="p.panino-parma.desc">Jambon de Parme 18 mois, mozza, roquette, crème balsamique</p>
+            <button type="button" class="street-menu-card-add" data-mis-add data-i18n-attr="aria-label:card.addAria" aria-label="Ajouter au panier"><span data-i18n="card.add">Ajouter</span> <svg><use href="#i-plus"/></svg></button>
           </div>
         </article>
 
         <article class="street-menu-card" data-product-id="panino-calabrese" data-product-name="Panino Calabrese">
           <div class="street-menu-card-media">
-            <span class="street-menu-card-badge is-hot">🌶 Spicy</span>
+            <span class="street-menu-card-badge is-hot" data-i18n="badge.spicy">🌶 Spicy</span>
             <div class="street-menu-card-illu" aria-hidden="true"><svg><use href="#illu-panino"/></svg></div>
             <span class="street-menu-card-price">9,90 €</span>
           </div>
           <div class="street-menu-card-body">
             <h3 class="street-menu-card-title">Panino Calabrese</h3>
-            <p class="street-menu-card-desc">Salami piquant, provolone, poivrons grillés, roquette</p>
-            <button type="button" class="street-menu-card-add" data-mis-add aria-label="Ajouter au panier">Ajouter <svg><use href="#i-plus"/></svg></button>
+            <p class="street-menu-card-desc" data-i18n="p.panino-calabrese.desc">Salami piquant, provolone, poivrons grillés, roquette</p>
+            <button type="button" class="street-menu-card-add" data-mis-add data-i18n-attr="aria-label:card.addAria" aria-label="Ajouter au panier"><span data-i18n="card.add">Ajouter</span> <svg><use href="#i-plus"/></svg></button>
           </div>
         </article>
 
         <article class="street-menu-card" data-product-id="panino-veggie" data-product-name="Panino Veggie">
           <div class="street-menu-card-media">
-            <span class="street-menu-card-badge is-veggie">☀ Summer edition</span>
+            <span class="street-menu-card-badge is-veggie" data-i18n="badge.veggieSummer">☀ Summer edition</span>
             <div class="street-menu-card-illu" aria-hidden="true"><svg><use href="#illu-panino"/></svg></div>
             <span class="street-menu-card-price">7,90 €</span>
           </div>
           <div class="street-menu-card-body">
             <h3 class="street-menu-card-title">Panino Veggie</h3>
-            <p class="street-menu-card-desc">Aubergine grillée, courgette, mozza, pesto, tomate confite</p>
-            <button type="button" class="street-menu-card-add" data-mis-add aria-label="Ajouter au panier">Ajouter <svg><use href="#i-plus"/></svg></button>
+            <p class="street-menu-card-desc" data-i18n="p.panino-veggie.desc">Aubergine grillée, courgette, mozza, pesto, tomate confite</p>
+            <button type="button" class="street-menu-card-add" data-mis-add data-i18n-attr="aria-label:card.addAria" aria-label="Ajouter au panier"><span data-i18n="card.add">Ajouter</span> <svg><use href="#i-plus"/></svg></button>
           </div>
         </article>
 
@@ -608,7 +613,7 @@
     <!-- =========== LOADED FRIES =========== -->
     <section id="fries" class="street-menu-category">
       <header class="street-menu-category-head">
-        <h2 class="street-menu-category-title">Loaded Fries</h2>
+        <h2 class="street-menu-category-title" data-i18n="cat.fries.title">Loaded Fries</h2>
         <span class="street-menu-category-italic">le Patatine</span>
         <span class="street-menu-category-line" aria-hidden="true"></span>
       </header>
@@ -617,40 +622,40 @@
 
         <article class="street-menu-card" data-product-id="loaded-parmigiano" data-product-name="Loaded Parmigiano">
           <div class="street-menu-card-media">
-            <span class="street-menu-card-badge is-cheesy">Cheesy</span>
+            <span class="street-menu-card-badge is-cheesy" data-i18n="badge.cheesy">Cheesy</span>
             <div class="street-menu-card-illu" aria-hidden="true"><svg><use href="#illu-fries"/></svg></div>
             <span class="street-menu-card-price">6,90 €</span>
           </div>
           <div class="street-menu-card-body">
             <h3 class="street-menu-card-title">Loaded Parmigiano</h3>
-            <p class="street-menu-card-desc">Frites maison, crème parmesan, herbes, crispy onions</p>
-            <button type="button" class="street-menu-card-add" data-mis-add aria-label="Ajouter au panier">Ajouter <svg><use href="#i-plus"/></svg></button>
+            <p class="street-menu-card-desc" data-i18n="p.loaded-parmigiano.desc">Frites maison, crème parmesan, herbes, crispy onions</p>
+            <button type="button" class="street-menu-card-add" data-mis-add data-i18n-attr="aria-label:card.addAria" aria-label="Ajouter au panier"><span data-i18n="card.add">Ajouter</span> <svg><use href="#i-plus"/></svg></button>
           </div>
         </article>
 
         <article class="street-menu-card" data-product-id="loaded-tartufo" data-product-name="Loaded Tartufo">
           <div class="street-menu-card-media">
-            <span class="street-menu-card-badge is-new">Gourmet</span>
+            <span class="street-menu-card-badge is-new" data-i18n="badge.gourmet">Gourmet</span>
             <div class="street-menu-card-illu" aria-hidden="true"><svg><use href="#illu-fries"/></svg></div>
             <span class="street-menu-card-price">8,90 €</span>
           </div>
           <div class="street-menu-card-body">
             <h3 class="street-menu-card-title">Loaded Tartufo</h3>
-            <p class="street-menu-card-desc">Frites, crème de truffe, parmesan râpé, persil</p>
-            <button type="button" class="street-menu-card-add" data-mis-add aria-label="Ajouter au panier">Ajouter <svg><use href="#i-plus"/></svg></button>
+            <p class="street-menu-card-desc" data-i18n="p.loaded-tartufo.desc">Frites, crème de truffe, parmesan râpé, persil</p>
+            <button type="button" class="street-menu-card-add" data-mis-add data-i18n-attr="aria-label:card.addAria" aria-label="Ajouter au panier"><span data-i18n="card.add">Ajouter</span> <svg><use href="#i-plus"/></svg></button>
           </div>
         </article>
 
         <article class="street-menu-card" data-product-id="loaded-diavola" data-product-name="Loaded Diavola">
           <div class="street-menu-card-media">
-            <span class="street-menu-card-badge is-hot">🌶 Spicy</span>
+            <span class="street-menu-card-badge is-hot" data-i18n="badge.spicy">🌶 Spicy</span>
             <div class="street-menu-card-illu" aria-hidden="true"><svg><use href="#illu-fries"/></svg></div>
             <span class="street-menu-card-price">6,90 €</span>
           </div>
           <div class="street-menu-card-body">
             <h3 class="street-menu-card-title">Loaded Diavola</h3>
-            <p class="street-menu-card-desc">Frites, sauce spicy, 'nduja, cheddar, oignons rouges</p>
-            <button type="button" class="street-menu-card-add" data-mis-add aria-label="Ajouter au panier">Ajouter <svg><use href="#i-plus"/></svg></button>
+            <p class="street-menu-card-desc" data-i18n="p.loaded-diavola.desc">Frites, sauce spicy, 'nduja, cheddar, oignons rouges</p>
+            <button type="button" class="street-menu-card-add" data-mis-add data-i18n-attr="aria-label:card.addAria" aria-label="Ajouter au panier"><span data-i18n="card.add">Ajouter</span> <svg><use href="#i-plus"/></svg></button>
           </div>
         </article>
 
@@ -661,8 +666,8 @@
           </div>
           <div class="street-menu-card-body">
             <h3 class="street-menu-card-title">Frites Maison</h3>
-            <p class="street-menu-card-desc">La version simple : pomme de terre, sel de mer, herbes</p>
-            <button type="button" class="street-menu-card-add" data-mis-add aria-label="Ajouter au panier">Ajouter <svg><use href="#i-plus"/></svg></button>
+            <p class="street-menu-card-desc" data-i18n="p.frites-maison.desc">La version simple : pomme de terre, sel de mer, herbes</p>
+            <button type="button" class="street-menu-card-add" data-mis-add data-i18n-attr="aria-label:card.addAria" aria-label="Ajouter au panier"><span data-i18n="card.add">Ajouter</span> <svg><use href="#i-plus"/></svg></button>
           </div>
         </article>
 
@@ -672,7 +677,7 @@
     <!-- =========== COMBOS =========== -->
     <section id="combos" class="street-menu-category">
       <header class="street-menu-category-head">
-        <h2 class="street-menu-category-title">Nos Combos</h2>
+        <h2 class="street-menu-category-title" data-i18n="cat.combos.title">Nos Combos</h2>
         <span class="street-menu-category-italic">i Combo</span>
         <span class="street-menu-category-line" aria-hidden="true"></span>
       </header>
@@ -681,14 +686,14 @@
 
         <article class="street-menu-card" data-product-id="combo-classico" data-product-name="Combo Classico">
           <div class="street-menu-card-media">
-            <span class="street-menu-card-badge">Bon plan</span>
+            <span class="street-menu-card-badge" data-i18n="badge.deal">Bon plan</span>
             <div class="street-menu-card-illu" aria-hidden="true"><svg><use href="#illu-combo"/></svg></div>
             <span class="street-menu-card-price">15,90 €</span>
           </div>
           <div class="street-menu-card-body">
             <h3 class="street-menu-card-title">Combo Classico</h3>
-            <p class="street-menu-card-desc">Burger au choix + frites maison + boisson</p>
-            <button type="button" class="street-menu-card-add" data-mis-add aria-label="Ajouter au panier">Composer <svg><use href="#i-plus"/></svg></button>
+            <p class="street-menu-card-desc" data-i18n="p.combo-classico.desc">Burger au choix + frites maison + boisson</p>
+            <button type="button" class="street-menu-card-add" data-mis-add data-i18n-attr="aria-label:card.addAria" aria-label="Ajouter au panier"><span data-i18n="card.compose">Composer</span> <svg><use href="#i-plus"/></svg></button>
           </div>
         </article>
 
@@ -699,21 +704,21 @@
           </div>
           <div class="street-menu-card-body">
             <h3 class="street-menu-card-title">Combo Panino</h3>
-            <p class="street-menu-card-desc">Panino au choix + frites maison + boisson</p>
-            <button type="button" class="street-menu-card-add" data-mis-add aria-label="Ajouter au panier">Composer <svg><use href="#i-plus"/></svg></button>
+            <p class="street-menu-card-desc" data-i18n="p.combo-panino.desc">Panino au choix + frites maison + boisson</p>
+            <button type="button" class="street-menu-card-add" data-mis-add data-i18n-attr="aria-label:card.addAria" aria-label="Ajouter au panier"><span data-i18n="card.compose">Composer</span> <svg><use href="#i-plus"/></svg></button>
           </div>
         </article>
 
         <article class="street-menu-card" data-product-id="menu-studente" data-product-name="Menu Studente">
           <div class="street-menu-card-media">
-            <span class="street-menu-card-badge is-new">-30%</span>
+            <span class="street-menu-card-badge is-new" data-i18n="badge.discount">-30%</span>
             <div class="street-menu-card-illu" aria-hidden="true"><svg><use href="#illu-combo"/></svg></div>
             <span class="street-menu-card-price">9,90 €</span>
           </div>
           <div class="street-menu-card-body">
             <h3 class="street-menu-card-title">Menu Studente</h3>
-            <p class="street-menu-card-desc">Panino du jour + frites + soft (sur présentation carte étudiante)</p>
-            <button type="button" class="street-menu-card-add" data-mis-add aria-label="Ajouter au panier">Composer <svg><use href="#i-plus"/></svg></button>
+            <p class="street-menu-card-desc" data-i18n="p.menu-studente.desc">Panino du jour + frites + soft (sur présentation carte étudiante)</p>
+            <button type="button" class="street-menu-card-add" data-mis-add data-i18n-attr="aria-label:card.addAria" aria-label="Ajouter au panier"><span data-i18n="card.compose">Composer</span> <svg><use href="#i-plus"/></svg></button>
           </div>
         </article>
 
@@ -724,8 +729,8 @@
           </div>
           <div class="street-menu-card-body">
             <h3 class="street-menu-card-title">Menu Bambino</h3>
-            <p class="street-menu-card-desc">Mini burger ou panino + frites + boisson + surprise</p>
-            <button type="button" class="street-menu-card-add" data-mis-add aria-label="Ajouter au panier">Composer <svg><use href="#i-plus"/></svg></button>
+            <p class="street-menu-card-desc" data-i18n="p.menu-bambino.desc">Mini burger ou panino + frites + boisson + surprise</p>
+            <button type="button" class="street-menu-card-add" data-mis-add data-i18n-attr="aria-label:card.addAria" aria-label="Ajouter au panier"><span data-i18n="card.compose">Composer</span> <svg><use href="#i-plus"/></svg></button>
           </div>
         </article>
 
@@ -735,7 +740,7 @@
     <!-- =========== ANTIPASTI =========== -->
     <section id="antipasti" class="street-menu-category">
       <header class="street-menu-category-head">
-        <h2 class="street-menu-category-title">Antipasti &amp; Sides</h2>
+        <h2 class="street-menu-category-title" data-i18n="cat.antipasti.title">Antipasti &amp; Sides</h2>
         <span class="street-menu-category-italic">gli Antipasti</span>
         <span class="street-menu-category-line" aria-hidden="true"></span>
       </header>
@@ -744,14 +749,14 @@
 
         <article class="street-menu-card" data-product-id="arancini-al-ragu" data-product-name="Arancini al ragù">
           <div class="street-menu-card-media">
-            <span class="street-menu-card-badge is-mama">Plat de la mama</span>
+            <span class="street-menu-card-badge is-mama" data-i18n="badge.mamaPlat">Plat de la mama</span>
             <div class="street-menu-card-illu" aria-hidden="true"><svg><use href="#illu-arancini"/></svg></div>
             <span class="street-menu-card-price">6,90 €</span>
           </div>
           <div class="street-menu-card-body">
             <h3 class="street-menu-card-title">Arancini al ragù</h3>
-            <p class="street-menu-card-desc">3 boules de riz au ragù, panées et frites — spécialité sicilienne</p>
-            <button type="button" class="street-menu-card-add" data-mis-add aria-label="Ajouter au panier">Ajouter <svg><use href="#i-plus"/></svg></button>
+            <p class="street-menu-card-desc" data-i18n="p.arancini-al-ragu.desc">3 boules de riz au ragù, panées et frites — spécialité sicilienne</p>
+            <button type="button" class="street-menu-card-add" data-mis-add data-i18n-attr="aria-label:card.addAria" aria-label="Ajouter au panier"><span data-i18n="card.add">Ajouter</span> <svg><use href="#i-plus"/></svg></button>
           </div>
         </article>
 
@@ -762,34 +767,34 @@
           </div>
           <div class="street-menu-card-body">
             <h3 class="street-menu-card-title">Mozzarella Sticks</h3>
-            <p class="street-menu-card-desc">Bâtonnets de mozzarella panés, sauce marinara maison</p>
-            <button type="button" class="street-menu-card-add" data-mis-add aria-label="Ajouter au panier">Ajouter <svg><use href="#i-plus"/></svg></button>
+            <p class="street-menu-card-desc" data-i18n="p.mozzarella-sticks.desc">Bâtonnets de mozzarella panés, sauce marinara maison</p>
+            <button type="button" class="street-menu-card-add" data-mis-add data-i18n-attr="aria-label:card.addAria" aria-label="Ajouter au panier"><span data-i18n="card.add">Ajouter</span> <svg><use href="#i-plus"/></svg></button>
           </div>
         </article>
 
         <article class="street-menu-card" data-product-id="insalata-cesare" data-product-name="Insalata Cesare">
           <div class="street-menu-card-media">
-            <span class="street-menu-card-badge is-fresh">Healthy</span>
+            <span class="street-menu-card-badge is-fresh" data-i18n="badge.healthy">Healthy</span>
             <div class="street-menu-card-illu" aria-hidden="true"><svg><use href="#illu-salad"/></svg></div>
             <span class="street-menu-card-price">8,90 €</span>
           </div>
           <div class="street-menu-card-body">
             <h3 class="street-menu-card-title">Insalata Cesare</h3>
-            <p class="street-menu-card-desc">Salade César revisitée : poulet croustillant, parmesan, croûtons</p>
-            <button type="button" class="street-menu-card-add" data-mis-add aria-label="Ajouter au panier">Ajouter <svg><use href="#i-plus"/></svg></button>
+            <p class="street-menu-card-desc" data-i18n="p.insalata-cesare.desc">Salade César revisitée : poulet croustillant, parmesan, croûtons</p>
+            <button type="button" class="street-menu-card-add" data-mis-add data-i18n-attr="aria-label:card.addAria" aria-label="Ajouter au panier"><span data-i18n="card.add">Ajouter</span> <svg><use href="#i-plus"/></svg></button>
           </div>
         </article>
 
         <article class="street-menu-card" data-product-id="bruschetta" data-product-name="Bruschetta">
           <div class="street-menu-card-media">
-            <span class="street-menu-card-badge is-veggie">Veggie</span>
+            <span class="street-menu-card-badge is-veggie" data-i18n="badge.veggie">Veggie</span>
             <div class="street-menu-card-illu" aria-hidden="true"><svg><use href="#illu-bruschetta"/></svg></div>
             <span class="street-menu-card-price">5,90 €</span>
           </div>
           <div class="street-menu-card-body">
             <h3 class="street-menu-card-title">Bruschetta</h3>
-            <p class="street-menu-card-desc">Pain grillé, tomates fraîches, basilic, ail, huile d'olive</p>
-            <button type="button" class="street-menu-card-add" data-mis-add aria-label="Ajouter au panier">Ajouter <svg><use href="#i-plus"/></svg></button>
+            <p class="street-menu-card-desc" data-i18n="p.bruschetta.desc">Pain grillé, tomates fraîches, basilic, ail, huile d'olive</p>
+            <button type="button" class="street-menu-card-add" data-mis-add data-i18n-attr="aria-label:card.addAria" aria-label="Ajouter au panier"><span data-i18n="card.add">Ajouter</span> <svg><use href="#i-plus"/></svg></button>
           </div>
         </article>
 
@@ -799,7 +804,7 @@
     <!-- =========== DOLCI =========== -->
     <section id="dolci" class="street-menu-category">
       <header class="street-menu-category-head">
-        <h2 class="street-menu-category-title">Dolci</h2>
+        <h2 class="street-menu-category-title" data-i18n="cat.dolci.title">Dolci</h2>
         <span class="street-menu-category-italic">i Dolci</span>
         <span class="street-menu-category-line" aria-hidden="true"></span>
       </header>
@@ -808,27 +813,27 @@
 
         <article class="street-menu-card" data-product-id="tiramisu-maison" data-product-name="Tiramisu Maison">
           <div class="street-menu-card-media">
-            <span class="street-menu-card-badge">Recette de la mama</span>
+            <span class="street-menu-card-badge" data-i18n="badge.mama">Recette de la mama</span>
             <div class="street-menu-card-illu" aria-hidden="true"><svg><use href="#illu-tiramisu"/></svg></div>
             <span class="street-menu-card-price">5,90 €</span>
           </div>
           <div class="street-menu-card-body">
             <h3 class="street-menu-card-title">Tiramisu Maison</h3>
-            <p class="street-menu-card-desc">Le classique, version street food : mascarpone, café, cacao</p>
-            <button type="button" class="street-menu-card-add" data-mis-add aria-label="Ajouter au panier">Ajouter <svg><use href="#i-plus"/></svg></button>
+            <p class="street-menu-card-desc" data-i18n="p.tiramisu-maison.desc">Le classique, version street food : mascarpone, café, cacao</p>
+            <button type="button" class="street-menu-card-add" data-mis-add data-i18n-attr="aria-label:card.addAria" aria-label="Ajouter au panier"><span data-i18n="card.add">Ajouter</span> <svg><use href="#i-plus"/></svg></button>
           </div>
         </article>
 
         <article class="street-menu-card" data-product-id="cannoli-siciliani" data-product-name="Cannoli Siciliani">
           <div class="street-menu-card-media">
-            <span class="street-menu-card-badge is-mama">Dessert de la mama</span>
+            <span class="street-menu-card-badge is-mama" data-i18n="badge.mamaDessert">Dessert de la mama</span>
             <div class="street-menu-card-illu" aria-hidden="true"><svg><use href="#illu-cannoli"/></svg></div>
             <span class="street-menu-card-price">5,90 €</span>
           </div>
           <div class="street-menu-card-body">
             <h3 class="street-menu-card-title">Cannoli Siciliani</h3>
-            <p class="street-menu-card-desc">2 cannoli garnis de ricotta sucrée, pistache &amp; chocolat</p>
-            <button type="button" class="street-menu-card-add" data-mis-add aria-label="Ajouter au panier">Ajouter <svg><use href="#i-plus"/></svg></button>
+            <p class="street-menu-card-desc" data-i18n="p.cannoli-siciliani.desc">2 cannoli garnis de ricotta sucrée, pistache &amp; chocolat</p>
+            <button type="button" class="street-menu-card-add" data-mis-add data-i18n-attr="aria-label:card.addAria" aria-label="Ajouter au panier"><span data-i18n="card.add">Ajouter</span> <svg><use href="#i-plus"/></svg></button>
           </div>
         </article>
 
@@ -839,8 +844,8 @@
           </div>
           <div class="street-menu-card-body">
             <h3 class="street-menu-card-title">Gelato</h3>
-            <p class="street-menu-card-desc">2 boules au choix : vanille, chocolat, pistache, fragola</p>
-            <button type="button" class="street-menu-card-add" data-mis-add aria-label="Ajouter au panier">Ajouter <svg><use href="#i-plus"/></svg></button>
+            <p class="street-menu-card-desc" data-i18n="p.gelato.desc">2 boules au choix : vanille, chocolat, pistache, fragola</p>
+            <button type="button" class="street-menu-card-add" data-mis-add data-i18n-attr="aria-label:card.addAria" aria-label="Ajouter au panier"><span data-i18n="card.add">Ajouter</span> <svg><use href="#i-plus"/></svg></button>
           </div>
         </article>
 
@@ -850,7 +855,7 @@
     <!-- =========== BOISSONS =========== -->
     <section id="bibite" class="street-menu-category">
       <header class="street-menu-category-head">
-        <h2 class="street-menu-category-title">Boissons</h2>
+        <h2 class="street-menu-category-title" data-i18n="cat.bibite.title">Boissons</h2>
         <span class="street-menu-category-italic">la bevanda</span>
         <span class="street-menu-category-line" aria-hidden="true"></span>
       </header>
@@ -864,8 +869,8 @@
           </div>
           <div class="street-menu-card-body">
             <h3 class="street-menu-card-title">Sodas</h3>
-          <p class="street-menu-card-desc">Coca-Cola, Coca Zero, Sprite, Fanta, Limonata/Aranciata de la mama — 33 cl</p>
-            <button type="button" class="street-menu-card-add" data-mis-add aria-label="Ajouter au panier">Ajouter <svg><use href="#i-plus"/></svg></button>
+          <p class="street-menu-card-desc" data-i18n="p.sodas.desc">Coca-Cola, Coca Zero, Sprite, Fanta, Limonata/Aranciata de la mama — 33 cl</p>
+            <button type="button" class="street-menu-card-add" data-mis-add data-i18n-attr="aria-label:card.addAria" aria-label="Ajouter au panier"><span data-i18n="card.add">Ajouter</span> <svg><use href="#i-plus"/></svg></button>
           </div>
         </article>
 
@@ -876,21 +881,21 @@
           </div>
           <div class="street-menu-card-body">
             <h3 class="street-menu-card-title">Acqua</h3>
-            <p class="street-menu-card-desc">Eau plate ou pétillante — 50 cl</p>
-            <button type="button" class="street-menu-card-add" data-mis-add aria-label="Ajouter au panier">Ajouter <svg><use href="#i-plus"/></svg></button>
+            <p class="street-menu-card-desc" data-i18n="p.acqua.desc">Eau plate ou pétillante — 50 cl</p>
+            <button type="button" class="street-menu-card-add" data-mis-add data-i18n-attr="aria-label:card.addAria" aria-label="Ajouter au panier"><span data-i18n="card.add">Ajouter</span> <svg><use href="#i-plus"/></svg></button>
           </div>
         </article>
 
         <article class="street-menu-card" data-product-id="birra-italiana" data-product-name="Birra Italiana">
           <div class="street-menu-card-media">
-            <span class="street-menu-card-badge is-italia">Italia</span>
+            <span class="street-menu-card-badge is-italia" data-i18n="badge.italia">Italia</span>
             <div class="street-menu-card-illu" aria-hidden="true"><svg><use href="#illu-beer"/></svg></div>
             <span class="street-menu-card-price">4,90 €</span>
           </div>
           <div class="street-menu-card-body">
             <h3 class="street-menu-card-title">Birra Italiana</h3>
-            <p class="street-menu-card-desc">Peroni ou Moretti — 33 cl, fraîche</p>
-            <button type="button" class="street-menu-card-add" data-mis-add aria-label="Ajouter au panier">Ajouter <svg><use href="#i-plus"/></svg></button>
+            <p class="street-menu-card-desc" data-i18n="p.birra-italiana.desc">Peroni ou Moretti — 33 cl, fraîche</p>
+            <button type="button" class="street-menu-card-add" data-mis-add data-i18n-attr="aria-label:card.addAria" aria-label="Ajouter au panier"><span data-i18n="card.add">Ajouter</span> <svg><use href="#i-plus"/></svg></button>
           </div>
         </article>
 
@@ -900,18 +905,18 @@
     <!-- =========== CTA finale =========== -->
     <div class="street-menu-bottom">
       <h3>
-        Prêt à commander ?
-        <span class="hand">facciamo!</span>
+        <span data-i18n="bm.title">Prêt à commander ?</span>
+        <span class="hand" data-i18n="bm.titleHand">facciamo!</span>
       </h3>
-      <p>Click &amp; Collect en quelques minutes, ou viens directement nous voir au spot.</p>
+      <p data-i18n="bm.desc">Click &amp; Collect en quelques minutes, ou viens directement nous voir au spot.</p>
       <div class="street-menu-bottom-ctas">
         <button type="button" data-mis-open class="street-btn street-btn-primary street-btn-lg">
           <svg width="20" height="20"><use href="#i-cart"/></svg>
-          Finaliser ma commande
+          <span data-i18n="bm.finalize">Finaliser ma commande</span>
         </button>
         <a href="index.html#contact" class="street-btn street-btn-outline-light street-btn-lg is-menu-contact-green">
           <svg width="20" height="20"><use href="#i-phone"/></svg>
-          Nous contacter
+          <span data-i18n="bm.contact">Nous contacter</span>
         </a>
       </div>
     </div>
@@ -934,26 +939,26 @@
           <text x="78" y="22" font-family="Anton, Bebas Neue, Impact, sans-serif" font-size="22" font-weight="400" fill="#C8102E" letter-spacing="0.5">ITALY</text>
           <text x="12" y="50" font-family="Caveat Brush, cursive" font-size="32" fill="#F4E9D6" transform="rotate(-3 12 50)">Street</text>
         </svg>
-        <p class="footer-tag">Italian Street Food &amp; Smash Burgers</p>
-        <p class="footer-desc">
+        <p class="footer-tag" data-i18n="ft.tag">Italian Street Food &amp; Smash Burgers</p>
+        <p class="footer-desc" data-i18n-html="ft.desc">
           La branche street food de <strong>Made in Italy</strong>.
           L'Italie authentique, version urbaine.
         </p>
       </div>
 
       <div class="street-footer-col">
-        <h4>Le spot</h4>
+        <h4 data-i18n="ft.col1">Le spot</h4>
         <ul>
-          <li><a href="carte.html">Menu</a></li>
-          <li><a href="index.html#combos">Combos</a></li>
-          <li><a href="index.html#click-collect">Click &amp; Collect</a></li>
-          <li><a href="index.html#concept">Concept</a></li>
-          <li><a href="index.html#contact">Contact</a></li>
+          <li><a href="carte.html" data-i18n="nav.menu">Menu</a></li>
+          <li><a href="index.html#combos" data-i18n="cb.eyebrow">Combos</a></li>
+          <li><a href="index.html#click-collect" data-i18n="nav.cc">Click &amp; Collect</a></li>
+          <li><a href="index.html#concept" data-i18n="nav.concept">Concept</a></li>
+          <li><a href="index.html#contact" data-i18n="nav.contact">Contact</a></li>
         </ul>
       </div>
 
       <div class="street-footer-col">
-        <h4>Réseaux</h4>
+        <h4 data-i18n="ft.col2">Réseaux</h4>
         <ul>
           <li><a href="https://instagram.com/" target="_blank" rel="noopener noreferrer">Instagram</a></li>
           <li><a href="https://tiktok.com/" target="_blank" rel="noopener noreferrer">TikTok</a></li>
@@ -962,22 +967,22 @@
       </div>
 
       <div class="street-footer-col">
-        <h4>L'enseigne mère</h4>
+        <h4 data-i18n="ft.col3">L'enseigne mère</h4>
         <ul>
-          <li><a href="../made-in-italy-premium/index.html">Made in Italy Lourdes</a></li>
-          <li>Pizzeria napolitaine</li>
-          <li>113 chemin de la Grotte</li>
+          <li><a href="../made-in-italy-premium/index.html" data-i18n="ft.parent">Made in Italy Lourdes</a></li>
+          <li data-i18n="ft.parentDesc">Pizzeria napolitaine</li>
+          <li data-i18n="ft.parentAddr">113 chemin de la Grotte</li>
         </ul>
       </div>
 
     </div>
 
     <div class="street-footer-bar">
-      <p>© <span id="street-year">2026</span> Made in Italy Street — Tous droits réservés</p>
+      <p>© <span id="street-year">2026</span> Made in Italy Street — <span data-i18n="ft.rights">Tous droits réservés</span></p>
       <div class="footer-mentions">
-        <a href="mentions-legales.html">Mentions légales</a>
-        <a href="politique-confidentialite.html">Confidentialité / RGPD</a>
-        <a href="cookies.html">Cookies</a>
+        <a href="mentions-legales.html" data-i18n="ft.legal">Mentions légales</a>
+        <a href="politique-confidentialite.html" data-i18n="ft.privacy">Confidentialité / RGPD</a>
+        <a href="cookies.html" data-i18n="ft.cookies">Cookies</a>
       </div>
     </div>
   </div>
@@ -988,9 +993,9 @@
 ========================================================= -->
 <aside class="street-mascot" aria-label="Mascotte Made in Italy Street" id="street-mascot">
   <div class="street-mascot-bubble" id="street-mascot-bubble">
-    <span id="street-mascot-text">Buon appetito!</span>
+    <span id="street-mascot-text" data-i18n="mascot.greet">Buon appetito!</span>
   </div>
-  <button class="street-mascot-circle" id="street-mascot-toggle" aria-label="Notre chef te parle">
+  <button class="street-mascot-circle" id="street-mascot-toggle" data-i18n-attr="aria-label:mascot.aria" aria-label="Notre chef te parle">
     <svg viewBox="0 0 64 64" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
       <path d="M2 14 A30 30 0 0 1 32 2 L32 30 L8 30 Z" fill="#008C45" opacity=".18"/>
       <path d="M62 14 A30 30 0 0 0 32 2 L32 30 L56 30 Z" fill="#C8102E" opacity=".18"/>
@@ -1009,9 +1014,14 @@
 
 <script src="assets/js/street.js" defer></script>
 
+<!-- i18n (charge AVANT cart/ui) -->
+<script src="assets/js/translations.js?v=20260520-i18n-v1" defer></script>
+<script src="assets/js/i18n.js?v=20260520-i18n-v1" defer></script>
+
 <!-- Click & Collect (cart) -->
-<script src="assets/js/cart.js?v=20260518-cart-v1" defer></script>
-<script src="assets/js/cart-ui.js?v=20260518-cart-v1" defer></script>
+<script src="assets/js/cart.js?v=20260520-i18n-v1" defer></script>
+<script src="assets/js/cart-ui.js?v=20260520-i18n-v1" defer></script>
+<script src="assets/js/open-status.js?v=20260520-i18n-v1" defer></script>
 
 </body>
 </html>

@@ -11,6 +11,20 @@
 (function () {
   'use strict';
 
+  /* ---------- i18n helper (fallback FR si moteur absent) ---------- */
+  function tt(key, vars) {
+    if (window.MISI18n && typeof window.MISI18n.t === 'function') {
+      return window.MISI18n.t(key, vars);
+    }
+    return null; // null → utiliser le fallback hardcode FR
+  }
+  function getLang() {
+    if (window.MISI18n && typeof window.MISI18n.getLang === 'function') {
+      return window.MISI18n.getLang();
+    }
+    return 'fr';
+  }
+
   /* ---------- Configuration ---------- */
   var CONFIG = {
     storageKey: 'mis-cart-v1',
@@ -299,7 +313,10 @@
       }
     }
 
-    var todayLabel = "Aujourd'hui";
+    var langMap = { fr: 'fr-FR', en: 'en-GB', es: 'es-ES', it: 'it-IT', pt: 'pt-PT', de: 'de-DE' };
+    var lang = getLang();
+    var locale = langMap[lang] || 'fr-FR';
+    var todayLabel = tt('slot.today') || "Aujourd'hui";
     pushRange(now, CONFIG.hours.lunch.start, CONFIG.hours.lunch.end, todayLabel);
     pushRange(now, CONFIG.hours.dinner.start, CONFIG.hours.dinner.end, todayLabel);
 
@@ -307,8 +324,9 @@
       var tomorrow = new Date(now);
       tomorrow.setDate(tomorrow.getDate() + 1);
       tomorrow.setHours(0, 0, 0, 0);
-      var dayName = tomorrow.toLocaleDateString('fr-FR', { weekday: 'long' });
-      var label = 'Demain (' + dayName + ')';
+      var dayName = tomorrow.toLocaleDateString(locale, { weekday: 'long' });
+      var tomorrowWord = tt('slot.tomorrow') || 'Demain';
+      var label = tomorrowWord + ' (' + dayName + ')';
       pushRange(tomorrow, CONFIG.hours.lunch.start, CONFIG.hours.lunch.end, label);
       pushRange(tomorrow, CONFIG.hours.dinner.start, CONFIG.hours.dinner.end, label);
     }
@@ -330,15 +348,15 @@
     var honeypot = safeStr(data.website || '', 50);
 
     if (honeypot) errors._spam = 'Spam detected';
-    if (!NAME_RE.test(name)) errors.name = 'Nom invalide (2 a 60 lettres)';
-    if (!PHONE_RE.test(rawPhone)) errors.phone = 'Numero invalide (ex : 06 12 34 56 78)';
-    if (!slot) errors.slot = 'Choisis un creneau de retrait';
+    if (!NAME_RE.test(name)) errors.name = tt('cart.errName') || 'Nom invalide (2 à 60 lettres)';
+    if (!PHONE_RE.test(rawPhone)) errors.phone = tt('cart.errPhone') || 'Numéro invalide (ex : 06 12 34 56 78)';
+    if (!slot) errors.slot = tt('cart.errSlot') || 'Choisis un créneau de retrait';
     if (!state.items.length) errors.cart = 'Panier vide';
 
     try {
       var last = parseInt(localStorage.getItem(CONFIG.rateLimitKey) || '0', 10);
       if (Date.now() - last < CONFIG.rateLimitMs) {
-        errors._rate = 'Patiente quelques secondes avant de renvoyer';
+        errors._rate = tt('cart.errRate') || 'Patiente quelques secondes avant de renvoyer';
       }
     } catch (_) {}
 

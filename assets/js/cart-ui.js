@@ -13,6 +13,14 @@
   }
   var Cart = window.MISCart;
 
+  /* ---------- i18n helper (fallback FR si moteur absent) ---------- */
+  function tt(key, vars) {
+    if (window.MISI18n && typeof window.MISI18n.t === 'function') {
+      return window.MISI18n.t(key, vars);
+    }
+    return key; // fallback minimaliste — le moteur i18n charge en premier
+  }
+
   /* ---------- Création de la structure DOM ---------- */
   function el(tag, attrs, children) {
     var node = document.createElement(tag);
@@ -55,7 +63,8 @@
     var fab = el('button', {
       type: 'button',
       'class': 'mis-cart-fab',
-      'aria-label': 'Ouvrir le panier',
+      'aria-label': tt('cart.fab.aria'),
+      'data-i18n-attr': 'aria-label:cart.fab.aria',
       id: 'mis-cart-fab',
       html: ICONS.cart + '<span class="mis-cart-count" id="mis-cart-count" aria-hidden="true">0</span>'
     });
@@ -102,7 +111,7 @@
     host.hidden = false;
     host.replaceChildren();
 
-    var title = el('h4', { 'class': 'mis-upsell-title', text: 'Tu veux ajouter ?' });
+    var title = el('h4', { 'class': 'mis-upsell-title', text: tt('cart.upsellTitle') });
     host.appendChild(title);
 
     var ul = el('ul', { 'class': 'mis-upsell-list' });
@@ -111,19 +120,18 @@
       var info = el('div', { 'class': 'mis-upsell-item-info' });
       info.appendChild(el('p', { 'class': 'mis-upsell-item-name', text: p.name }));
       info.appendChild(el('span', { 'class': 'mis-upsell-item-price', text: Cart.formatPrice(p.price) }));
-      var btn = el('button', { type: 'button', 'class': 'mis-upsell-add', 'aria-label': 'Ajouter ' + p.name });
-      btn.innerHTML = ICONS.plus + '<span>Ajouter</span>';
+      var btn = el('button', { type: 'button', 'class': 'mis-upsell-add', 'aria-label': tt('cart.upsellAdd') + ' ' + p.name });
+      btn.innerHTML = ICONS.plus + '<span>' + tt('cart.upsellAdd') + '</span>';
       btn.addEventListener('click', function () {
         var ok = Cart.addItem({ id: p.id, name: p.name, price: p.price, qty: 1 });
         if (ok) {
           btn.classList.add('is-added');
-          btn.querySelector('span').textContent = 'Ajouté ✓';
-          showToast('« ' + p.name + ' » ajouté');
+          btn.querySelector('span').textContent = tt('cart.added');
+          showToast(tt('cart.addedToast', { name: p.name }));
           $fab.classList.add('is-bump');
           setTimeout(function () { $fab.classList.remove('is-bump'); }, 400);
-          // La prochaine render() (déclenchée par Cart.on) virera ce produit du pool
         } else {
-          showToast('Quantité maximum atteinte');
+          showToast(tt('cart.maxQty'));
         }
       });
       li.appendChild(info);
@@ -144,95 +152,95 @@
     });
     drawer.setAttribute('role', 'dialog');
     drawer.setAttribute('aria-modal', 'true');
+    var leadMin = Cart.config.leadTimeMinutes;
     drawer.innerHTML =
       '<header class="mis-cart-header">' +
-        '<h2 class="mis-cart-title">' + ICONS.cart + 'Click &amp; Collect</h2>' +
-        '<button type="button" class="mis-cart-close" id="mis-cart-close" aria-label="Fermer le panier">' + ICONS.close + '</button>' +
+        '<h2 class="mis-cart-title">' + ICONS.cart + '<span data-i18n="cart.cc">Click &amp; Collect</span></h2>' +
+        '<button type="button" class="mis-cart-close" id="mis-cart-close" data-i18n-attr="aria-label:cart.close" aria-label="Fermer le panier">' + ICONS.close + '</button>' +
       '</header>' +
 
       '<div class="mis-cart-body" id="mis-cart-body">' +
         // VIEW 1 : cart
         '<div class="mis-cart-items-view" id="mis-view-items">' +
           '<ul class="mis-cart-items" id="mis-items-list" aria-live="polite"></ul>' +
-          // Upsell intelligent (rempli dynamiquement, masque si panier vide)
           '<div class="mis-upsell" id="mis-upsell" hidden></div>' +
           '<div class="mis-cart-empty" id="mis-empty-state" hidden>' +
             '<span class="mis-empty-emoji" aria-hidden="true">🍔</span>' +
-            '<h3>Ton panier est vide</h3>' +
-            '<p>Choisis tes burgers, panini ou loaded fries sur la carte.</p>' +
-            '<a href="carte.html" class="mis-btn mis-btn-primary">Voir la carte</a>' +
+            '<h3 data-i18n="cart.emptyTitle">Ton panier est vide</h3>' +
+            '<p data-i18n="cart.emptyDesc">Choisis tes burgers, panini ou loaded fries sur la carte.</p>' +
+            '<a href="carte.html" class="mis-btn mis-btn-primary" data-i18n="cart.viewMenu">Voir la carte</a>' +
           '</div>' +
         '</div>' +
 
         // VIEW 2 : checkout
         '<div class="mis-cart-checkout" id="mis-view-checkout">' +
-          '<button type="button" class="mis-cart-back" id="mis-checkout-back">' + ICONS.arrow + ' Retour au panier</button>' +
+          '<button type="button" class="mis-cart-back" id="mis-checkout-back">' + ICONS.arrow + ' <span data-i18n="cart.backToCart">Retour au panier</span></button>' +
           '<div class="mis-form-error" id="mis-form-error" role="alert"></div>' +
           '<form id="mis-checkout-form" novalidate autocomplete="on">' +
             '<div class="mis-field">' +
-              '<label for="mis-f-name">Prénom &amp; nom</label>' +
-              '<input type="text" id="mis-f-name" name="name" required minlength="2" maxlength="60" autocomplete="name" inputmode="text">' +
+              '<label for="mis-f-name" data-i18n="cart.form.name">Prénom &amp; nom</label>' +
+              '<input type="text" id="mis-f-name" name="name" required minlength="2" maxlength="60" autocomplete="name" inputmode="text" data-i18n-attr="placeholder:cart.form.namePh" placeholder="">' +
               '<span class="mis-field-error" id="mis-err-name"></span>' +
             '</div>' +
             '<div class="mis-field">' +
-              '<label for="mis-f-phone">Téléphone</label>' +
-              '<input type="tel" id="mis-f-phone" name="phone" required maxlength="20" autocomplete="tel" inputmode="tel" placeholder="06 12 34 56 78">' +
+              '<label for="mis-f-phone" data-i18n="cart.form.phone">Téléphone</label>' +
+              '<input type="tel" id="mis-f-phone" name="phone" required maxlength="20" autocomplete="tel" inputmode="tel" data-i18n-attr="placeholder:cart.form.phonePh" placeholder="06 12 34 56 78">' +
               '<span class="mis-field-error" id="mis-err-phone"></span>' +
             '</div>' +
             '<div class="mis-field">' +
-              '<label for="mis-f-slot">Créneau de retrait</label>' +
+              '<label for="mis-f-slot" data-i18n="cart.form.slot">Créneau de retrait</label>' +
               '<select id="mis-f-slot" name="slot" required></select>' +
               '<span class="mis-field-error" id="mis-err-slot"></span>' +
             '</div>' +
             '<div class="mis-field">' +
-              '<label for="mis-f-email">Email <span style="font-weight:400;color:rgba(17,17,17,.5)">(reçu de paiement)</span></label>' +
-              '<input type="email" id="mis-f-email" name="email" maxlength="120" autocomplete="email" inputmode="email" placeholder="ton@email.fr">' +
+              '<label for="mis-f-email"><span data-i18n="cart.emailLabel">Email</span> <span style="font-weight:400;color:rgba(17,17,17,.5)" data-i18n="cart.emailHint">(reçu de paiement)</span></label>' +
+              '<input type="email" id="mis-f-email" name="email" maxlength="120" autocomplete="email" inputmode="email" data-i18n-attr="placeholder:cart.emailPh" placeholder="ton@email.fr">' +
               '<span class="mis-field-error" id="mis-err-email"></span>' +
             '</div>' +
             '<div class="mis-field">' +
-              '<label for="mis-f-notes">Notes (optionnel)</label>' +
-              '<textarea id="mis-f-notes" name="notes" maxlength="300" placeholder="Allergies, cuisson, instructions…"></textarea>' +
+              '<label for="mis-f-notes" data-i18n="cart.form.notes">Notes (optionnel)</label>' +
+              '<textarea id="mis-f-notes" name="notes" maxlength="300" data-i18n-attr="placeholder:cart.notesPh" placeholder="Allergies, cuisson, instructions…"></textarea>' +
             '</div>' +
             // Honeypot anti-bot
             '<div class="mis-honeypot" aria-hidden="true">' +
-              '<label>Ne pas remplir <input type="text" name="website" tabindex="-1" autocomplete="off"></label>' +
+              '<label><span data-i18n="cart.honeypot">Ne pas remplir</span> <input type="text" name="website" tabindex="-1" autocomplete="off"></label>' +
             '</div>' +
             '<button type="submit" class="mis-btn mis-btn-primary" id="mis-submit-btn" data-action="pay">' +
               '<svg viewBox="0 0 24 24"><path d="M3 6h18v3H3V6Zm0 5h18v7a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-7Zm3 3v2h4v-2H6Z" fill="currentColor"/></svg>' +
-              'Payer & retirer · <span id="mis-submit-total">0,00 €</span>' +
+              '<span data-i18n="cart.payBtn">Payer & retirer</span> · <span id="mis-submit-total">0,00 €</span>' +
             '</button>' +
-            '<button type="button" class="mis-btn mis-btn-ghost" id="mis-reserve-btn" style="margin-top:8px">' +
+            '<button type="button" class="mis-btn mis-btn-ghost" id="mis-reserve-btn" style="margin-top:8px" data-i18n="cart.reserveWa">' +
               'Réserver sans payer (WhatsApp)' +
             '</button>' +
-            '<p class="mis-pay-disclaimer">Paiement sécurisé Stripe · Carte non stockée · Récupère ta commande avec un <strong>code à 6 caractères</strong>.</p>' +
+            '<p class="mis-pay-disclaimer" data-i18n-html="cart.payDisclaimer">Paiement sécurisé Stripe · Carte non stockée · Récupère ta commande avec un <strong>code à 6 caractères</strong>.</p>' +
           '</form>' +
         '</div>' +
 
         // VIEW 3 : confirmation
         '<div class="mis-cart-confirm mis-confirm" id="mis-view-confirm">' +
           '<div class="mis-confirm-icon">' + ICONS.check + '</div>' +
-          '<h3>Commande prête à partir !</h3>' +
-          '<p>Clique sur <strong>Envoyer sur WhatsApp</strong> pour transmettre ta commande. On te confirme le créneau dans la minute.</p>' +
+          '<h3 data-i18n="cart.confirmTitle">Commande prête à partir !</h3>' +
+          '<p data-i18n-html="cart.confirmDesc">Clique sur <strong>Envoyer sur WhatsApp</strong> pour transmettre ta commande. On te confirme le créneau dans la minute.</p>' +
           '<div style="text-align:center"><span class="mis-order-id" id="mis-order-id">MIS-…</span></div>' +
           '<div class="mis-confirm-actions">' +
-            '<a href="#" id="mis-wa-link" class="mis-btn mis-btn-wa" target="_blank" rel="noopener noreferrer">' + ICONS.wa + 'Envoyer sur WhatsApp</a>' +
-            '<a href="#" id="mis-mail-link" class="mis-btn mis-btn-ghost">Envoyer par email</a>' +
-            '<button type="button" class="mis-btn mis-btn-ghost" id="mis-confirm-close">Fermer</button>' +
+            '<a href="#" id="mis-wa-link" class="mis-btn mis-btn-wa" target="_blank" rel="noopener noreferrer">' + ICONS.wa + '<span data-i18n="cart.sendWa">Envoyer sur WhatsApp</span></a>' +
+            '<a href="#" id="mis-mail-link" class="mis-btn mis-btn-ghost" data-i18n="cart.sendMail">Envoyer par email</a>' +
+            '<button type="button" class="mis-btn mis-btn-ghost" id="mis-confirm-close" data-i18n="cart.closeBtn">Fermer</button>' +
           '</div>' +
-          '<p class="mis-confirm-help">Tu ne vois rien s\'ouvrir ? <a href="#" id="mis-copy-msg">Copier le message</a> et le coller sur WhatsApp manuellement.</p>' +
+          '<p class="mis-confirm-help"><span data-i18n="cart.confirmHelp">Tu ne vois rien s\'ouvrir ?</span> <a href="#" id="mis-copy-msg" data-i18n="cart.copyMsg">Copier le message</a></p>' +
         '</div>' +
       '</div>' +
 
       // FOOTER (cart view only)
       '<footer class="mis-cart-footer" id="mis-cart-footer">' +
         '<div class="mis-cart-info-line">' + ICONS.info +
-          'Retrait sur place · Délai mini ' + Cart.config.leadTimeMinutes + ' min · Paiement à la prise en main.' +
+          '<span id="mis-info-line">' + tt('cart.infoLine', { min: leadMin }) + '</span>' +
         '</div>' +
         '<div class="mis-cart-totals">' +
-          '<span class="label">Total</span>' +
+          '<span class="label" data-i18n="cart.total">Total</span>' +
           '<span class="amount" id="mis-cart-total">0,00 €</span>' +
         '</div>' +
-        '<button type="button" class="mis-btn mis-btn-primary" id="mis-checkout-btn">Commander ' + ICONS.arrow + '</button>' +
+        '<button type="button" class="mis-btn mis-btn-primary" id="mis-checkout-btn"><span data-i18n="cart.toCheckout">Commander</span> ' + ICONS.arrow + '</button>' +
       '</footer>';
     return drawer;
   }
@@ -282,6 +290,24 @@
     bindEvents();
     render(Cart.snapshot());
     Cart.on(function (snap) { render(snap); });
+
+    // Applique les traductions au drawer fraîchement monté
+    if (window.MISI18n && typeof window.MISI18n.apply === 'function') {
+      window.MISI18n.apply($drawer);
+    }
+    // Re-applique sur changement de langue + maj de la ligne dynamique "infoLine"
+    window.addEventListener('mis:langchange', function () {
+      if (window.MISI18n && typeof window.MISI18n.apply === 'function') {
+        window.MISI18n.apply($drawer);
+      }
+      var info = document.getElementById('mis-info-line');
+      if (info) info.textContent = tt('cart.infoLine', { min: Cart.config.leadTimeMinutes });
+      // Re-render des items pour rafraichir "/ unité" et "Retirer"
+      render(Cart.snapshot());
+      // Re-genere les creneaux pour rafraichir placeholders
+      var slot = document.getElementById('mis-f-slot');
+      if (slot && slot.options.length) populateSlots();
+    });
   }
 
   /* ---------- Render ---------- */
@@ -320,21 +346,21 @@
     var li = el('li', { 'class': 'mis-cart-item', 'data-id': it.id });
     var info = el('div', { 'class': 'mis-cart-item-info' });
     var name = el('p', { 'class': 'mis-cart-item-name', text: it.name });
-    var unit = el('span', { 'class': 'mis-cart-item-unit', text: Cart.formatPrice(it.price) + ' / unité' });
+    var unit = el('span', { 'class': 'mis-cart-item-unit', text: Cart.formatPrice(it.price) + ' ' + tt('cart.itemUnit') });
     info.appendChild(name); info.appendChild(unit);
 
     var tot = el('span', { 'class': 'mis-cart-item-total', text: Cart.formatPrice(it.price * it.qty) });
 
     var controls = el('div', { 'class': 'mis-cart-item-controls' });
     var qtyWrap = el('div', { 'class': 'mis-qty' });
-    var minus = el('button', { type: 'button', 'aria-label': 'Diminuer la quantité', text: '−' });
+    var minus = el('button', { type: 'button', 'aria-label': tt('cart.qtyMinus'), text: '−' });
     var qtySpan = el('span', { text: String(it.qty), 'aria-live': 'polite' });
-    var plus = el('button', { type: 'button', 'aria-label': 'Augmenter la quantité', text: '+' });
+    var plus = el('button', { type: 'button', 'aria-label': tt('cart.qtyPlus'), text: '+' });
     minus.addEventListener('click', function () { Cart.updateQty(it.id, it.qty - 1); });
     plus.addEventListener('click', function () { Cart.updateQty(it.id, it.qty + 1); });
     qtyWrap.appendChild(minus); qtyWrap.appendChild(qtySpan); qtyWrap.appendChild(plus);
 
-    var rm = el('button', { type: 'button', 'class': 'mis-cart-item-remove', text: 'Retirer' });
+    var rm = el('button', { type: 'button', 'class': 'mis-cart-item-remove', text: tt('cart.remove') });
     rm.addEventListener('click', function () { Cart.removeItem(it.id); });
 
     controls.appendChild(qtyWrap);
@@ -367,11 +393,11 @@
     if (!sel) return;
     sel.replaceChildren();
     var slots = Cart.pickupSlots();
-    var placeholder = el('option', { value: '', text: 'Choisir un créneau…' });
+    var placeholder = el('option', { value: '', text: tt('cart.slotPh') });
     placeholder.disabled = true; placeholder.selected = true;
     sel.appendChild(placeholder);
     if (!slots.length) {
-      var none = el('option', { value: '', text: 'Service fermé — réessaie plus tard' });
+      var none = el('option', { value: '', text: tt('cart.slotClosed') });
       none.disabled = true;
       sel.appendChild(none);
       return;
@@ -463,9 +489,9 @@
       try { localStorage.removeItem(Cart.config.rateLimitKey); } catch (_) {}
     }
     if (!res.ok) {
-      if (res.errors._spam) { showFormError('Erreur de validation. Recharge la page.'); return null; }
+      if (res.errors._spam) { showFormError(tt('cart.errValidate')); return null; }
       if (res.errors._rate) { showFormError(res.errors._rate); return null; }
-      if (res.errors.cart) { showFormError('Panier vide.'); return null; }
+      if (res.errors.cart) { showFormError(tt('cart.errEmpty')); return null; }
       if (res.errors.name)  showFieldError('name', res.errors.name);
       if (res.errors.phone) showFieldError('phone', res.errors.phone);
       if (res.errors.slot)  showFieldError('slot', res.errors.slot);
@@ -488,7 +514,7 @@
     var submitBtn = document.getElementById('mis-submit-btn');
     var origText = submitBtn.innerHTML;
     submitBtn.disabled = true;
-    submitBtn.innerHTML = '<span class="mis-spinner" aria-hidden="true"></span> Redirection vers le paiement…';
+    submitBtn.innerHTML = '<span class="mis-spinner" aria-hidden="true"></span> ' + tt('cart.redirect');
     if ($errBox) $errBox.classList.remove('is-visible');
 
     var snap = Cart.snapshot();
@@ -517,14 +543,14 @@
       if (!res.ok || !res.body.url) {
         submitBtn.disabled = false;
         submitBtn.innerHTML = origText;
-        showFormError((res.body && res.body.error) || 'Le paiement en ligne est temporairement indisponible. Utilise « Réserver sans payer ».');
+        showFormError((res.body && res.body.error) || tt('cart.errPay'));
         return;
       }
       window.location.assign(res.body.url);
     }).catch(function () {
       submitBtn.disabled = false;
       submitBtn.innerHTML = origText;
-      showFormError('Connexion impossible au service de paiement. Vérifie ta connexion ou utilise « Réserver sans payer ».');
+      showFormError(tt('cart.errConn'));
     });
   }
 
@@ -572,8 +598,8 @@
         var msg = currentResult.message;
         if (navigator.clipboard && navigator.clipboard.writeText) {
           navigator.clipboard.writeText(msg).then(function () {
-            copyBtn.textContent = 'Copié ✓';
-            setTimeout(function () { copyBtn.textContent = 'Copier le message'; }, 2000);
+            copyBtn.textContent = tt('cart.copied');
+            setTimeout(function () { copyBtn.textContent = tt('cart.copyMsg'); }, 2000);
           }).catch(function () { fallbackCopy(msg, copyBtn); });
         } else fallbackCopy(msg, copyBtn);
       });
@@ -598,20 +624,20 @@
       if (!product) return;
       var ok = Cart.addItem(product);
       if (ok) {
-        showToast('« ' + product.name + ' » ajouté');
+        showToast(tt('cart.addedToast', { name: product.name }));
         $fab.classList.add('is-bump');
         setTimeout(function () { $fab.classList.remove('is-bump'); }, 400);
         btn.classList.add('is-added');
         var origLabel = btn.getAttribute('data-orig-label');
         if (origLabel === null) btn.setAttribute('data-orig-label', btn.textContent);
-        btn.textContent = 'Ajouté ✓';
+        btn.textContent = tt('cart.added');
         setTimeout(function () {
           btn.classList.remove('is-added');
           var orig = btn.getAttribute('data-orig-label');
           if (orig != null) btn.textContent = orig;
         }, 1400);
       } else {
-        showToast('Quantité maximum atteinte');
+        showToast(tt('cart.maxQty'));
       }
     });
   }
@@ -621,10 +647,10 @@
     ta.value = text;
     ta.style.position = 'fixed'; ta.style.left = '-9999px';
     document.body.appendChild(ta); ta.select();
-    try { document.execCommand('copy'); btn.textContent = 'Copié ✓'; }
+    try { document.execCommand('copy'); btn.textContent = tt('cart.copied'); }
     catch (_) {}
     document.body.removeChild(ta);
-    setTimeout(function () { btn.textContent = 'Copier le message'; }, 2000);
+    setTimeout(function () { btn.textContent = tt('cart.copyMsg'); }, 2000);
   }
 
   function readProductFromCard(card, btn) {
