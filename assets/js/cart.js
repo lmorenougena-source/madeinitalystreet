@@ -244,16 +244,16 @@
       return 'dans ' + h + 'h' + (m < 10 ? '0' + m : m);
     }
 
-    var label, shortLabel;
+       var label, shortLabel;
     if (isOpen) {
-      label = 'Ouvert · Ferme a ' + closesAtStr;
+      label = 'Ouvert · Ferme à ' + closesAtStr;
       shortLabel = 'Ouvert';
     } else if (opensTomorrow) {
-      label = 'Ferme · Rouvre demain a ' + opensAtStr;
-      shortLabel = 'Ferme';
+      label = 'Fermé · Rouvre demain à ' + opensAtStr;
+      shortLabel = 'Fermé';
     } else {
-      label = 'Ferme · Rouvre a ' + opensAtStr + ' (' + fmtDuration(minutesUntilNext) + ')';
-      shortLabel = 'Ferme';
+      label = 'Fermé · Rouvre à ' + opensAtStr + ' (' + fmtDuration(minutesUntilNext) + ')';
+      shortLabel = 'Fermé';
     }
 
     return {
