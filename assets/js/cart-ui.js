@@ -525,7 +525,7 @@
       notes: validated.clean.notes,
       email: data.email,
       website: data.website,
-      items: snap.items.map(function (it) { return { id: it.id, qty: it.qty }; })
+      items: snap.items.map(function (it) { return { id: it.id, qty: it.qty, name: it.name }; })
     };
 
     fetch('/api/create-checkout', {

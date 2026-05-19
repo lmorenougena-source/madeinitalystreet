@@ -126,10 +126,24 @@
     "category": "combos"
   },
   {
+    "id": "combo-classico-loaded",
+    "name": "Combo Classico · Loaded Frites",
+    "desc": "Burger au choix + loaded frites + boisson",
+    "price": 18.8,
+    "category": "combos"
+  },
+  {
     "id": "combo-panino",
     "name": "Combo Panino",
     "desc": "Panino au choix + frites maison + boisson",
     "price": 12.9,
+    "category": "combos"
+  },
+  {
+    "id": "combo-panino-loaded",
+    "name": "Combo Panino · Loaded Frites",
+    "desc": "Panino au choix + loaded frites + boisson",
+    "price": 15.8,
     "category": "combos"
   },
   {
@@ -140,10 +154,24 @@
     "category": "combos"
   },
   {
+    "id": "menu-studente-loaded",
+    "name": "Menu Studente · Loaded Frites",
+    "desc": "Panino au choix + loaded frites + soft (sur présentation carte étudiante)",
+    "price": 12.8,
+    "category": "combos"
+  },
+  {
     "id": "menu-bambino",
     "name": "Menu Bambino",
     "desc": "Mini burger ou panino + frites + boisson + surprise",
     "price": 7.9,
+    "category": "combos"
+  },
+  {
+    "id": "menu-bambino-loaded",
+    "name": "Menu Bambino · Loaded Frites",
+    "desc": "Mini burger ou panino + loaded frites + boisson + surprise",
+    "price": 10.8,
     "category": "combos"
   },
   {

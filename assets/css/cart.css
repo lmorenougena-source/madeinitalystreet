@@ -735,3 +735,242 @@ body.mis-cart-open { overflow: hidden; }
   .mis-lang-list,
   .mis-lang-caret { transition: none !important; animation: none !important; }
 }
+
+/* =========================================================
+   COMBO BUILDER MODAL
+========================================================= */
+.mis-combo-overlay {
+  display: none;
+  position: fixed;
+  inset: 0;
+  z-index: 10000;
+  background: rgba(14, 14, 15, .72);
+  backdrop-filter: blur(4px);
+  -webkit-backdrop-filter: blur(4px);
+  align-items: center;
+  justify-content: center;
+  padding: 16px;
+}
+.mis-combo-overlay.is-open { display: flex; }
+
+.mis-combo-modal {
+  background: #fff;
+  border-radius: 20px;
+  width: 100%;
+  max-width: 520px;
+  max-height: 90dvh;
+  overflow-y: auto;
+  overscroll-behavior: contain;
+  box-shadow: 0 40px 80px -20px rgba(0, 0, 0, .55);
+  animation: combo-pop .28s cubic-bezier(.34, 1.56, .64, 1) both;
+}
+@keyframes combo-pop {
+  from { opacity: 0; transform: scale(.94) translateY(12px); }
+  to   { opacity: 1; transform: none; }
+}
+
+/* En-tête */
+.mis-combo-header {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 12px;
+  padding: 22px 20px 0;
+}
+.mis-combo-title {
+  font-family: 'Lilita One', sans-serif;
+  font-size: 19px;
+  color: #111;
+  margin: 0;
+  line-height: 1.2;
+}
+.mis-combo-close {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  background: none;
+  border: none;
+  cursor: pointer;
+  padding: 6px;
+  color: rgba(17, 17, 17, .45);
+  border-radius: 8px;
+  transition: background .15s, color .15s;
+}
+.mis-combo-close:hover { background: rgba(17, 17, 17, .08); color: #111; }
+.mis-combo-close:focus-visible { outline: 2px solid #F5B335; outline-offset: 2px; }
+
+/* Sections */
+.mis-combo-section { padding: 18px 20px 0; }
+.mis-combo-section-label {
+  margin: 0 0 10px;
+  font-size: 10px;
+  font-weight: 800;
+  letter-spacing: .2em;
+  text-transform: uppercase;
+  color: rgba(17, 17, 17, .42);
+}
+
+/* Groupe radio */
+.mis-combo-radio-group {
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+}
+
+.mis-combo-radio-row {
+  display: flex;
+  align-items: flex-start;
+  gap: 10px;
+  padding: 10px 12px;
+  border-radius: 10px;
+  cursor: pointer;
+  border: 1.5px solid transparent;
+  background: rgba(17, 17, 17, .04);
+  transition: background .15s, border-color .15s;
+  -webkit-tap-highlight-color: transparent;
+}
+.mis-combo-radio-row:hover { background: rgba(17, 17, 17, .08); }
+.mis-combo-radio-row.is-checked {
+  background: rgba(200, 16, 46, .06);
+  border-color: rgba(200, 16, 46, .28);
+}
+/* Loaded frites sélectionnée → teinte or */
+.mis-combo-radio-row.is-loaded.is-checked {
+  background: rgba(245, 179, 53, .13);
+  border-color: rgba(245, 179, 53, .55);
+}
+
+.mis-combo-radio-input {
+  position: absolute;
+  opacity: 0;
+  width: 0;
+  height: 0;
+  pointer-events: none;
+}
+
+/* Pastille radio custom */
+.mis-combo-radio-dot {
+  flex-shrink: 0;
+  width: 18px;
+  height: 18px;
+  margin-top: 2px;
+  border-radius: 50%;
+  border: 2px solid rgba(17, 17, 17, .28);
+  position: relative;
+  transition: border-color .15s;
+}
+.mis-combo-radio-dot::after {
+  content: '';
+  position: absolute;
+  inset: 3px;
+  border-radius: 50%;
+  background: #C8102E;
+  transform: scale(0);
+  transition: transform .18s cubic-bezier(.34, 1.56, .64, 1);
+}
+.mis-combo-radio-row.is-checked .mis-combo-radio-dot { border-color: #C8102E; }
+.mis-combo-radio-row.is-checked .mis-combo-radio-dot::after { transform: scale(1); }
+.mis-combo-radio-row.is-loaded.is-checked .mis-combo-radio-dot { border-color: #c07a00; }
+.mis-combo-radio-row.is-loaded.is-checked .mis-combo-radio-dot::after { background: #F5B335; transform: scale(1); }
+.mis-combo-radio-input:focus-visible + .mis-combo-radio-dot { outline: 2px solid #F5B335; outline-offset: 2px; }
+
+/* Contenu */
+.mis-combo-radio-content { flex: 1; min-width: 0; }
+.mis-combo-radio-name {
+  display: block;
+  font-size: 14px;
+  font-weight: 700;
+  color: #111;
+  line-height: 1.3;
+}
+.mis-combo-radio-desc {
+  display: block;
+  font-size: 12px;
+  color: rgba(17, 17, 17, .5);
+  margin-top: 2px;
+  line-height: 1.4;
+}
+
+/* Pied de modal */
+.mis-combo-footer {
+  padding: 18px 20px 20px;
+  margin-top: 16px;
+  border-top: 1px solid rgba(17, 17, 17, .1);
+}
+.mis-combo-total {
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  margin-bottom: 14px;
+}
+.mis-combo-total-label {
+  font-size: 12px;
+  font-weight: 700;
+  letter-spacing: .1em;
+  text-transform: uppercase;
+  color: rgba(17, 17, 17, .5);
+}
+.mis-combo-total-value {
+  font-family: 'Lilita One', sans-serif;
+  font-size: 28px;
+  color: #C8102E;
+  transition: color .2s;
+}
+
+.mis-combo-actions { display: flex; gap: 10px; }
+
+.mis-combo-btn-cancel {
+  flex: 0 0 auto;
+  padding: 13px 18px;
+  border-radius: 999px;
+  border: 2px solid rgba(17, 17, 17, .18);
+  background: none;
+  font-size: 12px;
+  font-weight: 800;
+  letter-spacing: .06em;
+  text-transform: uppercase;
+  cursor: pointer;
+  color: #111;
+  transition: background .15s;
+}
+.mis-combo-btn-cancel:hover { background: rgba(17, 17, 17, .06); }
+
+.mis-combo-btn-confirm {
+  flex: 1;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 6px;
+  padding: 13px 18px;
+  border-radius: 999px;
+  border: none;
+  background: #C8102E;
+  color: #fff;
+  font-size: 12px;
+  font-weight: 800;
+  letter-spacing: .06em;
+  text-transform: uppercase;
+  cursor: pointer;
+  transition: opacity .15s;
+}
+.mis-combo-btn-confirm:hover { opacity: .88; }
+
+.mis-combo-btn-cancel:focus-visible,
+.mis-combo-btn-confirm:focus-visible { outline: 2px solid #F5B335; outline-offset: 2px; }
+
+/* Mobile compact */
+@media (max-width: 480px) {
+  .mis-combo-modal { border-radius: 16px 16px 0 0; max-height: 92dvh; }
+  .mis-combo-overlay { align-items: flex-end; padding: 0; }
+  .mis-combo-title { font-size: 17px; }
+  .mis-combo-radio-desc { display: none; } /* masque desc sur très petit écran */
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .mis-combo-modal { animation: none; }
+  .mis-combo-radio-dot::after,
+  .mis-combo-btn-cancel,
+  .mis-combo-btn-confirm,
+  .mis-combo-radio-row { transition: none !important; }
+}

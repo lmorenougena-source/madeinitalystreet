@@ -202,6 +202,7 @@
       'card.add': 'Ajouter',
       'card.compose': 'Composer',
       'card.addAria': 'Ajouter au panier',
+      'card.composeAria': 'Composer ce combo',
 
       // Products (descriptions)
       'p.burger-italiano.desc': 'Sauce maison, pancetta, mozzarella, roquette',
@@ -246,6 +247,18 @@
       'bm.desc': 'Click & Collect en quelques minutes, ou viens directement nous voir au spot.',
       'bm.finalize': 'Finaliser ma commande',
       'bm.contact': 'Nous contacter',
+
+      // Combo Builder modal
+      'cm.title': 'Composer ton {name}',
+      'cm.labelBurger': 'Ton burger',
+      'cm.labelPanino': 'Ton panino',
+      'cm.labelChoice': 'Burger ou panino',
+      'cm.frites': 'Tes frites',
+      'cm.fritesBase': 'Frites maison (incluses)',
+      'cm.fritesLoaded': 'Loaded Frites · +{price}',
+      'cm.total': 'Total',
+      'cm.cancel': 'Annuler',
+      'cm.confirm': 'Ajouter au panier',
 
       // Cart UI (drawer)
       'cart.title': 'Mon panier',
@@ -535,6 +548,7 @@
       'card.add': 'Add',
       'card.compose': 'Build',
       'card.addAria': 'Add to cart',
+      'card.composeAria': 'Build this combo',
 
       'p.burger-italiano.desc': 'Homemade sauce, pancetta, mozzarella, rocket',
       'p.burger-italiano.descLong': 'Homemade sauce, crispy pancetta, mozzarella fior di latte, fresh rocket.',
@@ -577,6 +591,18 @@
       'bm.desc': 'Click & Collect in minutes, or just come and see us at the spot.',
       'bm.finalize': 'Checkout my order',
       'bm.contact': 'Contact us',
+
+      // Combo Builder modal
+      'cm.title': 'Build your {name}',
+      'cm.labelBurger': 'Your burger',
+      'cm.labelPanino': 'Your panino',
+      'cm.labelChoice': 'Burger or panino',
+      'cm.frites': 'Your fries',
+      'cm.fritesBase': 'House fries (included)',
+      'cm.fritesLoaded': 'Loaded Fries · +{price}',
+      'cm.total': 'Total',
+      'cm.cancel': 'Cancel',
+      'cm.confirm': 'Add to cart',
 
       'cart.title': 'My cart',
       'cart.empty': 'Your cart is empty',
@@ -861,6 +887,7 @@
       'card.add': 'Añadir',
       'card.compose': 'Componer',
       'card.addAria': 'Añadir a la cesta',
+      'card.composeAria': 'Componer este combo',
 
       'p.burger-italiano.desc': 'Salsa casera, pancetta, mozzarella, rúcula',
       'p.burger-italiano.descLong': 'Salsa casera, pancetta crujiente, mozzarella fior di latte, rúcula fresca.',
@@ -903,6 +930,18 @@
       'bm.desc': 'Click & Collect en minutos, o ven directamente a vernos.',
       'bm.finalize': 'Finalizar mi pedido',
       'bm.contact': 'Contactar',
+
+      // Combo Builder modal
+      'cm.title': 'Compón tu {name}',
+      'cm.labelBurger': 'Tu burger',
+      'cm.labelPanino': 'Tu panino',
+      'cm.labelChoice': 'Burger o panino',
+      'cm.frites': 'Tus patatas',
+      'cm.fritesBase': 'Patatas fritas (incluidas)',
+      'cm.fritesLoaded': 'Loaded Fries · +{price}',
+      'cm.total': 'Total',
+      'cm.cancel': 'Cancelar',
+      'cm.confirm': 'Añadir al carrito',
 
       'cart.title': 'Mi cesta',
       'cart.empty': 'Tu cesta está vacía',
@@ -1187,6 +1226,7 @@
       'card.add': 'Aggiungi',
       'card.compose': 'Componi',
       'card.addAria': 'Aggiungi al carrello',
+      'card.composeAria': 'Componi questo combo',
 
       'p.burger-italiano.desc': 'Salsa della casa, pancetta, mozzarella, rucola',
       'p.burger-italiano.descLong': 'Salsa della casa, pancetta croccante, mozzarella fior di latte, rucola fresca.',
@@ -1229,6 +1269,18 @@
       'bm.desc': 'Click & Collect in pochi minuti, oppure vieni direttamente da noi.',
       'bm.finalize': 'Finalizza il mio ordine',
       'bm.contact': 'Contattaci',
+
+      // Combo Builder modal
+      'cm.title': 'Componi il tuo {name}',
+      'cm.labelBurger': 'Il tuo burger',
+      'cm.labelPanino': 'Il tuo panino',
+      'cm.labelChoice': 'Burger o panino',
+      'cm.frites': 'Le tue patatine',
+      'cm.fritesBase': 'Patatine fritte (incluse)',
+      'cm.fritesLoaded': 'Loaded Fries · +{price}',
+      'cm.total': 'Totale',
+      'cm.cancel': 'Annulla',
+      'cm.confirm': 'Aggiungi al carrello',
 
       'cart.title': 'Il mio carrello',
       'cart.empty': 'Il tuo carrello è vuoto',
@@ -1513,6 +1565,7 @@
       'card.add': 'Adicionar',
       'card.compose': 'Compor',
       'card.addAria': 'Adicionar ao carrinho',
+      'card.composeAria': 'Compor este combo',
 
       'p.burger-italiano.desc': 'Molho caseiro, pancetta, mozzarella, rúcula',
       'p.burger-italiano.descLong': 'Molho caseiro, pancetta crocante, mozzarella fior di latte, rúcula fresca.',
@@ -1555,6 +1608,18 @@
       'bm.desc': 'Click & Collect em poucos minutos, ou vem ver-nos diretamente.',
       'bm.finalize': 'Finalizar a minha encomenda',
       'bm.contact': 'Contactar-nos',
+
+      // Combo Builder modal
+      'cm.title': 'Compõe o teu {name}',
+      'cm.labelBurger': 'O teu burger',
+      'cm.labelPanino': 'O teu panino',
+      'cm.labelChoice': 'Burger ou panino',
+      'cm.frites': 'As tuas batatas',
+      'cm.fritesBase': 'Batatas fritas (incluídas)',
+      'cm.fritesLoaded': 'Loaded Fries · +{price}',
+      'cm.total': 'Total',
+      'cm.cancel': 'Cancelar',
+      'cm.confirm': 'Adicionar ao carrinho',
 
       'cart.title': 'O meu carrinho',
       'cart.empty': 'O teu carrinho está vazio',
@@ -1839,6 +1904,7 @@
       'card.add': 'Hinzufügen',
       'card.compose': 'Zusammenstellen',
       'card.addAria': 'In den Warenkorb',
+      'card.composeAria': 'Dieses Combo zusammenstellen',
 
       'p.burger-italiano.desc': 'Hausgemachte Sauce, Pancetta, Mozzarella, Rucola',
       'p.burger-italiano.descLong': 'Hausgemachte Sauce, knusprige Pancetta, Mozzarella fior di latte, frischer Rucola.',
@@ -1881,6 +1947,18 @@
       'bm.desc': 'Click & Collect in wenigen Minuten, oder komm direkt vorbei.',
       'bm.finalize': 'Bestellung abschließen',
       'bm.contact': 'Kontakt',
+
+      // Combo Builder modal
+      'cm.title': '{name} zusammenstellen',
+      'cm.labelBurger': 'Dein Burger',
+      'cm.labelPanino': 'Dein Panino',
+      'cm.labelChoice': 'Burger oder Panino',
+      'cm.frites': 'Deine Pommes',
+      'cm.fritesBase': 'Hausgemachte Pommes (inklusive)',
+      'cm.fritesLoaded': 'Loaded Fries · +{price}',
+      'cm.total': 'Gesamt',
+      'cm.cancel': 'Abbrechen',
+      'cm.confirm': 'In den Warenkorb',
 
       'cart.title': 'Mein Warenkorb',
       'cart.empty': 'Dein Warenkorb ist leer',

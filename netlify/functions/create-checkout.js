@@ -171,13 +171,18 @@ exports.handler = async function (event) {
     var id = sanitizeStr(item && item.id, 80);
     var qty = sanitizeInt(item && item.qty, 1, MAX_QTY_PER_ITEM);
     if (!id) return jsonResponse(400, { error: 'ID produit manquant' }, origin);
-    var product = catalog.get(id);
-    if (!product) return jsonResponse(400, { error: 'Produit inconnu : ' + id }, origin);
+    // Support combo variants: "combo-classico--burger-italiano" → lookup "combo-classico"
+    var catalogId = id.indexOf('--') !== -1 ? id.split('--')[0] : id;
+    var product = catalog.get(catalogId);
+    if (!product) return jsonResponse(400, { error: 'Produit inconnu : ' + catalogId }, origin);
     var unitCents = Math.round(product.price * 100);
     totalCents += unitCents * qty;
+    // Display name: prefer client-provided name (sanitized) so combo choices appear in Stripe
+    var displayName = (item && typeof item.name === 'string' && item.name.trim())
+      ? sanitizeStr(item.name, 120) : product.name;
     stripeParams.append('line_items[' + idx + '][price_data][currency]', 'eur');
     stripeParams.append('line_items[' + idx + '][price_data][unit_amount]', String(unitCents));
-    stripeParams.append('line_items[' + idx + '][price_data][product_data][name]', product.name);
+    stripeParams.append('line_items[' + idx + '][price_data][product_data][name]', displayName);
     if (product.desc) {
       stripeParams.append('line_items[' + idx + '][price_data][product_data][description]', product.desc.slice(0, 200));
     }
