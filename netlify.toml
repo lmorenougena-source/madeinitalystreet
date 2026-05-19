@@ -5,6 +5,12 @@
   publish = "."
   functions = "netlify/functions"
 
+# Force l'inclusion du catalog.json dans le bundle des fonctions
+# (sans ça, esbuild ne copie que les .js → fs.readFileSync échoue en prod)
+[functions]
+  node_bundler = "esbuild"
+  included_files = ["netlify/functions/catalog.json"]
+
 # Redirects /api/* → Netlify Functions
 [[redirects]]
   from = "/api/create-checkout"
