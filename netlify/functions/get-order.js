@@ -45,8 +45,9 @@ exports.handler = async function (event) {
   if (event.httpMethod !== 'GET') {
     return jsonResponse(405, { error: 'Method not allowed' }, origin);
   }
-  if (ALLOWED_ORIGINS.length && ALLOWED_ORIGINS.indexOf(origin) === -1) {
+  if (origin && ALLOWED_ORIGINS.length && ALLOWED_ORIGINS.indexOf(origin) === -1) {
     return jsonResponse(403, { error: 'Origin non autorisee' }, origin);
+
   }
 
   var STRIPE_KEY = process.env.STRIPE_SECRET_KEY;
