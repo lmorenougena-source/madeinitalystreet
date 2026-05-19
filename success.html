@@ -1,0 +1,275 @@
+<!doctype html>
+<html lang="fr">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover" />
+<title>Commande confirmée · Made in Italy Street</title>
+<meta name="description" content="Paiement confirmé. Voici ton code de retrait pour récupérer ta commande Click & Collect." />
+<meta name="robots" content="noindex,nofollow" />
+<meta name="theme-color" content="#0E0E0F" />
+
+<!-- Sécurité -->
+<meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self'; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src 'self' https://fonts.gstatic.com; img-src 'self' data: blob:; connect-src 'self'; frame-ancestors 'none'; base-uri 'self'; form-action 'self'; object-src 'none'; upgrade-insecure-requests" />
+<meta http-equiv="X-Content-Type-Options" content="nosniff" />
+<meta name="referrer" content="strict-origin-when-cross-origin" />
+<meta http-equiv="Permissions-Policy" content="geolocation=(), camera=(), microphone=(), payment=(), usb=()" />
+
+<link rel="icon" href="assets/img/favicon.svg" type="image/svg+xml" />
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&family=Lilita+One&family=Caveat+Brush&display=swap" rel="stylesheet" />
+
+<style>
+:root {
+  --black: #0E0E0F; --cream: #F4E9D6; --green: #008C45; --red: #C8102E; --gold: #F5B335;
+}
+* { box-sizing: border-box; }
+body {
+  margin: 0; min-height: 100dvh;
+  background: var(--black);
+  color: var(--cream);
+  font-family: 'Inter', system-ui, sans-serif;
+  display: flex; flex-direction: column;
+  -webkit-font-smoothing: antialiased;
+}
+.bar {
+  height: 6px;
+  background: linear-gradient(90deg, var(--green) 0 33%, var(--cream) 33% 66%, var(--red) 66% 100%);
+}
+.wrap {
+  flex: 1;
+  display: flex; align-items: center; justify-content: center;
+  padding: 24px 16px 60px;
+}
+.card {
+  width: 100%;
+  max-width: 520px;
+  background: var(--cream);
+  color: #111;
+  border-radius: 24px;
+  padding: 32px 28px;
+  box-shadow: 0 50px 100px -30px rgba(0,0,0,.6);
+  position: relative;
+}
+.brand {
+  text-align: center;
+  margin-bottom: 18px;
+}
+.brand-name {
+  font-family: 'Lilita One', sans-serif;
+  font-size: 18px;
+  letter-spacing: .02em;
+}
+.brand-tag {
+  font-family: 'Caveat Brush', cursive;
+  font-size: 18px;
+  color: var(--red);
+  margin-top: 2px;
+}
+.check {
+  width: 84px; height: 84px;
+  border-radius: 999px;
+  background: var(--green);
+  display: flex; align-items: center; justify-content: center;
+  margin: 0 auto 14px;
+  animation: pop .55s cubic-bezier(.34,1.56,.64,1);
+}
+.check svg { width: 44px; height: 44px; fill: #fff; }
+@keyframes pop {
+  0% { transform: scale(0); opacity: 0; }
+  100% { transform: scale(1); opacity: 1; }
+}
+h1 {
+  font-family: 'Lilita One', sans-serif;
+  font-size: 26px;
+  margin: 0 0 6px;
+  text-align: center;
+}
+.sub {
+  text-align: center;
+  font-size: 14px;
+  color: rgba(17,17,17,.65);
+  margin: 0 0 20px;
+  line-height: 1.5;
+}
+
+.code-block {
+  background: #111;
+  color: var(--cream);
+  border-radius: 16px;
+  padding: 22px 18px 24px;
+  text-align: center;
+  margin: 18px 0;
+}
+.code-label {
+  font-size: 11px;
+  font-weight: 800;
+  letter-spacing: .25em;
+  text-transform: uppercase;
+  color: var(--gold);
+  margin-bottom: 8px;
+}
+.code-value {
+  font-family: 'Lilita One', monospace;
+  font-size: 44px;
+  letter-spacing: .08em;
+  line-height: 1;
+  word-break: break-all;
+  user-select: all;
+}
+.code-help {
+  font-size: 12px;
+  color: rgba(244,233,214,.65);
+  margin-top: 10px;
+  line-height: 1.5;
+}
+
+.qr-wrap {
+  display: flex; justify-content: center;
+  padding: 14px;
+  background: #fff;
+  border-radius: 14px;
+  margin: 0 auto 18px;
+  width: fit-content;
+  border: 1px solid rgba(17,17,17,.1);
+}
+.qr-wrap svg { display: block; width: 180px; height: 180px; }
+.qr-caption {
+  text-align: center;
+  font-size: 12px;
+  color: rgba(17,17,17,.55);
+  margin: -8px 0 16px;
+}
+
+.info-grid {
+  display: grid;
+  grid-template-columns: auto 1fr;
+  gap: 10px 14px;
+  font-size: 14px;
+  background: #fff;
+  border: 1px solid rgba(17,17,17,.1);
+  border-radius: 12px;
+  padding: 14px 16px;
+  margin: 0 0 16px;
+}
+.info-grid dt {
+  color: rgba(17,17,17,.55);
+  font-weight: 600;
+}
+.info-grid dd { margin: 0; font-weight: 600; }
+
+.items-block {
+  border: 1px solid rgba(17,17,17,.1);
+  border-radius: 12px;
+  padding: 14px 16px;
+  margin-bottom: 16px;
+  background: #fff;
+}
+.items-block h3 {
+  font-family: 'Lilita One', sans-serif;
+  font-size: 14px;
+  margin: 0 0 8px;
+  letter-spacing: .04em;
+}
+.items-block ul { list-style: none; padding: 0; margin: 0; }
+.items-block li {
+  display: flex; justify-content: space-between;
+  padding: 6px 0;
+  border-bottom: 1px dashed rgba(17,17,17,.08);
+  font-size: 14px;
+}
+.items-block li:last-child { border-bottom: 0; }
+.items-block .total {
+  display: flex; justify-content: space-between;
+  margin-top: 8px;
+  padding-top: 10px;
+  border-top: 2px solid rgba(17,17,17,.15);
+  font-weight: 800;
+  font-family: 'Lilita One', sans-serif;
+  font-size: 18px;
+  color: var(--red);
+}
+
+.actions {
+  display: flex; flex-direction: column; gap: 10px;
+  margin-top: 14px;
+}
+.btn {
+  display: inline-flex; align-items: center; justify-content: center; gap: 8px;
+  padding: 14px 18px;
+  border-radius: 999px;
+  font-weight: 800; font-size: 13px;
+  letter-spacing: .04em; text-transform: uppercase;
+  text-decoration: none;
+  border: 2px solid transparent;
+  cursor: pointer;
+}
+.btn-primary { background: var(--red); color: var(--cream); }
+.btn-ghost { background: transparent; color: #111; border-color: rgba(17,17,17,.2); }
+.btn:focus-visible { outline: 3px solid var(--gold); outline-offset: 2px; }
+
+.loader {
+  text-align: center;
+  padding: 30px 0;
+  color: rgba(17,17,17,.55);
+}
+.loader-dot {
+  display: inline-block;
+  width: 14px; height: 14px;
+  border: 3px solid rgba(17,17,17,.2);
+  border-top-color: var(--red);
+  border-radius: 50%;
+  animation: spin .8s linear infinite;
+  vertical-align: -2px;
+  margin-right: 8px;
+}
+@keyframes spin { to { transform: rotate(360deg); } }
+
+.error {
+  background: rgba(200,16,46,.08);
+  border: 1px solid rgba(200,16,46,.3);
+  color: var(--red);
+  padding: 16px 18px;
+  border-radius: 12px;
+  margin: 14px 0;
+}
+.error h3 { margin: 0 0 6px; font-family: 'Lilita One', sans-serif; }
+.error p { margin: 0; font-size: 14px; line-height: 1.5; }
+
+.print-hint {
+  text-align: center;
+  font-size: 11px;
+  color: rgba(17,17,17,.5);
+  margin-top: 14px;
+}
+.print-hint a { color: inherit; text-decoration: underline; }
+
+@media print {
+  body { background: #fff !important; color: #111 !important; }
+  .bar, .actions, .print-hint { display: none !important; }
+  .card { box-shadow: none !important; border: 1px solid #ccc !important; }
+}
+</style>
+</head>
+
+<body>
+<div class="bar" aria-hidden="true"></div>
+<main class="wrap">
+  <div class="card" id="card">
+    <div class="brand">
+      <div class="brand-name">MADE IN ITALY STREET</div>
+      <div class="brand-tag">Italian Street Food · Lourdes</div>
+    </div>
+    <div id="content">
+      <div class="loader" id="loader">
+        <span class="loader-dot" aria-hidden="true"></span>
+        Vérification du paiement…
+      </div>
+    </div>
+  </div>
+</main>
+
+<script src="assets/js/qrcode.min.js?v=20260518-cart-v1"></script>
+<script src="assets/js/success.js?v=20260518-cart-v1"></script>
+</body>
+</html>

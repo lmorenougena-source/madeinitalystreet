@@ -7,6 +7,12 @@
 <meta name="description" content="Made in Italy Street — Le spot street food italien à Lourdes. Smash burgers juteux, panini généreux, loaded fries, recettes maison. Click & Collect et livraison." />
 <meta name="theme-color" content="#0E0E0F" />
 
+<!-- Sécurité : durcissement headers (équivalents meta) -->
+<meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'sha256-acIhgkqjDWmtTuJklt/4NgdOMsy7EIiB/W+0cnSXIYI=' https://cdn.jsdelivr.net https://cdnjs.cloudflare.com; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src 'self' https://fonts.gstatic.com; img-src 'self' data: blob:; connect-src 'self'; frame-ancestors 'none'; base-uri 'self'; form-action 'self'; object-src 'none'; upgrade-insecure-requests" />
+<meta http-equiv="X-Content-Type-Options" content="nosniff" />
+<meta name="referrer" content="strict-origin-when-cross-origin" />
+<meta http-equiv="Permissions-Policy" content="geolocation=(), camera=(), microphone=(), payment=(), usb=()" />
+
 <!-- Open Graph -->
 <meta property="og:title" content="Made in Italy Street — Italian Street Food & Smash Burgers" />
 <meta property="og:description" content="L'Italie descend dans la rue. Smash burgers, panini, loaded fries — fatto con amore à Lourdes." />
@@ -51,13 +57,20 @@
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
 <link href="https://fonts.googleapis.com/css2?family=Anton&family=Bebas+Neue&family=Caveat+Brush&family=Inter:wght@400;500;600;700;800;900&family=Rubik+Dirt&family=Lilita+One&family=Permanent+Marker&family=Playfair+Display:ital,wght@0,500;0,700;0,900;1,500&display=swap" rel="stylesheet" />
 
-<!-- Motion stack premium -->
-<script src="https://cdn.jsdelivr.net/npm/lenis@1.1.18/dist/lenis.min.js" defer></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js" defer></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js" defer></script>
+<!-- Motion stack premium (SRI: hashes SHA-384 vérifiés) -->
+<script src="https://cdn.jsdelivr.net/npm/lenis@1.1.18/dist/lenis.min.js"
+        integrity="sha384-tKsJDT6PlUI0pSBt9/sBKJluKgA19/a6mBrDsZaXotLB4ZYfMGM6xt6/WgGpYhTm"
+        crossorigin="anonymous" referrerpolicy="no-referrer" defer></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"
+        integrity="sha384-g4NTh/Iv5PPU4xPyhEWqPcwtNXOvdaDI8LLnyYfyNZOjKJeYQyjzQ9X5275eBjpt"
+        crossorigin="anonymous" referrerpolicy="no-referrer" defer></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"
+        integrity="sha384-Z3REaz79l2IaAZqJsSABtTbhjgOUYyV3p90XNnAPCSHg3EMTz1fouunq9WZRtj3d"
+        crossorigin="anonymous" referrerpolicy="no-referrer" defer></script>
 
 <!-- Style custom Street -->
-<link rel="stylesheet" href="assets/css/street.css?v=20260518-legal" />
+<link rel="stylesheet" href="assets/css/street.css?v=20260518-icon-colors" />
+<link rel="stylesheet" href="assets/css/cart.css?v=20260518-cart-v1" />
 </head>
 
 <body class="street-body">
@@ -193,14 +206,14 @@
     </nav>
 
     <div class="street-header-cta">
-      <a href="#click-collect" class="street-btn street-btn-pill is-sm">
-        <svg width="16" height="16"><use href="#i-vespa"/></svg>
-        Click &amp; Collect
+      <a href="carte.html" class="street-btn street-btn-pill is-sm">
+        <svg width="16" height="16"><use href="#i-menu"/></svg>
+        Voir la carte
       </a>
-      <a href="#contact" class="street-btn street-btn-pill is-primary is-sm">
+      <button type="button" data-mis-open class="street-btn street-btn-pill is-primary is-sm">
         <svg width="16" height="16"><use href="#i-cart"/></svg>
-        Commander
-      </a>
+        Mon panier
+      </button>
     </div>
 
     <button class="street-burger" id="street-burger" aria-label="Ouvrir le menu" aria-expanded="false">
@@ -217,16 +230,15 @@
       <a href="#click-collect" class="street-mobile-link">Click &amp; Collect</a>
       <a href="#contact" class="street-mobile-link">Contact</a>
     </nav>
-    <img class="street-mobile-menu-mascot" src="assets/img/logomascotte.png" alt="" aria-hidden="true">
     <div class="street-mobile-cta">
-      <a href="#click-collect" class="street-btn street-btn-ghost street-btn-lg">
-        <svg width="18" height="18"><use href="#i-vespa"/></svg>
-        Click &amp; Collect
+      <a href="carte.html" class="street-btn street-btn-ghost street-btn-lg">
+        <svg width="18" height="18"><use href="#i-menu"/></svg>
+        Voir la carte
       </a>
-      <a href="#contact" class="street-btn street-btn-primary street-btn-lg">
+      <button type="button" data-mis-open class="street-btn street-btn-primary street-btn-lg">
         <svg width="18" height="18"><use href="#i-cart"/></svg>
-        Commander
-      </a>
+        Mon panier
+      </button>
     </div>
   </div>
 </header>
@@ -769,10 +781,14 @@
     </ol>
 
     <div class="street-section-cta">
-      <a href="#contact" class="street-btn street-btn-primary street-btn-lg">
-        Commander en Click &amp; Collect
-        <svg width="20" height="20"><use href="#i-arrow"/></svg>
+      <a href="carte.html" class="street-btn street-btn-outline street-btn-lg" style="margin-right:12px">
+        Voir la carte
+        <svg width="20" height="20"><use href="#i-menu"/></svg>
       </a>
+      <button type="button" id="cc-open-cart" class="street-btn street-btn-primary street-btn-lg">
+        Ouvrir mon panier
+        <svg width="20" height="20"><use href="#i-cart"/></svg>
+      </button>
     </div>
   </div>
 </section>
@@ -881,7 +897,7 @@
     </div>
 
     <div class="street-section-cta">
-      <a href="https://instagram.com/" target="_blank" rel="noopener" class="street-btn street-btn-outline-dark">
+      <a href="https://instagram.com/" target="_blank" rel="noopener noreferrer" class="street-btn street-btn-outline-dark">
         <svg width="18" height="18"><use href="#i-instagram"/></svg>
         Suivre @madeinitaly.street
       </a>
@@ -938,7 +954,7 @@
             <svg width="18" height="18"><use href="#i-phone"/></svg>
             Appeler
           </a>
-          <a href="https://www.google.com/maps/search/?api=1&query=Lourdes+street+food" target="_blank" rel="noopener" class="street-btn street-btn-outline-light is-contact-white">
+          <a href="https://www.google.com/maps/search/?api=1&query=Lourdes+street+food" target="_blank" rel="noopener noreferrer" class="street-btn street-btn-outline-light is-contact-white">
             <svg width="18" height="18"><use href="#i-pin"/></svg>
             Itinéraire
           </a>
@@ -1019,9 +1035,9 @@
       <div class="street-footer-col">
         <h4>Réseaux</h4>
         <ul>
-          <li><a href="https://instagram.com/" target="_blank" rel="noopener">Instagram</a></li>
-          <li><a href="https://tiktok.com/" target="_blank" rel="noopener">TikTok</a></li>
-          <li><a href="https://facebook.com/" target="_blank" rel="noopener">Facebook</a></li>
+          <li><a href="https://instagram.com/" target="_blank" rel="noopener noreferrer">Instagram</a></li>
+          <li><a href="https://tiktok.com/" target="_blank" rel="noopener noreferrer">TikTok</a></li>
+          <li><a href="https://facebook.com/" target="_blank" rel="noopener noreferrer">Facebook</a></li>
         </ul>
       </div>
 
@@ -1042,9 +1058,8 @@
     <div class="street-footer-bar">
       <p>© <span id="street-year">2026</span> Made in Italy Street — Tous droits réservés</p>
       <div class="footer-mentions">
-        <a href="mentions-legales.html">Mentions légales</a>
-        <a href="politique-confidentialite.html">Confidentialité / RGPD</a>
-        <a href="cookies.html">Cookies</a>
+        <a href="#">Mentions légales</a>
+        <a href="#">Politique de confidentialité</a>
       </div>
     </div>
   </div>
@@ -1083,6 +1098,10 @@
 
 <!-- Script principal -->
 <script src="assets/js/street.js" defer></script>
+
+<!-- Click & Collect (cart) -->
+<script src="assets/js/cart.js?v=20260518-cart-v1" defer></script>
+<script src="assets/js/cart-ui.js?v=20260518-cart-v1" defer></script>
 
 </body>
 </html>

@@ -1,0 +1,56 @@
+<!doctype html>
+<html lang="fr">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover" />
+<title>Paiement annulé · Made in Italy Street</title>
+<meta name="robots" content="noindex,nofollow" />
+<meta name="theme-color" content="#0E0E0F" />
+
+<meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self'; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src 'self' https://fonts.gstatic.com; img-src 'self' data:; connect-src 'self'; frame-ancestors 'none'; base-uri 'self'; form-action 'self'; object-src 'none'; upgrade-insecure-requests" />
+<meta http-equiv="X-Content-Type-Options" content="nosniff" />
+<meta name="referrer" content="strict-origin-when-cross-origin" />
+
+<link rel="icon" href="assets/img/favicon.svg" type="image/svg+xml" />
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&family=Lilita+One&family=Caveat+Brush&display=swap" rel="stylesheet" />
+
+<style>
+:root { --black:#0E0E0F; --cream:#F4E9D6; --green:#008C45; --red:#C8102E; --gold:#F5B335; }
+* { box-sizing: border-box; }
+body { margin:0; min-height:100dvh; background:var(--black); color:var(--cream); font-family:'Inter',system-ui,sans-serif; display:flex; flex-direction:column; }
+.bar { height:6px; background:linear-gradient(90deg,var(--green) 0 33%,var(--cream) 33% 66%,var(--red) 66% 100%); }
+.wrap { flex:1; display:flex; align-items:center; justify-content:center; padding:24px 16px; }
+.card { background:var(--cream); color:#111; border-radius:24px; padding:36px 28px; max-width:440px; text-align:center; box-shadow:0 50px 100px -30px rgba(0,0,0,.6); }
+.brand-name { font-family:'Lilita One',sans-serif; font-size:16px; letter-spacing:.02em; }
+.brand-tag { font-family:'Caveat Brush',cursive; font-size:18px; color:var(--red); margin-top:2px; margin-bottom:20px; }
+h1 { font-family:'Lilita One',sans-serif; font-size:26px; margin:0 0 8px; }
+p { font-size:14px; line-height:1.6; color:rgba(17,17,17,.7); margin:0 0 20px; }
+.icon { width:74px; height:74px; border-radius:999px; background:rgba(200,16,46,.12); color:var(--red); display:flex; align-items:center; justify-content:center; margin:0 auto 18px; }
+.icon svg { width:36px; height:36px; }
+.actions { display:flex; flex-direction:column; gap:10px; margin-top:18px; }
+.btn { display:inline-flex; align-items:center; justify-content:center; padding:14px 18px; border-radius:999px; font-weight:800; font-size:13px; letter-spacing:.04em; text-transform:uppercase; text-decoration:none; border:2px solid transparent; }
+.btn-primary { background:var(--red); color:var(--cream); }
+.btn-ghost { background:transparent; color:#111; border-color:rgba(17,17,17,.2); }
+</style>
+</head>
+<body>
+<div class="bar" aria-hidden="true"></div>
+<main class="wrap">
+  <div class="card">
+    <div class="brand-name">MADE IN ITALY STREET</div>
+    <div class="brand-tag">Italian Street Food · Lourdes</div>
+    <div class="icon" aria-hidden="true">
+      <svg viewBox="0 0 24 24" fill="currentColor"><path d="M18.3 5.7L12 12l6.3 6.3-1.4 1.4L10.6 13.4 4.3 19.7 2.9 18.3 9.2 12 2.9 5.7 4.3 4.3 10.6 10.6 16.9 4.3z"/></svg>
+    </div>
+    <h1>Paiement annulé</h1>
+    <p>Aucun montant n’a été débité. Ton panier est sauvegardé — tu peux ajuster ta commande puis réessayer.</p>
+    <div class="actions">
+      <a href="carte.html" class="btn btn-primary">Retour à la carte</a>
+      <a href="index.html" class="btn btn-ghost">Accueil</a>
+    </div>
+  </div>
+</main>
+</body>
+</html>

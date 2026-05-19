@@ -1,0 +1,39 @@
+# =========================================================
+# Made in Italy Street — Netlify configuration
+# =========================================================
+[build]
+  publish = "."
+  functions = "netlify/functions"
+
+# Redirects /api/* → Netlify Functions
+[[redirects]]
+  from = "/api/create-checkout"
+  to = "/.netlify/functions/create-checkout"
+  status = 200
+
+[[redirects]]
+  from = "/api/get-order"
+  to = "/.netlify/functions/get-order"
+  status = 200
+
+# Headers de sécurité globaux (renforcent les meta CSP)
+[[headers]]
+  for = "/*"
+  [headers.values]
+    X-Content-Type-Options = "nosniff"
+    X-Frame-Options = "DENY"
+    Referrer-Policy = "strict-origin-when-cross-origin"
+    Permissions-Policy = "geolocation=(), camera=(), microphone=(), payment=(), usb=()"
+    Strict-Transport-Security = "max-age=63072000; includeSubDomains; preload"
+
+# Cache long pour assets versionnés
+[[headers]]
+  for = "/assets/*"
+  [headers.values]
+    Cache-Control = "public, max-age=31536000, immutable"
+
+# Pas de cache pour HTML (toujours frais)
+[[headers]]
+  for = "/*.html"
+  [headers.values]
+    Cache-Control = "no-cache, must-revalidate"
