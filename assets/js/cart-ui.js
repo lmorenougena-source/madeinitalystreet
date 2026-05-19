@@ -62,6 +62,77 @@
     return fab;
   }
 
+    /* ---------- Upsell : produits suggérés (haute marge / fort attach) ---------- */
+  // IDs DOIVENT exister dans catalog.json (anti-tampering serveur)
+  var UPSELL_POOL = [
+    { id: 'sodas',             name: 'Soda 33 cl',      price: 3.0, kind: 'drink' },
+    { id: 'birra-italiana',    name: 'Birra Italiana',  price: 4.9, kind: 'drink' },
+    { id: 'tiramisu-maison',   name: 'Tiramisu maison', price: 5.9, kind: 'sweet' },
+    { id: 'cannoli-siciliani', name: 'Cannoli Siciliani', price: 5.9, kind: 'sweet' },
+    { id: 'gelato',            name: 'Gelato (2 boules)', price: 4.5, kind: 'sweet' },
+    { id: 'frites-maison',     name: 'Frites maison',   price: 4.5, kind: 'side' }
+  ];
+  var UPSELL_MAX = 2; // Garder court pour ne pas distraire du checkout
+
+  function pickUpsellSuggestions(snap) {
+    if (!snap.items.length) return [];
+    var inCart = {};
+    for (var i = 0; i < snap.items.length; i++) inCart[snap.items[i].id] = true;
+    var available = UPSELL_POOL.filter(function (p) { return !inCart[p.id]; });
+    if (!available.length) return [];
+
+    // Priorité : 1 drink + 1 sweet (le mix qui boost le plus le panier moyen)
+    var drink = available.find(function (p) { return p.kind === 'drink'; });
+    var sweet = available.find(function (p) { return p.kind === 'sweet'; });
+    var picks = [];
+    if (drink) picks.push(drink);
+    if (sweet) picks.push(sweet);
+    // Si on n'a pas atteint le max, compléter avec autres dispos
+    for (var j = 0; j < available.length && picks.length < UPSELL_MAX; j++) {
+      if (picks.indexOf(available[j]) === -1) picks.push(available[j]);
+    }
+    return picks.slice(0, UPSELL_MAX);
+  }
+
+  function renderUpsell(snap) {
+    var host = document.getElementById('mis-upsell');
+    if (!host) return;
+    var picks = pickUpsellSuggestions(snap);
+    if (!picks.length) { host.hidden = true; host.replaceChildren(); return; }
+    host.hidden = false;
+    host.replaceChildren();
+
+    var title = el('h4', { 'class': 'mis-upsell-title', text: 'Tu veux ajouter ?' });
+    host.appendChild(title);
+
+    var ul = el('ul', { 'class': 'mis-upsell-list' });
+    picks.forEach(function (p) {
+      var li = el('li', { 'class': 'mis-upsell-item' });
+      var info = el('div', { 'class': 'mis-upsell-item-info' });
+      info.appendChild(el('p', { 'class': 'mis-upsell-item-name', text: p.name }));
+      info.appendChild(el('span', { 'class': 'mis-upsell-item-price', text: Cart.formatPrice(p.price) }));
+      var btn = el('button', { type: 'button', 'class': 'mis-upsell-add', 'aria-label': 'Ajouter ' + p.name });
+      btn.innerHTML = ICONS.plus + '<span>Ajouter</span>';
+      btn.addEventListener('click', function () {
+        var ok = Cart.addItem({ id: p.id, name: p.name, price: p.price, qty: 1 });
+        if (ok) {
+          btn.classList.add('is-added');
+          btn.querySelector('span').textContent = 'Ajouté ✓';
+          showToast('« ' + p.name + ' » ajouté');
+          $fab.classList.add('is-bump');
+          setTimeout(function () { $fab.classList.remove('is-bump'); }, 400);
+          // La prochaine render() (déclenchée par Cart.on) virera ce produit du pool
+        } else {
+          showToast('Quantité maximum atteinte');
+        }
+      });
+      li.appendChild(info);
+      li.appendChild(btn);
+      ul.appendChild(li);
+    });
+    host.appendChild(ul);
+  }
+
   /* Build drawer */
   function buildDrawer() {
     var drawer = el('aside', {
@@ -83,6 +154,8 @@
         // VIEW 1 : cart
         '<div class="mis-cart-items-view" id="mis-view-items">' +
           '<ul class="mis-cart-items" id="mis-items-list" aria-live="polite"></ul>' +
+          // Upsell intelligent (rempli dynamiquement, masque si panier vide)
+          '<div class="mis-upsell" id="mis-upsell" hidden></div>' +
           '<div class="mis-cart-empty" id="mis-empty-state" hidden>' +
             '<span class="mis-empty-emoji" aria-hidden="true">🍔</span>' +
             '<h3>Ton panier est vide</h3>' +
@@ -224,6 +297,7 @@
     if (submitTotal) submitTotal.textContent = Cart.formatPrice(snap.total);
 
     // Items list — full rebuild (panier rarement >20 lignes)
+        // Items list — full rebuild (panier rarement >20 lignes)
     if ($itemsList) {
       $itemsList.replaceChildren();
       if (snap.items.length === 0) {
@@ -237,6 +311,9 @@
         }
       }
     }
+
+    // Upsell — suggestions complémentaires (boissons + desserts)
+    renderUpsell(snap);
   }
 
   function renderItem(it) {
