@@ -205,6 +205,73 @@
     var m = String(min % 60); if (m.length < 2) m = '0' + m;
     return h + ':' + m;
   }
+    /* Statut ouverture en temps reel : isOpen + label humain + prochaine bascule */
+  function openStatus(now) {
+    now = now || new Date();
+    var nowMin = now.getHours() * 60 + now.getMinutes();
+    var lunchStart  = parseHM(CONFIG.hours.lunch.start);
+    var lunchEnd    = parseHM(CONFIG.hours.lunch.end);
+    var dinnerStart = parseHM(CONFIG.hours.dinner.start);
+    var dinnerEnd   = parseHM(CONFIG.hours.dinner.end);
+
+    var isOpen = false;
+    var closesAtMin = null;
+    var opensAtMin = null;
+    var currentService = null;
+
+    if (nowMin >= lunchStart && nowMin < lunchEnd) {
+      isOpen = true; closesAtMin = lunchEnd; currentService = 'lunch';
+    } else if (nowMin >= dinnerStart && nowMin < dinnerEnd) {
+      isOpen = true; closesAtMin = dinnerEnd; currentService = 'dinner';
+    } else if (nowMin < lunchStart) {
+      opensAtMin = lunchStart;
+    } else if (nowMin < dinnerStart) {
+      opensAtMin = dinnerStart;
+    } else {
+      // Apres dinner end → rouvre demain au midi (lunchStart + 24h)
+      opensAtMin = lunchStart + 24 * 60;
+    }
+
+    var minutesUntilNext = isOpen ? (closesAtMin - nowMin) : (opensAtMin - nowMin);
+    var opensTomorrow = opensAtMin != null && opensAtMin >= 24 * 60;
+    var opensAtStr = opensAtMin != null ? fmtHM(opensAtMin % (24 * 60)) : null;
+    var closesAtStr = closesAtMin != null ? fmtHM(closesAtMin) : null;
+
+    function fmtDuration(min) {
+      if (min < 60) return 'dans ' + min + ' min';
+      var h = Math.floor(min / 60);
+      var m = min % 60;
+      return 'dans ' + h + 'h' + (m < 10 ? '0' + m : m);
+    }
+
+    var label, shortLabel;
+    if (isOpen) {
+      label = 'Ouvert · Ferme a ' + closesAtStr;
+      shortLabel = 'Ouvert';
+    } else if (opensTomorrow) {
+      label = 'Ferme · Rouvre demain a ' + opensAtStr;
+      shortLabel = 'Ferme';
+    } else {
+      label = 'Ferme · Rouvre a ' + opensAtStr + ' (' + fmtDuration(minutesUntilNext) + ')';
+      shortLabel = 'Ferme';
+    }
+
+    return {
+      isOpen: isOpen,
+      currentService: currentService,
+      closesAt: closesAtStr,
+      opensAt: opensAtStr,
+      opensTomorrow: opensTomorrow,
+      minutesUntilNext: minutesUntilNext,
+      label: label,
+      shortLabel: shortLabel,
+      hours: {
+        lunch:  { start: CONFIG.hours.lunch.start,  end: CONFIG.hours.lunch.end },
+        dinner: { start: CONFIG.hours.dinner.start, end: CONFIG.hours.dinner.end }
+      }
+    };
+  }
+
   function pickupSlots(now) {
     now = now || new Date();
     var slots = [];
