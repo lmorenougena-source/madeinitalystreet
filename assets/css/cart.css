@@ -454,6 +454,189 @@ body.mis-cart-open { overflow: hidden; }
   color: #fff !important;
 }
 
+/* =========================================================
+   OPEN STATUS BADGE — pastille "Ouvert / Ferme" en temps reel
+========================================================= */
+.mis-status-pill {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  padding: 10px 18px;
+  border-radius: 999px;
+  font-family: 'Inter', system-ui, sans-serif;
+  font-size: 14px;
+  font-weight: 700;
+  letter-spacing: .02em;
+  line-height: 1;
+  border: 1.5px solid transparent;
+  background: rgba(244,233,214,.95);
+  color: #111;
+  box-shadow: 0 6px 18px -8px rgba(0,0,0,.45);
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+  transition: transform .25s ease, box-shadow .25s ease;
+}
+.mis-status-pill:hover { transform: translateY(-1px); }
+
+.mis-status-pill.is-open {
+  background: rgba(0,140,69,.14);
+  border-color: rgba(0,140,69,.45);
+  color: #04602f;
+}
+.mis-status-pill.is-closed {
+  background: rgba(200,16,46,.10);
+  border-color: rgba(200,16,46,.40);
+  color: #8a0c20;
+}
+
+.mis-status-pill .mis-status-dot {
+  width: 10px; height: 10px;
+  border-radius: 999px;
+  flex-shrink: 0;
+  background: currentColor;
+  position: relative;
+}
+.mis-status-pill.is-open .mis-status-dot::after {
+  content: '';
+  position: absolute;
+  inset: -3px;
+  border-radius: 999px;
+  background: currentColor;
+  opacity: .35;
+  animation: misStatusPulse 1.8s ease-out infinite;
+}
+@keyframes misStatusPulse {
+  0%   { transform: scale(.6); opacity: .55; }
+  100% { transform: scale(1.8); opacity: 0; }
+}
+
+/* Variante hero : plus grosse et plus visible */
+.mis-status-pill.mis-status-hero {
+  padding: 12px 22px;
+  font-size: 15px;
+  background: rgba(14,14,15,.78);
+  color: var(--cream, #F4E9D6);
+  border-color: rgba(255,255,255,.18);
+  box-shadow: 0 10px 28px -10px rgba(0,0,0,.6), 0 0 0 1px rgba(255,255,255,.08);
+}
+.mis-status-pill.mis-status-hero.is-open {
+  background: rgba(0,140,69,.92);
+  color: #fff;
+  border-color: rgba(255,255,255,.25);
+}
+.mis-status-pill.mis-status-hero.is-closed {
+  background: rgba(200,16,46,.92);
+  color: #fff;
+  border-color: rgba(255,255,255,.25);
+}
+.mis-status-pill.mis-status-hero .mis-status-dot {
+  width: 12px; height: 12px;
+  box-shadow: 0 0 0 2px rgba(255,255,255,.35);
+}
+
+/* Sur petit ecran, on raccourcit visuellement le label trop long */
+@media (max-width: 480px) {
+  .mis-status-pill.mis-status-hero { font-size: 13px; padding: 10px 16px; gap: 8px; }
+}
+
+/* =========================================================
+   UPSELL — "Tu veux ajouter ?" dans le drawer panier
+========================================================= */
+.mis-upsell {
+  margin: 8px 16px 4px;
+  padding: 14px 14px 12px;
+  border-radius: 14px;
+  background: linear-gradient(135deg, rgba(245,179,53,.18), rgba(200,16,46,.10));
+  border: 1.5px dashed rgba(200,16,46,.30);
+}
+.mis-upsell-title {
+  margin: 0 0 10px;
+  font-family: 'Lilita One', 'Inter', sans-serif;
+  font-size: 15px;
+  letter-spacing: .01em;
+  color: #111;
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+}
+.mis-upsell-title::before {
+  content: '+';
+  display: inline-flex;
+  align-items: center; justify-content: center;
+  width: 22px; height: 22px;
+  background: var(--gold, #F5B335);
+  color: #111;
+  border-radius: 999px;
+  font-weight: 900;
+  font-size: 16px;
+  line-height: 1;
+}
+.mis-upsell-list {
+  list-style: none;
+  margin: 0; padding: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+.mis-upsell-item {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 10px 12px;
+  background: rgba(255,253,247,.92);
+  border-radius: 10px;
+  border: 1px solid rgba(17,17,17,.08);
+  transition: background .15s ease, border-color .15s ease;
+}
+.mis-upsell-item:hover { background: #fff; border-color: rgba(200,16,46,.30); }
+.mis-upsell-item-info {
+  flex: 1;
+  min-width: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+}
+.mis-upsell-item-name {
+  margin: 0;
+  font-size: 13.5px;
+  font-weight: 700;
+  color: #111;
+  line-height: 1.2;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+.mis-upsell-item-price {
+  font-size: 12px;
+  font-weight: 600;
+  color: rgba(17,17,17,.65);
+}
+.mis-upsell-add {
+  flex-shrink: 0;
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  padding: 7px 12px;
+  border: none;
+  border-radius: 999px;
+  background: var(--red, #C8102E);
+  color: #fff;
+  font-family: 'Inter', sans-serif;
+  font-size: 12px;
+  font-weight: 800;
+  letter-spacing: .03em;
+  cursor: pointer;
+  transition: transform .15s ease, background .15s ease;
+  -webkit-tap-highlight-color: transparent;
+}
+.mis-upsell-add:hover { background: #a30d24; transform: translateY(-1px); }
+.mis-upsell-add:focus-visible { outline: 2px solid var(--gold, #F5B335); outline-offset: 2px; }
+.mis-upsell-add svg { width: 12px; height: 12px; fill: currentColor; }
+.mis-upsell-add.is-added {
+  background: var(--green, #008C45);
+  pointer-events: none;
+}
+
 /* Reduced motion */
 @media (prefers-reduced-motion: reduce) {
   .mis-cart-drawer,
@@ -461,5 +644,9 @@ body.mis-cart-open { overflow: hidden; }
   .mis-cart-fab,
   .mis-cart-count,
   .mis-btn,
-  .mis-toast { transition: none !important; animation: none !important; }
+  .mis-toast,
+  .mis-status-pill,
+  .mis-status-pill .mis-status-dot::after,
+  .mis-upsell-item,
+  .mis-upsell-add { transition: none !important; animation: none !important; }
 }
