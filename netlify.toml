@@ -11,6 +11,12 @@
   node_bundler = "esbuild"
   included_files = ["netlify/functions/catalog.json"]
 
+# Rewrite explicite racine → index.html (contourne le routeur auto de Netlify)
+[[redirects]]
+  from = "/"
+  to = "/index.html"
+  status = 200
+
 # Redirects /api/* → Netlify Functions
 [[redirects]]
   from = "/api/create-checkout"
