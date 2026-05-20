@@ -69,7 +69,7 @@
         crossorigin="anonymous" referrerpolicy="no-referrer" defer></script>
 
 <!-- Style custom Street -->
-<link rel="stylesheet" href="assets/css/street.css?v=20260521-hover-perf" />
+<link rel="stylesheet" href="assets/css/street.css?v=20260521-hero-perf" />
 <link rel="stylesheet" href="assets/css/cart.css?v=20260520-i18n-v1" />
 </head>
 
@@ -256,17 +256,15 @@
     <div class="hero-overlay"></div>
     <div class="hero-heat"></div>
 
-    <!-- Fumée volumétrique : base SVG turbulence + particules CSS -->
+    <!-- Fumée volumétrique : base SVG turbulence FIGÉE (perf) + particules CSS -->
     <div class="hero-smoke">
       <svg class="smoke-svg" viewBox="0 0 600 800" preserveAspectRatio="xMidYMax slice" aria-hidden="true">
         <defs>
           <filter id="smokeTurb" x="-20%" y="-20%" width="140%" height="140%">
-            <feTurbulence type="fractalNoise" baseFrequency="0.012 0.022" numOctaves="3" seed="3" result="turb">
-              <animate attributeName="baseFrequency" dur="22s" values="0.012 0.022;0.018 0.028;0.010 0.020;0.012 0.022" repeatCount="indefinite"/>
-              <animate attributeName="seed" dur="40s" values="3;9;15;3" repeatCount="indefinite"/>
-            </feTurbulence>
-            <feDisplacementMap in="SourceGraphic" in2="turb" scale="70"/>
-            <feGaussianBlur stdDeviation="4"/>
+            <!-- turbulence statique : pas d'<animate> = pas de recompute CPU à 60fps -->
+            <feTurbulence type="fractalNoise" baseFrequency="0.014 0.024" numOctaves="2" seed="5" result="turb"/>
+            <feDisplacementMap in="SourceGraphic" in2="turb" scale="50"/>
+            <feGaussianBlur stdDeviation="3"/>
           </filter>
           <radialGradient id="smokeGrad1" cx="50%" cy="100%" r="75%" fx="48%" fy="100%">
             <stop offset="0%"  stop-color="rgb(255,250,240)" stop-opacity=".55"/>
@@ -287,28 +285,19 @@
         </g>
       </svg>
 
-      <!-- Particules CSS qui montent par-dessus -->
+      <!-- Particules CSS qui montent par-dessus (5 au lieu de 10 pour perf) -->
       <span class="smoke w1"></span>
-      <span class="smoke w2"></span>
       <span class="smoke w3"></span>
-      <span class="smoke w4"></span>
       <span class="smoke w5"></span>
-      <span class="smoke w6"></span>
       <span class="smoke w7"></span>
-      <span class="smoke w8"></span>
       <span class="smoke w9"></span>
-      <span class="smoke w10"></span>
     </div>
 
-    <!-- Condensation sur le pain -->
+    <!-- Condensation sur le pain (3 au lieu de 7) -->
     <div class="hero-condensation">
       <span class="drop d1"></span>
-      <span class="drop d2"></span>
       <span class="drop d3"></span>
-      <span class="drop d4"></span>
       <span class="drop d5"></span>
-      <span class="drop d6"></span>
-      <span class="drop d7"></span>
     </div>
   </div>
 

@@ -2939,21 +2939,9 @@ button { font: inherit; background: none; border: 0; cursor: pointer; color: inh
     linear-gradient(to top, rgba(0,0,0,.20) 0%, transparent 22%);
 }
 
-/* --- Chaleur : distorsion thermique sur le burger --- */
+/* --- Chaleur : effet thermique désactivé (perf) --- */
 .hero-heat {
-  position: absolute;
-  inset: 0;
-  z-index: 1;
-  pointer-events: none;
-  transform-origin: 68% 58%;
-  animation: heat-shimmer 3.8s ease-in-out infinite;
-}
-@keyframes heat-shimmer {
-  0%,100% { filter: blur(0);    transform: skewX(0deg)    skewY(0deg); }
-  15%      { filter: blur(.45px); transform: skewX(.2deg)  skewY(.06deg); }
-  33%      { filter: blur(.3px);  transform: skewX(-.25deg) skewY(-.05deg); }
-  52%      { filter: blur(.55px); transform: skewX(.16deg) skewY(.08deg); }
-  70%      { filter: blur(.2px);  transform: skewX(-.12deg) skewY(-.04deg); }
+  display: none; /* animation filter:blur() + skew = très coûteux, effet à peine visible */
 }
 
 /* --- Fumée ultra-réaliste : SVG turbulence + particules CSS --- */
@@ -3089,6 +3077,18 @@ button { font: inherit; background: none; border: 0; cursor: pointer; color: inh
   68%  { opacity: .8;  transform: translateY(0)    scaleY(1)  scaleX(1); }
   88%  { opacity: .4;  transform: translateY(9px)  scaleY(1.7) scaleX(.65); }
   100% { opacity: 0;   transform: translateY(13px) scaleY(2.2) scaleX(.5); }
+}
+
+/* Coupe toutes les animations hero si le user demande "réduire les animations" */
+@media (prefers-reduced-motion: reduce) {
+  .hero-heat,
+  .hero-smoke,
+  .hero-condensation {
+    display: none !important;
+  }
+  .smoke-blob {
+    animation: none !important;
+  }
 }
 
 /* --- Contenu textuel --- */
