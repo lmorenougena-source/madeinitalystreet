@@ -2549,6 +2549,17 @@ button { font: inherit; background: none; border: 0; cursor: pointer; color: inh
 }
 /* Cercle pointillé retiré (était ::after) */
 
+/* Fond clair pour les cartes avec vraie photo (PNG détouré) ou combo-trio */
+.street-menu-card-media:has(.street-menu-card-illu.is-photo),
+.street-menu-card-media:has(.street-menu-card-illu.is-combo-trio) {
+  background: var(--cream);
+}
+/* Pas de halo doré sur fond clair */
+.street-menu-card-media:has(.street-menu-card-illu.is-photo)::before,
+.street-menu-card-media:has(.street-menu-card-illu.is-combo-trio)::before {
+  display: none;
+}
+
 /* Illustration centrale */
 .street-menu-card-illu {
   position: absolute;
