@@ -170,6 +170,7 @@
       'ft.legal': 'Mentions légales',
       'ft.privacy': 'Confidentialité / RGPD',
       'ft.cookies': 'Cookies',
+      'ft.allergens': 'Allergènes',
 
       // Mascot
       'mascot.greet': 'Ciao a tutti !',
@@ -521,6 +522,7 @@
       'ft.legal': 'Legal notice',
       'ft.privacy': 'Privacy / GDPR',
       'ft.cookies': 'Cookies',
+      'ft.allergens': 'Allergens',
 
       'mascot.greet': 'Ciao a tutti!',
       'mascot.aria': 'Our chef is talking to you',
@@ -860,6 +862,7 @@
       'ft.legal': 'Aviso legal',
       'ft.privacy': 'Privacidad / RGPD',
       'ft.cookies': 'Cookies',
+      'ft.allergens': 'Alérgenos',
 
       'mascot.greet': '¡Ciao a tutti!',
       'mascot.aria': 'Nuestro chef te habla',
@@ -1199,6 +1202,7 @@
       'ft.legal': 'Note legali',
       'ft.privacy': 'Privacy / GDPR',
       'ft.cookies': 'Cookie',
+      'ft.allergens': 'Allergeni',
 
       'mascot.greet': 'Ciao a tutti!',
       'mascot.aria': 'Il nostro chef ti parla',
@@ -1538,6 +1542,7 @@
       'ft.legal': 'Avisos legais',
       'ft.privacy': 'Privacidade / RGPD',
       'ft.cookies': 'Cookies',
+      'ft.allergens': 'Alergénios',
 
       'mascot.greet': 'Ciao a tutti!',
       'mascot.aria': 'O nosso chef está a falar contigo',
@@ -1877,6 +1882,7 @@
       'ft.legal': 'Impressum',
       'ft.privacy': 'Datenschutz / DSGVO',
       'ft.cookies': 'Cookies',
+      'ft.allergens': 'Allergene',
 
       'mascot.greet': 'Ciao a tutti!',
       'mascot.aria': 'Unser Chef spricht mit dir',

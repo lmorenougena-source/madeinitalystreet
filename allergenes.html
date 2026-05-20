@@ -1,0 +1,691 @@
+<!doctype html>
+<html lang="fr">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover" />
+<title>Allergènes — Made in Italy Street</title>
+<meta name="description" content="Information allergènes pour tous les plats Made in Italy Street à Lourdes. Tableau conforme au règlement INCO (UE 1169/2011)." />
+<meta name="theme-color" content="#0E0E0F" />
+<meta http-equiv="X-Content-Type-Options" content="nosniff" />
+<meta name="referrer" content="strict-origin-when-cross-origin" />
+<link rel="icon" href="assets/img/favicon.svg" type="image/svg+xml" />
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Anton&family=Bebas+Neue&family=Caveat+Brush&family=Inter:wght@400;500;600;700;800;900&family=Rubik+Dirt&family=Lilita+One&family=Permanent+Marker&family=Playfair+Display:ital,wght@0,500;0,700;0,900;1,500&display=swap" rel="stylesheet" />
+<link rel="stylesheet" href="assets/css/street.css?v=20260520-allergens" />
+<style>
+/* =========================================================
+   PAGE ALLERGÈNES — styles dédiés
+========================================================= */
+.allergen-disclaimer {
+  margin: 18px 0 28px;
+  padding: 16px 18px;
+  border-radius: 14px;
+  background: rgba(200, 16, 46, 0.07);
+  border: 1.5px solid rgba(200, 16, 46, 0.25);
+  color: #6a0510;
+}
+.allergen-disclaimer strong { color: #C8102E; }
+.allergen-disclaimer p { margin: 0; line-height: 1.55; font-size: 14px; }
+
+/* Légende des allergènes */
+.allergen-legend {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+  gap: 8px;
+  margin: 14px 0 28px;
+}
+.allergen-legend-item {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 10px 12px;
+  background: rgba(17, 17, 17, .04);
+  border-radius: 10px;
+  font-size: 13px;
+  border-left: 3px solid var(--legend-color, #C8102E);
+}
+.allergen-legend-icon {
+  font-size: 18px;
+  line-height: 1;
+  flex-shrink: 0;
+}
+.allergen-legend-name {
+  font-weight: 700;
+  color: #111;
+}
+
+/* Catégories */
+.allergen-category {
+  margin-top: 28px;
+}
+.allergen-category-title {
+  font-family: 'Lilita One', sans-serif;
+  font-size: 22px;
+  margin: 0 0 14px;
+  color: #111;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+.allergen-category-title::before {
+  content: '';
+  display: inline-block;
+  width: 6px;
+  height: 22px;
+  background: linear-gradient(180deg, #008C45 0 33%, #F4E9D6 33% 66%, #C8102E 66% 100%);
+  border-radius: 3px;
+}
+
+/* Tableau / liste des plats */
+.allergen-list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+.allergen-dish {
+  display: grid;
+  grid-template-columns: minmax(180px, 1fr) 2fr;
+  gap: 14px;
+  align-items: start;
+  padding: 12px 14px;
+  background: #fff;
+  border: 1px solid rgba(17, 17, 17, .08);
+  border-radius: 10px;
+  transition: background .15s;
+}
+.allergen-dish:hover { background: rgba(17, 17, 17, .02); }
+.allergen-dish-name {
+  font-weight: 700;
+  color: #111;
+  font-size: 14px;
+  line-height: 1.35;
+}
+.allergen-dish-name small {
+  display: block;
+  font-weight: 500;
+  font-size: 11px;
+  color: rgba(17, 17, 17, .5);
+  margin-top: 3px;
+}
+.allergen-tags {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 5px;
+}
+.allergen-tag {
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  padding: 4px 9px;
+  border-radius: 999px;
+  font-size: 11px;
+  font-weight: 700;
+  background: var(--tag-bg, #f0e9d6);
+  color: var(--tag-fg, #6a0510);
+  white-space: nowrap;
+}
+.allergen-tag-none {
+  font-style: italic;
+  color: #008C45;
+  background: rgba(0, 140, 69, .08);
+  font-weight: 600;
+}
+
+/* Couleurs par allergène (cohérence légende ↔ tags) */
+.allergen-tag.is-gluten   { --tag-bg: rgba(245, 179, 53, .18); --tag-fg: #7a4a00; }
+.allergen-tag.is-lait     { --tag-bg: rgba(255, 255, 255, .8); --tag-fg: #555; border: 1px solid rgba(17,17,17,.15); }
+.allergen-tag.is-oeufs    { --tag-bg: rgba(255, 220, 130, .35); --tag-fg: #6a4d00; }
+.allergen-tag.is-fruits   { --tag-bg: rgba(120, 80, 30, .18); --tag-fg: #4a2e00; }
+.allergen-tag.is-sulfites { --tag-bg: rgba(180, 100, 220, .15); --tag-fg: #4a157a; }
+.allergen-tag.is-poissons { --tag-bg: rgba(80, 140, 200, .18); --tag-fg: #0d3a6e; }
+.allergen-tag.is-moutarde { --tag-bg: rgba(240, 200, 50, .25); --tag-fg: #6a5000; }
+.allergen-tag.is-celeri   { --tag-bg: rgba(120, 180, 90, .18); --tag-fg: #2c5510; }
+.allergen-tag.is-soja     { --tag-bg: rgba(200, 160, 80, .18); --tag-fg: #5a4010; }
+.allergen-tag.is-sesame   { --tag-bg: rgba(220, 200, 150, .35); --tag-fg: #6a4a10; }
+.allergen-tag.is-arachides{ --tag-bg: rgba(200, 130, 80, .18); --tag-fg: #6a2a00; }
+.allergen-tag.is-crustaces{ --tag-bg: rgba(255, 140, 100, .18); --tag-fg: #7a2010; }
+.allergen-tag.is-mollusques{ --tag-bg: rgba(150, 180, 200, .25); --tag-fg: #1d4060; }
+.allergen-tag.is-lupin    { --tag-bg: rgba(180, 140, 200, .18); --tag-fg: #4a2a6a; }
+
+/* Variant pour items "demander au comptoir" */
+.allergen-tag.is-ask {
+  background: rgba(200, 16, 46, .1);
+  color: #C8102E;
+  font-style: italic;
+}
+
+@media (max-width: 600px) {
+  .allergen-dish {
+    grid-template-columns: 1fr;
+    gap: 8px;
+  }
+  .allergen-legend {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+/* Pied de page de la légende */
+.allergen-footnote {
+  margin-top: 30px;
+  padding: 14px 16px;
+  background: rgba(17, 17, 17, .04);
+  border-radius: 12px;
+  font-size: 13px;
+  line-height: 1.6;
+  color: rgba(17, 17, 17, .7);
+}
+.allergen-footnote strong { color: #111; }
+</style>
+</head>
+
+<body class="street-body">
+<div class="street-grain" aria-hidden="true"></div>
+
+<header class="street-header" id="street-header">
+  <div class="street-header-inner">
+    <a href="index.html#accueil" class="street-logo" aria-label="Made in Italy Street — Accueil">
+      <span class="street-logo-mark" aria-hidden="true"></span>
+    </a>
+
+    <nav class="street-nav" aria-label="Navigation principale">
+      <a href="index.html#accueil" class="street-nav-link">Accueil</a>
+      <a href="carte.html" class="street-nav-link">Menu</a>
+      <a href="index.html#concept" class="street-nav-link">Concept</a>
+      <a href="index.html#click-collect" class="street-nav-link">Click &amp; Collect</a>
+      <a href="index.html#contact" class="street-nav-link">Contact</a>
+    </nav>
+
+    <div class="street-header-cta">
+      <a href="index.html#click-collect" class="street-btn street-btn-pill is-sm">Click &amp; Collect</a>
+      <a href="index.html#contact" class="street-btn street-btn-pill is-primary is-sm">Commander</a>
+    </div>
+
+    <button class="street-burger" id="street-burger" aria-label="Ouvrir le menu" aria-expanded="false">
+      <span></span><span></span><span></span>
+    </button>
+  </div>
+
+  <div class="street-mobile-menu" id="street-mobile-menu" aria-hidden="true">
+    <nav class="street-mobile-nav" aria-label="Navigation mobile">
+      <a href="index.html#accueil" class="street-mobile-link">Accueil</a>
+      <a href="carte.html" class="street-mobile-link">Menu</a>
+      <a href="index.html#concept" class="street-mobile-link">Concept</a>
+      <a href="index.html#click-collect" class="street-mobile-link">Click &amp; Collect</a>
+      <a href="index.html#contact" class="street-mobile-link">Contact</a>
+    </nav>
+    <img class="street-mobile-menu-mascot" src="assets/img/logomascotte.png" alt="" aria-hidden="true">
+    <div class="street-mobile-cta">
+      <a href="index.html#click-collect" class="street-btn street-btn-ghost street-btn-lg">Click &amp; Collect</a>
+      <a href="index.html#contact" class="street-btn street-btn-primary street-btn-lg">Commander</a>
+    </div>
+  </div>
+</header>
+
+<main class="street-legal-main">
+  <div class="street-container">
+    <header class="street-legal-hero">
+      <span class="street-legal-kicker">Information consommateur</span>
+      <h1 class="street-legal-title">Allergènes</h1>
+      <p class="street-legal-updated">Informations conformes au règlement (UE) n° 1169/2011 (INCO).</p>
+    </header>
+
+    <div class="street-legal-layout">
+      <article class="street-legal-panel">
+
+        <div class="allergen-disclaimer">
+          <p>
+            <strong>⚠ En cas d'allergie sévère :</strong> ces informations sont indicatives.
+            Notre cuisine n'est pas un environnement sans allergènes — des traces sont possibles
+            par contact ou friture commune. <strong>Prévenez systématiquement notre équipe</strong>
+            avant de commander, nous sommes là pour vous renseigner.
+          </p>
+        </div>
+
+        <section class="street-legal-section">
+          <h2>Les 14 allergènes à déclaration obligatoire</h2>
+          <p>
+            Voici la liste officielle des allergènes que nous identifions dans nos plats.
+            Chaque produit est étiqueté avec les allergènes qu'il contient ou peut contenir.
+          </p>
+          <div class="allergen-legend">
+            <div class="allergen-legend-item" style="--legend-color:#F5B335">
+              <span class="allergen-legend-icon">🌾</span>
+              <span class="allergen-legend-name">Gluten</span>
+            </div>
+            <div class="allergen-legend-item" style="--legend-color:#999">
+              <span class="allergen-legend-icon">🥛</span>
+              <span class="allergen-legend-name">Lait</span>
+            </div>
+            <div class="allergen-legend-item" style="--legend-color:#F5C84D">
+              <span class="allergen-legend-icon">🥚</span>
+              <span class="allergen-legend-name">Œufs</span>
+            </div>
+            <div class="allergen-legend-item" style="--legend-color:#78501E">
+              <span class="allergen-legend-icon">🌰</span>
+              <span class="allergen-legend-name">Fruits à coque</span>
+            </div>
+            <div class="allergen-legend-item" style="--legend-color:#B464DC">
+              <span class="allergen-legend-icon">🍷</span>
+              <span class="allergen-legend-name">Sulfites</span>
+            </div>
+            <div class="allergen-legend-item" style="--legend-color:#508CC8">
+              <span class="allergen-legend-icon">🐟</span>
+              <span class="allergen-legend-name">Poissons</span>
+            </div>
+            <div class="allergen-legend-item" style="--legend-color:#F0C832">
+              <span class="allergen-legend-icon">🌭</span>
+              <span class="allergen-legend-name">Moutarde</span>
+            </div>
+            <div class="allergen-legend-item" style="--legend-color:#78B45A">
+              <span class="allergen-legend-icon">🥬</span>
+              <span class="allergen-legend-name">Céleri</span>
+            </div>
+            <div class="allergen-legend-item" style="--legend-color:#C8A050">
+              <span class="allergen-legend-icon">🌱</span>
+              <span class="allergen-legend-name">Soja</span>
+            </div>
+            <div class="allergen-legend-item" style="--legend-color:#DCC896">
+              <span class="allergen-legend-icon">🫘</span>
+              <span class="allergen-legend-name">Sésame</span>
+            </div>
+            <div class="allergen-legend-item" style="--legend-color:#C88250">
+              <span class="allergen-legend-icon">🥜</span>
+              <span class="allergen-legend-name">Arachides</span>
+            </div>
+            <div class="allergen-legend-item" style="--legend-color:#FF8C64">
+              <span class="allergen-legend-icon">🦐</span>
+              <span class="allergen-legend-name">Crustacés</span>
+            </div>
+            <div class="allergen-legend-item" style="--legend-color:#96B4C8">
+              <span class="allergen-legend-icon">🐚</span>
+              <span class="allergen-legend-name">Mollusques</span>
+            </div>
+            <div class="allergen-legend-item" style="--legend-color:#B48CC8">
+              <span class="allergen-legend-icon">🌼</span>
+              <span class="allergen-legend-name">Lupin</span>
+            </div>
+          </div>
+        </section>
+
+        <!-- ========= BURGERS ========= -->
+        <section class="allergen-category">
+          <h2 class="allergen-category-title">Burgers</h2>
+          <ul class="allergen-list">
+
+            <li class="allergen-dish">
+              <div class="allergen-dish-name">Burger Italiano <small>Sauce maison, pancetta, mozzarella, roquette</small></div>
+              <ul class="allergen-tags">
+                <li class="allergen-tag is-gluten">🌾 Gluten</li>
+                <li class="allergen-tag is-lait">🥛 Lait</li>
+                <li class="allergen-tag is-oeufs">🥚 Œufs</li>
+                <li class="allergen-tag is-moutarde">🌭 Moutarde</li>
+                <li class="allergen-tag is-sulfites">🍷 Sulfites</li>
+              </ul>
+            </li>
+
+            <li class="allergen-dish">
+              <div class="allergen-dish-name">Burger Diavolo <small>'Nduja, oignons rouges, cheddar, sauce spicy</small></div>
+              <ul class="allergen-tags">
+                <li class="allergen-tag is-gluten">🌾 Gluten</li>
+                <li class="allergen-tag is-lait">🥛 Lait</li>
+                <li class="allergen-tag is-oeufs">🥚 Œufs</li>
+                <li class="allergen-tag is-sulfites">🍷 Sulfites</li>
+              </ul>
+            </li>
+
+            <li class="allergen-dish">
+              <div class="allergen-dish-name">Burger Parmigiano <small>Crème de parmesan, jambon de Parme, roquette</small></div>
+              <ul class="allergen-tags">
+                <li class="allergen-tag is-gluten">🌾 Gluten</li>
+                <li class="allergen-tag is-lait">🥛 Lait</li>
+                <li class="allergen-tag is-oeufs">🥚 Œufs</li>
+                <li class="allergen-tag is-sulfites">🍷 Sulfites</li>
+              </ul>
+            </li>
+
+            <li class="allergen-dish">
+              <div class="allergen-dish-name">Burger Tartufo <small>Crème de truffe, champignons, fontina, œuf</small></div>
+              <ul class="allergen-tags">
+                <li class="allergen-tag is-gluten">🌾 Gluten</li>
+                <li class="allergen-tag is-lait">🥛 Lait</li>
+                <li class="allergen-tag is-oeufs">🥚 Œufs</li>
+                <li class="allergen-tag is-sulfites">🍷 Sulfites</li>
+              </ul>
+            </li>
+
+            <li class="allergen-dish">
+              <div class="allergen-dish-name">Double Smash Classic <small>Double steak smashé, double cheddar, oignons confits</small></div>
+              <ul class="allergen-tags">
+                <li class="allergen-tag is-gluten">🌾 Gluten</li>
+                <li class="allergen-tag is-lait">🥛 Lait</li>
+                <li class="allergen-tag is-oeufs">🥚 Œufs</li>
+                <li class="allergen-tag is-moutarde">🌭 Moutarde</li>
+                <li class="allergen-tag is-sulfites">🍷 Sulfites</li>
+              </ul>
+            </li>
+
+            <li class="allergen-dish">
+              <div class="allergen-dish-name">Burger Vegetariano <small>Aubergine grillée, mozza, pesto, tomate</small></div>
+              <ul class="allergen-tags">
+                <li class="allergen-tag is-gluten">🌾 Gluten</li>
+                <li class="allergen-tag is-lait">🥛 Lait</li>
+                <li class="allergen-tag is-fruits">🌰 Fruits à coque</li>
+                <li class="allergen-tag is-oeufs">🥚 Œufs</li>
+              </ul>
+            </li>
+
+            <li class="allergen-dish">
+              <div class="allergen-dish-name">Burger Bambino <small>Mini steak, cheddar fondu, sauce douce</small></div>
+              <ul class="allergen-tags">
+                <li class="allergen-tag is-gluten">🌾 Gluten</li>
+                <li class="allergen-tag is-lait">🥛 Lait</li>
+                <li class="allergen-tag is-oeufs">🥚 Œufs</li>
+              </ul>
+            </li>
+
+            <li class="allergen-dish">
+              <div class="allergen-dish-name">Burger del Mese <small>Création surprise du chef, change chaque mois</small></div>
+              <ul class="allergen-tags">
+                <li class="allergen-tag is-ask">Demander au comptoir — composition variable</li>
+              </ul>
+            </li>
+
+          </ul>
+        </section>
+
+        <!-- ========= PANINI ========= -->
+        <section class="allergen-category">
+          <h2 class="allergen-category-title">Panini</h2>
+          <ul class="allergen-list">
+
+            <li class="allergen-dish">
+              <div class="allergen-dish-name">Crousty Pollo Pesto <small>Poulet croustillant, pesto, mozzarella, roquette</small></div>
+              <ul class="allergen-tags">
+                <li class="allergen-tag is-gluten">🌾 Gluten</li>
+                <li class="allergen-tag is-lait">🥛 Lait</li>
+                <li class="allergen-tag is-oeufs">🥚 Œufs</li>
+                <li class="allergen-tag is-fruits">🌰 Fruits à coque</li>
+              </ul>
+            </li>
+
+            <li class="allergen-dish">
+              <div class="allergen-dish-name">Panino Caprese <small>Mozzarella fior di latte, tomate, basilic, huile d'olive</small></div>
+              <ul class="allergen-tags">
+                <li class="allergen-tag is-gluten">🌾 Gluten</li>
+                <li class="allergen-tag is-lait">🥛 Lait</li>
+              </ul>
+            </li>
+
+            <li class="allergen-dish">
+              <div class="allergen-dish-name">Panino Parma <small>Jambon de Parme 18 mois, mozza, roquette, crème balsamique</small></div>
+              <ul class="allergen-tags">
+                <li class="allergen-tag is-gluten">🌾 Gluten</li>
+                <li class="allergen-tag is-lait">🥛 Lait</li>
+                <li class="allergen-tag is-sulfites">🍷 Sulfites</li>
+              </ul>
+            </li>
+
+            <li class="allergen-dish">
+              <div class="allergen-dish-name">Panino Calabrese <small>Salami piquant, provolone, poivrons grillés, roquette</small></div>
+              <ul class="allergen-tags">
+                <li class="allergen-tag is-gluten">🌾 Gluten</li>
+                <li class="allergen-tag is-lait">🥛 Lait</li>
+                <li class="allergen-tag is-sulfites">🍷 Sulfites</li>
+              </ul>
+            </li>
+
+            <li class="allergen-dish">
+              <div class="allergen-dish-name">Panino Veggie <small>Aubergine, courgette, mozza, pesto, tomate confite</small></div>
+              <ul class="allergen-tags">
+                <li class="allergen-tag is-gluten">🌾 Gluten</li>
+                <li class="allergen-tag is-lait">🥛 Lait</li>
+                <li class="allergen-tag is-fruits">🌰 Fruits à coque</li>
+              </ul>
+            </li>
+
+          </ul>
+        </section>
+
+        <!-- ========= LOADED FRIES ========= -->
+        <section class="allergen-category">
+          <h2 class="allergen-category-title">Loaded Fries &amp; Frites</h2>
+          <ul class="allergen-list">
+
+            <li class="allergen-dish">
+              <div class="allergen-dish-name">Frites Maison <small>Pomme de terre, sel de mer, herbes</small></div>
+              <ul class="allergen-tags">
+                <li class="allergen-tag is-gluten">🌾 Gluten <sub>(traces, friture commune)</sub></li>
+              </ul>
+            </li>
+
+            <li class="allergen-dish">
+              <div class="allergen-dish-name">Loaded Parmigiano <small>Frites, crème parmesan, herbes, crispy onions</small></div>
+              <ul class="allergen-tags">
+                <li class="allergen-tag is-gluten">🌾 Gluten</li>
+                <li class="allergen-tag is-lait">🥛 Lait</li>
+              </ul>
+            </li>
+
+            <li class="allergen-dish">
+              <div class="allergen-dish-name">Loaded Tartufo <small>Frites, crème de truffe, parmesan, persil</small></div>
+              <ul class="allergen-tags">
+                <li class="allergen-tag is-gluten">🌾 Gluten <sub>(traces)</sub></li>
+                <li class="allergen-tag is-lait">🥛 Lait</li>
+              </ul>
+            </li>
+
+            <li class="allergen-dish">
+              <div class="allergen-dish-name">Loaded Diavola <small>Frites, sauce spicy, 'nduja, cheddar, oignons rouges</small></div>
+              <ul class="allergen-tags">
+                <li class="allergen-tag is-gluten">🌾 Gluten <sub>(traces)</sub></li>
+                <li class="allergen-tag is-lait">🥛 Lait</li>
+                <li class="allergen-tag is-sulfites">🍷 Sulfites</li>
+              </ul>
+            </li>
+
+          </ul>
+        </section>
+
+        <!-- ========= COMBOS ========= -->
+        <section class="allergen-category">
+          <h2 class="allergen-category-title">Combos &amp; Menus</h2>
+          <p style="font-size:14px; color:rgba(17,17,17,.6); margin:0 0 10px;">
+            Les combos combinent plusieurs plats. Consulte la fiche de chaque élément ci-dessus.
+          </p>
+          <ul class="allergen-list">
+            <li class="allergen-dish">
+              <div class="allergen-dish-name">Combo Classico <small>Burger au choix + frites maison + boisson</small></div>
+              <ul class="allergen-tags">
+                <li class="allergen-tag is-ask">Voir le burger choisi + frites + boisson</li>
+              </ul>
+            </li>
+            <li class="allergen-dish">
+              <div class="allergen-dish-name">Combo Panino <small>Panino au choix + frites maison + boisson</small></div>
+              <ul class="allergen-tags">
+                <li class="allergen-tag is-ask">Voir le panino choisi + frites + boisson</li>
+              </ul>
+            </li>
+            <li class="allergen-dish">
+              <div class="allergen-dish-name">Menu Studente <small>Panino du jour + frites + soft</small></div>
+              <ul class="allergen-tags">
+                <li class="allergen-tag is-ask">Voir le panino choisi + frites + boisson</li>
+              </ul>
+            </li>
+            <li class="allergen-dish">
+              <div class="allergen-dish-name">Menu Bambino <small>Mini burger ou panino + frites + boisson + surprise</small></div>
+              <ul class="allergen-tags">
+                <li class="allergen-tag is-ask">Voir l'article choisi + frites + boisson</li>
+              </ul>
+            </li>
+          </ul>
+        </section>
+
+        <!-- ========= ANTIPASTI ========= -->
+        <section class="allergen-category">
+          <h2 class="allergen-category-title">Antipasti &amp; Sides</h2>
+          <ul class="allergen-list">
+
+            <li class="allergen-dish">
+              <div class="allergen-dish-name">Arancini al ragù <small>Boules de riz au ragù, panées et frites</small></div>
+              <ul class="allergen-tags">
+                <li class="allergen-tag is-gluten">🌾 Gluten</li>
+                <li class="allergen-tag is-lait">🥛 Lait</li>
+                <li class="allergen-tag is-oeufs">🥚 Œufs</li>
+                <li class="allergen-tag is-celeri">🥬 Céleri</li>
+              </ul>
+            </li>
+
+            <li class="allergen-dish">
+              <div class="allergen-dish-name">Mozzarella Sticks <small>Bâtonnets de mozzarella panés, sauce marinara</small></div>
+              <ul class="allergen-tags">
+                <li class="allergen-tag is-gluten">🌾 Gluten</li>
+                <li class="allergen-tag is-lait">🥛 Lait</li>
+                <li class="allergen-tag is-oeufs">🥚 Œufs</li>
+              </ul>
+            </li>
+
+            <li class="allergen-dish">
+              <div class="allergen-dish-name">Insalata Cesare <small>Salade César : poulet croustillant, parmesan, croûtons</small></div>
+              <ul class="allergen-tags">
+                <li class="allergen-tag is-gluten">🌾 Gluten</li>
+                <li class="allergen-tag is-lait">🥛 Lait</li>
+                <li class="allergen-tag is-oeufs">🥚 Œufs</li>
+                <li class="allergen-tag is-poissons">🐟 Poissons <sub>(anchois)</sub></li>
+                <li class="allergen-tag is-moutarde">🌭 Moutarde</li>
+              </ul>
+            </li>
+
+            <li class="allergen-dish">
+              <div class="allergen-dish-name">Bruschetta <small>Pain grillé, tomates, basilic, ail, huile d'olive</small></div>
+              <ul class="allergen-tags">
+                <li class="allergen-tag is-gluten">🌾 Gluten</li>
+              </ul>
+            </li>
+
+          </ul>
+        </section>
+
+        <!-- ========= DOLCI ========= -->
+        <section class="allergen-category">
+          <h2 class="allergen-category-title">Dolci</h2>
+          <ul class="allergen-list">
+
+            <li class="allergen-dish">
+              <div class="allergen-dish-name">Tiramisu Maison <small>Mascarpone, café, cacao, biscuits</small></div>
+              <ul class="allergen-tags">
+                <li class="allergen-tag is-gluten">🌾 Gluten</li>
+                <li class="allergen-tag is-lait">🥛 Lait</li>
+                <li class="allergen-tag is-oeufs">🥚 Œufs</li>
+              </ul>
+            </li>
+
+            <li class="allergen-dish">
+              <div class="allergen-dish-name">Cannoli Siciliani <small>2 cannoli garnis de ricotta sucrée, pistache &amp; chocolat</small></div>
+              <ul class="allergen-tags">
+                <li class="allergen-tag is-gluten">🌾 Gluten</li>
+                <li class="allergen-tag is-lait">🥛 Lait</li>
+                <li class="allergen-tag is-oeufs">🥚 Œufs</li>
+                <li class="allergen-tag is-fruits">🌰 Fruits à coque <sub>(pistache)</sub></li>
+                <li class="allergen-tag is-soja">🌱 Soja <sub>(chocolat)</sub></li>
+              </ul>
+            </li>
+
+            <li class="allergen-dish">
+              <div class="allergen-dish-name">Gelato <small>2 boules au choix : vanille, chocolat, pistache, fragola</small></div>
+              <ul class="allergen-tags">
+                <li class="allergen-tag is-lait">🥛 Lait</li>
+                <li class="allergen-tag is-oeufs">🥚 Œufs</li>
+                <li class="allergen-tag is-fruits">🌰 Fruits à coque <sub>(parfum pistache)</sub></li>
+                <li class="allergen-tag is-soja">🌱 Soja <sub>(parfum chocolat)</sub></li>
+              </ul>
+            </li>
+
+          </ul>
+        </section>
+
+        <!-- ========= BIBITE ========= -->
+        <section class="allergen-category">
+          <h2 class="allergen-category-title">Bibite</h2>
+          <ul class="allergen-list">
+
+            <li class="allergen-dish">
+              <div class="allergen-dish-name">Sodas <small>Coca-Cola, Coca Zero, Sprite, Fanta, Limonata / Aranciata</small></div>
+              <ul class="allergen-tags">
+                <li class="allergen-tag-none allergen-tag">Aucun allergène déclaré</li>
+              </ul>
+            </li>
+
+            <li class="allergen-dish">
+              <div class="allergen-dish-name">Acqua <small>Eau plate ou pétillante</small></div>
+              <ul class="allergen-tags">
+                <li class="allergen-tag-none allergen-tag">Aucun allergène déclaré</li>
+              </ul>
+            </li>
+
+            <li class="allergen-dish">
+              <div class="allergen-dish-name">Birra Italiana <small>Peroni ou Moretti, 33 cl</small></div>
+              <ul class="allergen-tags">
+                <li class="allergen-tag is-gluten">🌾 Gluten <sub>(orge)</sub></li>
+                <li class="allergen-tag is-sulfites">🍷 Sulfites</li>
+              </ul>
+            </li>
+
+          </ul>
+        </section>
+
+        <div class="allergen-footnote">
+          <strong>Note importante.</strong>
+          Les informations ci-dessus reflètent nos recettes habituelles. Les fournisseurs peuvent
+          modifier la composition de leurs ingrédients sans préavis. Les <strong>traces</strong> par
+          contact (plan de travail, friture commune, ustensiles) ne sont pas garanties exclues.
+          En cas de doute ou d'allergie, <strong>parlez-en au personnel avant de commander</strong>.
+          Notre équipe peut adapter ou exclure certains éléments quand c'est possible.
+          <br><br>
+          Dernière mise à jour : 20 mai 2026.
+        </div>
+
+      </article>
+    </div>
+  </div>
+</main>
+
+<footer class="street-footer">
+  <div class="street-container">
+    <div class="street-footer-bar" style="border-top: 1px solid rgba(244,233,214,.1); padding-top:20px; margin-top:20px;">
+      <p>© <span id="street-year">2026</span> Made in Italy Street — Tous droits réservés</p>
+      <div class="footer-mentions">
+        <a href="index.html#accueil">Accueil</a>
+        <a href="carte.html">Menu</a>
+        <a href="mentions-legales.html">Mentions légales</a>
+        <a href="politique-confidentialite.html">Confidentialité</a>
+        <a href="cookies.html">Cookies</a>
+      </div>
+    </div>
+  </div>
+</footer>
+
+<script>
+  // Année dynamique
+  document.getElementById('street-year').textContent = new Date().getFullYear();
+  // Burger menu mobile
+  var burger = document.getElementById('street-burger');
+  var menu = document.getElementById('street-mobile-menu');
+  if (burger && menu) {
+    burger.addEventListener('click', function() {
+      var open = burger.getAttribute('aria-expanded') === 'true';
+      burger.setAttribute('aria-expanded', !open);
+      menu.setAttribute('aria-hidden', open);
+      menu.classList.toggle('is-open', !open);
+    });
+  }
+</script>
+
+</body>
+</html>
