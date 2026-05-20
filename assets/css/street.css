@@ -3041,49 +3041,10 @@ button { font: inherit; background: none; border: 0; cursor: pointer; color: inh
   100% { opacity: 0;    transform: translate3d(-10px, -450px, 0)      scale(3.5) rotate(18deg); }
 }
 
-/* --- Condensation sur le pain --- */
-.hero-condensation {
-  position: absolute;
-  left: 54%;
-  top: 13%;
-  width: 27%;
-  height: 14%;
-  pointer-events: none;
-  z-index: 2;
-}
-.drop {
-  position: absolute;
-  border-radius: 50% 50% 48% 52% / 38% 38% 62% 62%;
-  background: linear-gradient(160deg, rgba(255,255,255,.85) 0%, rgba(200,220,255,.5) 100%);
-  box-shadow:
-    inset 0 1px 2px rgba(255,255,255,.7),
-    0 2px 4px rgba(0,0,0,.25);
-  filter: blur(.3px);
-  will-change: transform, opacity;
-  animation: drop-form var(--dd) ease-in-out infinite;
-  animation-delay: var(--delay);
-}
-.drop.d1 { left: 6%;  top: 18%; width: 3px;  height: 5px;  --dd: 8s;   --delay: 0s;   }
-.drop.d2 { left: 20%; top: 6%;  width: 5px;  height: 8px;  --dd: 10s;  --delay: 1.6s; }
-.drop.d3 { left: 36%; top: 22%; width: 2px;  height: 4px;  --dd: 6.8s; --delay: .8s;  }
-.drop.d4 { left: 50%; top: 8%;  width: 4px;  height: 7px;  --dd: 11s;  --delay: 3.0s; }
-.drop.d5 { left: 63%; top: 28%; width: 3px;  height: 5px;  --dd: 9.2s; --delay: 1.2s; }
-.drop.d6 { left: 15%; top: 48%; width: 2px;  height: 4px;  --dd: 8.5s; --delay: 4.2s; }
-.drop.d7 { left: 78%; top: 14%; width: 5px;  height: 8px;  --dd: 9.8s; --delay: 2.1s; }
-
-@keyframes drop-form {
-  0%   { opacity: 0;   transform: translateY(-3px) scaleY(.4) scaleX(1.2); }
-  12%  { opacity: .95; transform: translateY(0)    scaleY(1)  scaleX(1); }
-  68%  { opacity: .8;  transform: translateY(0)    scaleY(1)  scaleX(1); }
-  88%  { opacity: .4;  transform: translateY(9px)  scaleY(1.7) scaleX(.65); }
-  100% { opacity: 0;   transform: translateY(13px) scaleY(2.2) scaleX(.5); }
-}
-
 /* Coupe toutes les animations hero si le user demande "réduire les animations" */
 @media (prefers-reduced-motion: reduce) {
   .hero-heat,
-  .hero-smoke,
-  .hero-condensation {
+  .hero-smoke {
     display: none !important;
   }
   .smoke-blob {
