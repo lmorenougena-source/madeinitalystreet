@@ -3,9 +3,22 @@
 <head>
 <meta charset="utf-8" />
 <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover" />
-<title data-i18n-title="meta.index.title">Made in Italy Street — Italian Street Food &amp; Smash Burgers à Lourdes</title>
-<meta name="description" data-i18n-content="meta.index.desc" content="Made in Italy Street — Le spot street food italien à Lourdes. Smash burgers juteux, panini généreux, loaded fries, recettes maison. Click & Collect et livraison." />
+<title data-i18n-title="meta.index.title">Burger Lourdes & Street Food Italien · Made in Italy Street — Smash Burgers, Panini, Click & Collect</title>
+<meta name="description" data-i18n-content="meta.index.desc" content="Le meilleur burger à Lourdes ! Smash burgers juteux, panini généreux, loaded fries — fatto con amore. 102 rue de la Grotte, ouvert midi & soir. Click & Collect en 2 clics, livraison Uber Eats & Deliveroo." />
 <meta name="theme-color" content="#0E0E0F" />
+<link rel="canonical" href="https://madeinitalystreet.fr/" />
+
+<!-- Hreflang pour les 6 langues (Google) -->
+<link rel="alternate" hreflang="fr" href="https://madeinitalystreet.fr/" />
+<link rel="alternate" hreflang="en" href="https://madeinitalystreet.fr/?lang=en" />
+<link rel="alternate" hreflang="es" href="https://madeinitalystreet.fr/?lang=es" />
+<link rel="alternate" hreflang="it" href="https://madeinitalystreet.fr/?lang=it" />
+<link rel="alternate" hreflang="pt" href="https://madeinitalystreet.fr/?lang=pt" />
+<link rel="alternate" hreflang="de" href="https://madeinitalystreet.fr/?lang=de" />
+<link rel="alternate" hreflang="x-default" href="https://madeinitalystreet.fr/" />
+
+<!-- Preload critique : photo hero pour améliorer le LCP (Largest Contentful Paint) -->
+<link rel="preload" as="image" href="assets/img/hero-burger.png" fetchpriority="high" />
 
 <!-- Sécurité : durcissement headers (équivalents meta) -->
 <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'sha256-acIhgkqjDWmtTuJklt/4NgdOMsy7EIiB/W+0cnSXIYI=' https://cdn.jsdelivr.net https://cdnjs.cloudflare.com; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src 'self' https://fonts.gstatic.com; img-src 'self' data: blob:; connect-src 'self'; frame-ancestors 'none'; base-uri 'self'; form-action 'self'; object-src 'none'; upgrade-insecure-requests" />
@@ -13,40 +26,101 @@
 <meta name="referrer" content="strict-origin-when-cross-origin" />
 <meta http-equiv="Permissions-Policy" content="geolocation=(), camera=(), microphone=(), payment=(), usb=()" />
 
-<!-- Open Graph -->
-<meta property="og:title" content="Made in Italy Street — Italian Street Food & Smash Burgers" />
-<meta property="og:description" content="L'Italie descend dans la rue. Smash burgers, panini, loaded fries — fatto con amore à Lourdes." />
+<!-- Open Graph (partage social : WhatsApp, Facebook, LinkedIn…) -->
+<meta property="og:title" content="Burger Lourdes & Street Food Italien — Made in Italy Street" />
+<meta property="og:description" content="Smash burgers juteux, panini généreux, loaded fries. Click & Collect en 2 clics. 102 rue de la Grotte, Lourdes." />
 <meta property="og:type" content="restaurant" />
 <meta property="og:locale" content="fr_FR" />
+<meta property="og:locale:alternate" content="en_US" />
+<meta property="og:locale:alternate" content="es_ES" />
+<meta property="og:locale:alternate" content="it_IT" />
+<meta property="og:locale:alternate" content="pt_PT" />
+<meta property="og:locale:alternate" content="de_DE" />
 <meta property="og:site_name" content="Made in Italy Street" />
-<meta name="twitter:card" content="summary_large_image" />
+<meta property="og:url" content="https://madeinitalystreet.fr/" />
+<meta property="og:image" content="https://madeinitalystreet.fr/assets/img/hero-burger.png" />
+<meta property="og:image:width" content="1200" />
+<meta property="og:image:height" content="630" />
+<meta property="og:image:alt" content="Smash burger Made in Italy Street — pancetta, mozzarella, roquette" />
 
-<!-- Schema.org -->
+<!-- Twitter Card (X.com / Twitter) -->
+<meta name="twitter:card" content="summary_large_image" />
+<meta name="twitter:title" content="Burger Lourdes & Street Food Italien" />
+<meta name="twitter:description" content="Smash burgers, panini, loaded fries — Click & Collect à Lourdes." />
+<meta name="twitter:image" content="https://madeinitalystreet.fr/assets/img/hero-burger.png" />
+
+<!-- Schema.org : LocalBusiness enrichi pour rich results Google (KnowledgePanel + Maps + résultats locaux) -->
 <script type="application/ld+json">
 {
   "@context": "https://schema.org",
   "@type": "FastFoodRestaurant",
+  "@id": "https://madeinitalystreet.fr/#restaurant",
   "name": "Made in Italy Street",
   "alternateName": "Made in Italy Street — Italian Street Food & Smash Burgers",
-  "servesCuisine": ["Italian Street Food", "Smash Burgers", "Panini"],
-  "priceRange": "€",
-  "image": "assets/img/hero-burger.png",
+  "description": "Italian street food à Lourdes : smash burgers juteux, panini généreux, loaded fries, antipasti et dolci. Recettes maison, Click & Collect et livraison.",
+  "url": "https://madeinitalystreet.fr/",
+  "telephone": "+33695286059",
+  "servesCuisine": ["Italian Street Food", "Smash Burgers", "Panini", "Italian"],
+  "priceRange": "€€",
+  "currenciesAccepted": "EUR",
+  "paymentAccepted": "Cash, Credit Card, Apple Pay, Google Pay",
+  "image": [
+    "https://madeinitalystreet.fr/assets/img/hero-burger.png",
+    "https://madeinitalystreet.fr/assets/img/logobadge.png"
+  ],
+  "logo": "https://madeinitalystreet.fr/assets/img/logobadge.png",
   "address": {
     "@type": "PostalAddress",
+    "streetAddress": "102 rue de la Grotte",
     "addressLocality": "Lourdes",
     "postalCode": "65100",
+    "addressRegion": "Hautes-Pyrénées",
     "addressCountry": "FR"
   },
+  "geo": {
+    "@type": "GeoCoordinates",
+    "latitude": 43.0942,
+    "longitude": -0.0524
+  },
+  "openingHoursSpecification": [
+    {
+      "@type": "OpeningHoursSpecification",
+      "dayOfWeek": ["Monday","Tuesday","Wednesday","Thursday","Friday","Saturday","Sunday"],
+      "opens": "11:30",
+      "closes": "14:30"
+    },
+    {
+      "@type": "OpeningHoursSpecification",
+      "dayOfWeek": ["Monday","Tuesday","Wednesday","Thursday","Friday","Saturday","Sunday"],
+      "opens": "18:30",
+      "closes": "22:30"
+    }
+  ],
   "hasMenu": {
     "@type": "Menu",
+    "name": "Carte Made in Italy Street",
+    "url": "https://madeinitalystreet.fr/carte.html",
     "hasMenuSection": [
       {"@type": "MenuSection", "name": "Smash Burgers"},
       {"@type": "MenuSection", "name": "Panini"},
       {"@type": "MenuSection", "name": "Loaded Fries"},
-      {"@type": "MenuSection", "name": "Combos"}
+      {"@type": "MenuSection", "name": "Combos"},
+      {"@type": "MenuSection", "name": "Antipasti"},
+      {"@type": "MenuSection", "name": "Dolci"},
+      {"@type": "MenuSection", "name": "Boissons"}
     ]
   },
-  "acceptsReservations": false
+  "acceptsReservations": false,
+  "potentialAction": {
+    "@type": "OrderAction",
+    "target": {
+      "@type": "EntryPoint",
+      "urlTemplate": "https://madeinitalystreet.fr/carte.html",
+      "inLanguage": "fr-FR",
+      "actionPlatform": ["http://schema.org/DesktopWebPlatform", "http://schema.org/MobileWebPlatform"]
+    },
+    "deliveryMethod": ["http://purl.org/goodrelations/v1#DeliveryModePickUp"]
+  }
 }
 </script>
 
@@ -483,7 +557,7 @@
       <article class="street-product">
         <div class="street-product-media">
           <span class="street-product-badge badge-best" data-i18n="badge.mama">Recette de la mama</span>
-          <div class="street-product-illu is-photo" aria-hidden="true"><img src="assets/img/burgers/italiano.png" alt="" loading="lazy"></div>
+          <div class="street-product-illu is-photo"><img src="assets/img/burgers/italiano.png" alt="Burger Italiano — smash burger avec pancetta, mozzarella fior di latte et roquette · Made in Italy Street Lourdes" loading="lazy" width="600" height="600"></div>
         </div>
         <div class="street-product-body">
           <h3 class="street-product-title">Burger Italiano</h3>
@@ -502,7 +576,7 @@
       <article class="street-product">
         <div class="street-product-media">
           <span class="street-product-badge badge-hot" data-i18n="badge.spicy">🌶 Spicy</span>
-          <div class="street-product-illu is-photo" aria-hidden="true"><img src="assets/img/burgers/diavolo.png" alt="" loading="lazy"></div>
+          <div class="street-product-illu is-photo"><img src="assets/img/burgers/diavolo.png" alt="Burger Diavolo — smash burger épicé à la 'nduja calabraise, oignons rouges, cheddar fondu · Made in Italy Street Lourdes" loading="lazy" width="600" height="600"></div>
         </div>
         <div class="street-product-body">
           <h3 class="street-product-title">Burger Diavolo</h3>
@@ -521,7 +595,7 @@
       <article class="street-product">
         <div class="street-product-media">
           <span class="street-product-badge badge-fresh" data-i18n="badge.hype">Hype</span>
-          <div class="street-product-illu is-photo" aria-hidden="true"><img src="assets/img/panini/crousty-pollo.png" alt="" loading="lazy"></div>
+          <div class="street-product-illu is-photo"><img src="assets/img/panini/crousty-pollo.png" alt="Crousty Pollo Pesto — panini italien au poulet croustillant, pesto genovese, mozzarella et roquette · Made in Italy Street Lourdes" loading="lazy" width="600" height="600"></div>
         </div>
         <div class="street-product-body">
           <h3 class="street-product-title">Crousty Pollo Pesto</h3>
@@ -540,7 +614,7 @@
       <article class="street-product">
         <div class="street-product-media">
           <span class="street-product-badge badge-new" data-i18n="badge.new">Nouveauté</span>
-          <div class="street-product-illu is-photo" aria-hidden="true"><img src="assets/img/fries/parmigiano.png" alt="" loading="lazy"></div>
+          <div class="street-product-illu is-photo"><img src="assets/img/fries/parmigiano.png" alt="Loaded Fries Parmigiano — frites maison nappées de crème de parmesan, herbes fraîches, crispy onions · Made in Italy Street Lourdes" loading="lazy" width="600" height="600"></div>
         </div>
         <div class="street-product-body">
           <h3 class="street-product-title">Loaded Fries</h3>
@@ -842,9 +916,8 @@
           <div class="info-block">
             <div class="info-label" data-i18n="ct.address">Adresse</div>
             <div class="info-value">
-              <!-- TODO: remplacer par l'adresse réelle du point de vente Street -->
-              <span data-i18n="ct.addressVal">Adresse à confirmer</span><br>
-              65100 Lourdes
+              <span data-i18n="ct.addressVal">102 rue de la Grotte</span><br>
+              65100 Lourdes · France
             </div>
           </div>
 
@@ -869,7 +942,7 @@
             <svg width="18" height="18"><use href="#i-phone"/></svg>
             <span data-i18n="ct.call">Appeler</span>
           </a>
-          <a href="https://www.google.com/maps/search/?api=1&query=Lourdes+street+food" target="_blank" rel="noopener noreferrer" class="street-btn street-btn-outline-light is-contact-white">
+          <a href="https://www.google.com/maps/search/?api=1&query=Made+in+Italy+Street+102+rue+de+la+Grotte+Lourdes" target="_blank" rel="noopener noreferrer" class="street-btn street-btn-outline-light is-contact-white">
             <svg width="18" height="18"><use href="#i-pin"/></svg>
             <span data-i18n="ct.route">Itinéraire</span>
           </a>
