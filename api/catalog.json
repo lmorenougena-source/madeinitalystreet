@@ -1,0 +1,247 @@
+[
+  {
+    "id": "burger-italiano",
+    "name": "Burger Italiano",
+    "desc": "Sauce maison, pancetta, mozzarella, roquette",
+    "price": 13.9,
+    "category": "burgers"
+  },
+  {
+    "id": "burger-diavolo",
+    "name": "Burger Diavolo",
+    "desc": "'Nduja, oignons rouges, cheddar, sauce spicy",
+    "price": 13.9,
+    "category": "burgers"
+  },
+  {
+    "id": "burger-parmigiano",
+    "name": "Burger Parmigiano",
+    "desc": "Crème de parmesan, jambon de Parme, roquette",
+    "price": 14.9,
+    "category": "burgers"
+  },
+  {
+    "id": "burger-tartufo",
+    "name": "Burger Tartufo",
+    "desc": "Crème de truffe, champignons, fontina, oeuf",
+    "price": 16.9,
+    "category": "burgers"
+  },
+  {
+    "id": "double-smash-classic",
+    "name": "Double Smash Classic",
+    "desc": "Double steak smashé, double cheddar, oignons confits",
+    "price": 15.9,
+    "category": "burgers"
+  },
+  {
+    "id": "burger-vegetariano",
+    "name": "Burger Vegetariano",
+    "desc": "Galette aubergine grillée, mozza, pesto, tomate",
+    "price": 12.9,
+    "category": "burgers"
+  },
+  {
+    "id": "burger-bambino",
+    "name": "Burger Bambino",
+    "desc": "Mini steak, cheddar fondu, sauce douce (pour les enfants)",
+    "price": 8.9,
+    "category": "burgers"
+  },
+  {
+    "id": "burger-del-mese",
+    "name": "Burger del Mese",
+    "desc": "La création surprise du chef, changeant chaque mois",
+    "price": 14.9,
+    "category": "burgers"
+  },
+  {
+    "id": "crousty-pollo-pesto",
+    "name": "Crousty Pollo Pesto",
+    "desc": "Poulet croustillant, pesto genovese, mozzarella, roquette",
+    "price": 8.9,
+    "category": "panini"
+  },
+  {
+    "id": "panino-caprese",
+    "name": "Panino Caprese",
+    "desc": "Mozzarella fior di latte, tomate, basilic, huile d'olive",
+    "price": 7.9,
+    "category": "panini"
+  },
+  {
+    "id": "panino-parma",
+    "name": "Panino Parma",
+    "desc": "Jambon de Parme 18 mois, mozza, roquette, crème balsamique",
+    "price": 9.9,
+    "category": "panini"
+  },
+  {
+    "id": "panino-calabrese",
+    "name": "Panino Calabrese",
+    "desc": "Salami piquant, provolone, poivrons grillés, roquette",
+    "price": 9.9,
+    "category": "panini"
+  },
+  {
+    "id": "panino-veggie",
+    "name": "Panino Veggie",
+    "desc": "Aubergine grillée, courgette, mozza, pesto, tomate confite",
+    "price": 7.9,
+    "category": "panini"
+  },
+  {
+    "id": "loaded-parmigiano",
+    "name": "Loaded Parmigiano",
+    "desc": "Frites maison, crème parmesan, herbes, crispy onions",
+    "price": 6.9,
+    "category": "fries"
+  },
+  {
+    "id": "loaded-tartufo",
+    "name": "Loaded Tartufo",
+    "desc": "Frites, crème de truffe, parmesan râpé, persil",
+    "price": 8.9,
+    "category": "fries"
+  },
+  {
+    "id": "loaded-diavola",
+    "name": "Loaded Diavola",
+    "desc": "Frites, sauce spicy, 'nduja, cheddar, oignons rouges",
+    "price": 6.9,
+    "category": "fries"
+  },
+  {
+    "id": "frites-maison",
+    "name": "Frites Maison",
+    "desc": "La version simple : pomme de terre, sel de mer, herbes",
+    "price": 4.5,
+    "category": "fries"
+  },
+  {
+    "id": "combo-classico",
+    "name": "Combo Classico",
+    "desc": "Burger au choix + frites maison + boisson",
+    "price": 15.9,
+    "category": "combos"
+  },
+  {
+    "id": "combo-classico-loaded",
+    "name": "Combo Classico · Loaded Frites",
+    "desc": "Burger au choix + loaded frites + boisson",
+    "price": 18.8,
+    "category": "combos"
+  },
+  {
+    "id": "combo-panino",
+    "name": "Combo Panino",
+    "desc": "Panino au choix + frites maison + boisson",
+    "price": 12.9,
+    "category": "combos"
+  },
+  {
+    "id": "combo-panino-loaded",
+    "name": "Combo Panino · Loaded Frites",
+    "desc": "Panino au choix + loaded frites + boisson",
+    "price": 15.8,
+    "category": "combos"
+  },
+  {
+    "id": "menu-studente",
+    "name": "Menu Studente",
+    "desc": "Panino du jour + frites + soft (sur présentation carte étudiante)",
+    "price": 9.9,
+    "category": "combos"
+  },
+  {
+    "id": "menu-studente-loaded",
+    "name": "Menu Studente · Loaded Frites",
+    "desc": "Panino au choix + loaded frites + soft (sur présentation carte étudiante)",
+    "price": 12.8,
+    "category": "combos"
+  },
+  {
+    "id": "menu-bambino",
+    "name": "Menu Bambino",
+    "desc": "Mini burger ou panino + frites + boisson + surprise",
+    "price": 7.9,
+    "category": "combos"
+  },
+  {
+    "id": "menu-bambino-loaded",
+    "name": "Menu Bambino · Loaded Frites",
+    "desc": "Mini burger ou panino + loaded frites + boisson + surprise",
+    "price": 10.8,
+    "category": "combos"
+  },
+  {
+    "id": "arancini-al-ragu",
+    "name": "Arancini al ragù",
+    "desc": "3 boules de riz au ragù, panées et frites — spécialité sicilienne",
+    "price": 6.9,
+    "category": "antipasti"
+  },
+  {
+    "id": "mozzarella-sticks",
+    "name": "Mozzarella Sticks",
+    "desc": "Bâtonnets de mozzarella panés, sauce marinara maison",
+    "price": 5.9,
+    "category": "antipasti"
+  },
+  {
+    "id": "insalata-cesare",
+    "name": "Insalata Cesare",
+    "desc": "Salade César revisitée : poulet croustillant, parmesan, croûtons",
+    "price": 8.9,
+    "category": "antipasti"
+  },
+  {
+    "id": "bruschetta",
+    "name": "Bruschetta",
+    "desc": "Pain grillé, tomates fraîches, basilic, ail, huile d'olive",
+    "price": 5.9,
+    "category": "antipasti"
+  },
+  {
+    "id": "tiramisu-maison",
+    "name": "Tiramisu Maison",
+    "desc": "Le classique, version street food : mascarpone, café, cacao",
+    "price": 5.9,
+    "category": "dolci"
+  },
+  {
+    "id": "cannoli-siciliani",
+    "name": "Cannoli Siciliani",
+    "desc": "2 cannoli garnis de ricotta sucrée, pistache &amp; chocolat",
+    "price": 5.9,
+    "category": "dolci"
+  },
+  {
+    "id": "gelato",
+    "name": "Gelato",
+    "desc": "2 boules au choix : vanille, chocolat, pistache, fragola",
+    "price": 4.5,
+    "category": "dolci"
+  },
+  {
+    "id": "sodas",
+    "name": "Sodas",
+    "desc": "Coca-Cola, Coca Zero, Sprite, Fanta, Limonata/Aranciata de la mama — 33 cl",
+    "price": 3.0,
+    "category": "bibite"
+  },
+  {
+    "id": "acqua",
+    "name": "Acqua",
+    "desc": "Eau plate ou pétillante — 50 cl",
+    "price": 2.5,
+    "category": "bibite"
+  },
+  {
+    "id": "birra-italiana",
+    "name": "Birra Italiana",
+    "desc": "Peroni ou Moretti — 33 cl, fraîche",
+    "price": 4.9,
+    "category": "bibite"
+  }
+]
