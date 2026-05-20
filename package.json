@@ -9,7 +9,7 @@
     "serve": "python3 -m http.server 3456"
   },
   "engines": {
-    "node": ">=18"
+    "node": "20.x"
   },
   "license": "UNLICENSED"
 }
