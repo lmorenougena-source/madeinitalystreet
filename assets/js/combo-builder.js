@@ -25,16 +25,16 @@
       return window.MISI18n.t(key, vars);
     }
     var fr = {
-      'cm.title':       'Composer ton {name}',
-      'cm.labelBurger': 'Ton burger',
-      'cm.labelPanino': 'Ton panino',
-      'cm.labelChoice': 'Burger ou panino',
-      'cm.frites':      'Tes frites',
-      'cm.fritesBase':  'Frites maison (incluses)',
-      'cm.fritesLoaded':'Loaded Frites · +{price}',
-      'cm.total':       'Total',
-      'cm.cancel':      'Annuler',
-      'cm.confirm':     'Ajouter au panier'
+      'combo.title':       'Composer ton {name}',
+      'combo.labelBurger': 'Ton burger',
+      'combo.labelPanino': 'Ton panino',
+      'combo.labelChoice': 'Burger ou panino',
+      'combo.frites':      'Tes frites',
+      'combo.fritesBase':  'Frites maison (incluses)',
+      'combo.fritesLoaded':'Loaded Frites · +{price}',
+      'combo.total':       'Total',
+      'combo.cancel':      'Annuler',
+      'combo.confirm':     'Ajouter au panier'
     };
     var raw = fr[key] || key;
     if (vars) {
@@ -77,28 +77,28 @@
       loadedId:    'combo-classico-loaded',
       loadedPrice: 18.8,
       items:       BURGERS,
-      labelKey:    'cm.labelBurger'
+      labelKey:    'combo.labelBurger'
     },
     'combo-panino': {
       basePrice:   12.9,
       loadedId:    'combo-panino-loaded',
       loadedPrice: 15.8,
       items:       PANINI,
-      labelKey:    'cm.labelPanino'
+      labelKey:    'combo.labelPanino'
     },
     'menu-studente': {
       basePrice:   9.9,
       loadedId:    'menu-studente-loaded',
       loadedPrice: 12.8,
       items:       PANINI,
-      labelKey:    'cm.labelPanino'
+      labelKey:    'combo.labelPanino'
     },
     'menu-bambino': {
       basePrice:   7.9,
       loadedId:    'menu-bambino-loaded',
       loadedPrice: 10.8,
       items:       BAMBINO_ITEMS,
-      labelKey:    'cm.labelChoice'
+      labelKey:    'combo.labelChoice'
     }
   };
 
@@ -187,7 +187,7 @@
     header.appendChild(el('h2', {
       'class': 'mis-combo-title',
       id:      'mis-combo-title',
-      text:    tt('cm.title', { name: comboName })
+      text:    tt('combo.title', { name: comboName })
     }));
     var closeBtn = document.createElement('button');
     closeBtn.type = 'button';
@@ -247,7 +247,7 @@
 
     /* Section : frites */
     var sectionFrites = el('div', { 'class': 'mis-combo-section' });
-    sectionFrites.appendChild(el('p', { 'class': 'mis-combo-section-label', text: tt('cm.frites') }));
+    sectionFrites.appendChild(el('p', { 'class': 'mis-combo-section-label', text: tt('combo.frites') }));
 
     /* Frites maison */
     var rowBase  = el('label', { 'class': 'mis-combo-radio-row is-frites is-checked', 'for': 'mis-cf-base' });
@@ -258,7 +258,7 @@
     rowBase.appendChild(inBase);
     rowBase.appendChild(el('span', { 'class': 'mis-combo-radio-dot', 'aria-hidden': 'true' }));
     rowBase.appendChild(el('span', { 'class': 'mis-combo-radio-content' }, [
-      el('span', { 'class': 'mis-combo-radio-name', text: tt('cm.fritesBase') })
+      el('span', { 'class': 'mis-combo-radio-name', text: tt('combo.fritesBase') })
     ]));
     sectionFrites.appendChild(rowBase);
 
@@ -273,7 +273,7 @@
     var loadedContent = el('span', { 'class': 'mis-combo-radio-content' });
     loadedContent.appendChild(el('span', {
       'class': 'mis-combo-radio-name',
-      text:    tt('cm.fritesLoaded', { price: fmt(LOADED_SURCHARGE) })
+      text:    tt('combo.fritesLoaded', { price: fmt(LOADED_SURCHARGE) })
     }));
     rowLoaded.appendChild(loadedContent);
     sectionFrites.appendChild(rowLoaded);
@@ -297,7 +297,7 @@
     /* Pied : total + boutons */
     var footer   = el('div', { 'class': 'mis-combo-footer' });
     var totalRow = el('div', { 'class': 'mis-combo-total' });
-    totalRow.appendChild(el('span', { 'class': 'mis-combo-total-label', text: tt('cm.total') }));
+    totalRow.appendChild(el('span', { 'class': 'mis-combo-total-label', text: tt('combo.total') }));
     var totalVal = el('span', { 'class': 'mis-combo-total-value', text: fmt(cfg.basePrice) });
     totalRow.appendChild(totalVal);
     footer.appendChild(totalRow);
@@ -311,12 +311,12 @@
     /* Lier updateTotal aux radios frites (déjà fait via change handler ci-dessus) */
 
     var actions    = el('div', { 'class': 'mis-combo-actions' });
-    var cancelBtn  = el('button', { type: 'button', 'class': 'mis-combo-btn-cancel', text: tt('cm.cancel') });
+    var cancelBtn  = el('button', { type: 'button', 'class': 'mis-combo-btn-cancel', text: tt('combo.cancel') });
     cancelBtn.addEventListener('click', closeModal);
     actions.appendChild(cancelBtn);
 
     var confirmBtn = el('button', { type: 'button', 'class': 'mis-combo-btn-confirm' });
-    confirmBtn.appendChild(el('span', { text: tt('cm.confirm') }));
+    confirmBtn.appendChild(el('span', { text: tt('combo.confirm') }));
     confirmBtn.innerHTML += ' <svg viewBox="0 0 24 24" width="16" height="16" aria-hidden="true"><path d="M5 12h12l-4-4 1.4-1.4L20.8 12l-6.4 6.4L13 17l4-4H5z" fill="currentColor"/></svg>';
     confirmBtn.addEventListener('click', function () { confirmAdd(cfg, totalVal); });
     actions.appendChild(confirmBtn);
