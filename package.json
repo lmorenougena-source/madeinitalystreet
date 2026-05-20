@@ -4,8 +4,7 @@
   "private": true,
   "description": "Made in Italy Street — Italian street food à Lourdes. Site statique + paiement Click & Collect via Stripe Checkout + Netlify Functions.",
   "scripts": {
-    "dev": "netlify dev",
-    "build": "echo 'Static site, no build step.'",
+    "dev": "python3 -m http.server 3456",
     "serve": "python3 -m http.server 3456"
   },
   "engines": {
