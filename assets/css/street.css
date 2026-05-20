@@ -1142,6 +1142,47 @@ button { font: inherit; background: none; border: 0; cursor: pointer; color: inh
 }
 .street-product-illu svg { width: 100%; height: 100%; }
 
+/* Variante photo détourée — fond crème + halo tricolore + filigrane logo */
+.street-product-media:has(.street-product-illu.is-photo) {
+  background: var(--cream);
+}
+.street-product-media:has(.street-product-illu.is-photo)::before,
+.street-product-media:has(.street-product-illu.is-photo)::after {
+  display: none;
+}
+/* Filigrane logo en haut à droite, sous la photo */
+.street-product-media:has(.street-product-illu.is-photo) {
+  position: relative;
+}
+.street-product-media:has(.street-product-illu.is-photo) > .street-product-illu.is-photo::before {
+  content: '';
+  position: absolute;
+  top: -8%; right: -8%;
+  width: 32%; height: 32%;
+  background: url("../img/logobadge.png") no-repeat center/contain;
+  opacity: 0.28;
+  pointer-events: none;
+  z-index: 0;
+}
+.street-product-illu.is-photo {
+  width: 92%;
+  height: 92%;
+  filter:
+    drop-shadow(-14px 8px 18px rgba(0, 140, 69, .55))
+    drop-shadow(0 12px 22px rgba(255, 255, 255, .22))
+    drop-shadow(14px 8px 18px rgba(200, 16, 46, .55));
+}
+.street-product-illu.is-photo img {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+  display: block;
+  pointer-events: none;
+}
+.street-product:hover .street-product-illu.is-photo {
+  transform: scale(1.06);
+}
+
 .street-product-badge {
   position: absolute;
   top: 14px; left: 14px;
