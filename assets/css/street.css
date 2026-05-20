@@ -1168,9 +1168,11 @@ button { font: inherit; background: none; border: 0; cursor: pointer; color: inh
   width: 92%;
   height: 92%;
   filter:
-    drop-shadow(-14px 8px 18px rgba(0, 140, 69, .55))
-    drop-shadow(0 12px 22px rgba(255, 255, 255, .22))
-    drop-shadow(14px 8px 18px rgba(200, 16, 46, .55));
+    drop-shadow(-10px 6px 14px rgba(0, 140, 69, .45))
+    drop-shadow(10px 6px 14px rgba(200, 16, 46, .45));
+  will-change: transform;
+  transform: translateZ(0);
+  backface-visibility: hidden;
 }
 .street-product-illu.is-photo img {
   width: 100%;
@@ -1180,7 +1182,7 @@ button { font: inherit; background: none; border: 0; cursor: pointer; color: inh
   pointer-events: none;
 }
 .street-product:hover .street-product-illu.is-photo {
-  transform: scale(1.06);
+  transform: scale(1.05) translateZ(0);
 }
 
 .street-product-badge {
@@ -2562,9 +2564,12 @@ button { font: inherit; background: none; border: 0; cursor: pointer; color: inh
   flex-direction: column;
   background: transparent;
   cursor: pointer;
-  transition: transform .4s var(--ease);
+  transition: transform .3s var(--ease);
+  will-change: transform;
+  transform: translateZ(0);              /* compositing GPU */
+  backface-visibility: hidden;
 }
-.street-menu-card:hover { transform: translateY(-6px); }
+.street-menu-card:hover { transform: translate3d(0, -6px, 0); }
 
 /* Image carrée */
 .street-menu-card-media {
@@ -2576,7 +2581,8 @@ button { font: inherit; background: none; border: 0; cursor: pointer; color: inh
     radial-gradient(ellipse at 50% 40%, #3a1e10 0%, var(--night) 80%);
   margin-bottom: 14px;
   box-shadow: var(--shadow-md);
-  transition: box-shadow .4s var(--ease);
+  transition: box-shadow .3s var(--ease);
+  transform: translateZ(0);              /* couche dédiée pour box-shadow */
 }
 .street-menu-card:hover .street-menu-card-media {
   box-shadow: 0 30px 60px -20px rgba(0,0,0,.7), 0 0 0 2px var(--gold);
@@ -2620,11 +2626,14 @@ button { font: inherit; background: none; border: 0; cursor: pointer; color: inh
   inset: 12%;
   display: grid; place-items: center;
   z-index: 2;
-  transition: transform .5s var(--ease);
+  transition: transform .3s var(--ease);
   filter: drop-shadow(0 14px 20px rgba(0,0,0,.4));
+  will-change: transform;
+  transform: translateZ(0);
+  backface-visibility: hidden;
 }
 .street-menu-card:hover .street-menu-card-illu {
-  transform: scale(1.1) rotate(-3deg);
+  transform: scale(1.08) rotate(-2deg) translateZ(0);
 }
 .street-menu-card-illu svg { width: 100%; height: 100%; }
 
@@ -2632,9 +2641,9 @@ button { font: inherit; background: none; border: 0; cursor: pointer; color: inh
 .street-menu-card-illu.is-photo {
   inset: 5%; /* la photo prend plus de place que l'icône SVG */
   filter:
-    drop-shadow(-14px 8px 18px rgba(0, 140, 69, .55))     /* halo vert (gauche)  */
-    drop-shadow(0 12px 22px rgba(255, 255, 255, .22))     /* halo blanc (centre) */
-    drop-shadow(14px 8px 18px rgba(200, 16, 46, .55));    /* halo rouge (droite) */
+    drop-shadow(-10px 6px 14px rgba(0, 140, 69, .45))     /* vert  */
+    drop-shadow(10px 6px 14px rgba(200, 16, 46, .45));    /* rouge */
+  /* Note : le drop-shadow blanc central retiré (peu visible, gain perf) */
 }
 .street-menu-card-illu.is-photo img {
   width: 100%;
@@ -2652,7 +2661,27 @@ button { font: inherit; background: none; border: 0; cursor: pointer; color: inh
   object-position: 72% 50%;
 }
 .street-menu-card:hover .street-menu-card-illu.is-photo {
-  transform: scale(1.08); /* pas de rotation pour les photos */
+  transform: scale(1.06) translateZ(0); /* pas de rotation pour les photos, GPU layer */
+}
+
+/* Respect du paramètre OS "réduire les animations" */
+@media (prefers-reduced-motion: reduce) {
+  .street-menu-card,
+  .street-menu-card-media,
+  .street-menu-card-illu,
+  .street-menu-card-illu.is-photo,
+  .street-product,
+  .street-product-illu,
+  .street-product-illu.is-photo {
+    transition: none !important;
+  }
+  .street-menu-card:hover,
+  .street-menu-card:hover .street-menu-card-illu,
+  .street-menu-card:hover .street-menu-card-illu.is-photo,
+  .street-product:hover .street-product-illu,
+  .street-product:hover .street-product-illu.is-photo {
+    transform: none !important;
+  }
 }
 
 /* Variante "trio combo" : composition triangulaire — burger en haut, frites + soda en bas */
