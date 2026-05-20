@@ -1,0 +1,14 @@
+{
+  "version": "0.0.1",
+  "configurations": [
+    {
+      "name": "made-in-italy-street",
+      "runtimeExecutable": "python3",
+      "runtimeArgs": [
+        "-m", "http.server", "3456",
+        "--directory", "/Users/marineurbain/Documents/Codex/2026-05-18/jai-besoin-de-toi-pour-modifier/made-in-italy-street-github"
+      ],
+      "port": 3456
+    }
+  ]
+}
