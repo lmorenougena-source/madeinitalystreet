@@ -205,7 +205,15 @@
             '<div class="mis-honeypot" aria-hidden="true">' +
               '<label><span data-i18n="cart.honeypot">Ne pas remplir</span> <input type="text" name="website" tabindex="-1" autocomplete="off"></label>' +
             '</div>' +
-            '<button type="submit" class="mis-btn mis-btn-primary" id="mis-submit-btn" data-action="pay">' +
+            // Acceptation CGV — obligatoire (art. L.221-7 Code conso)
+            '<div class="mis-cgv-check" id="mis-cgv-wrap">' +
+              '<label class="mis-cgv-label">' +
+                '<input type="checkbox" id="mis-cgv-cb" name="cgv">' +
+                '<span>J\'accepte les <a href="cgv.html" target="_blank" rel="noopener">Conditions Générales de Vente</a></span>' +
+              '</label>' +
+              '<span class="mis-field-error" id="mis-err-cgv"></span>' +
+            '</div>' +
+            '<button type="submit" class="mis-btn mis-btn-primary" id="mis-submit-btn" data-action="pay" disabled>' +
               '<svg viewBox="0 0 24 24"><path d="M3 6h18v3H3V6Zm0 5h18v7a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-7Zm3 3v2h4v-2H6Z" fill="currentColor"/></svg>' +
               '<span data-i18n="cart.payBtn">Payer & retirer</span> · <span id="mis-submit-total">0,00 €</span>' +
             '</button>' +
@@ -507,6 +515,17 @@
   }
 
   function payAndCheckout() {
+    // Vérification CGV obligatoire
+    var cgvCb = document.getElementById('mis-cgv-cb');
+    var cgvErr = document.getElementById('mis-err-cgv');
+    if (cgvCb && !cgvCb.checked) {
+      if (cgvErr) cgvErr.textContent = 'Vous devez accepter les CGV pour continuer.';
+      if (cgvCb.closest('.mis-cgv-check')) cgvCb.closest('.mis-cgv-check').classList.add('has-error');
+      cgvCb.focus();
+      return;
+    }
+    if (cgvErr) cgvErr.textContent = '';
+
     var data = gatherFormData();
     var validated = validateLocal(data);
     if (!validated) return;
@@ -588,6 +607,18 @@
     if ($form) $form.addEventListener('submit', handleSubmit);
     var reserveBtn = document.getElementById('mis-reserve-btn');
     if (reserveBtn) reserveBtn.addEventListener('click', reserveViaWhatsApp);
+
+    // CGV checkbox : active/désactive le bouton Payer en temps réel
+    $form && $form.addEventListener('change', function (e) {
+      if (e.target && e.target.id === 'mis-cgv-cb') {
+        var submitBtn = document.getElementById('mis-submit-btn');
+        if (submitBtn) submitBtn.disabled = !e.target.checked;
+        var cgvWrap = document.getElementById('mis-cgv-wrap');
+        var cgvErr = document.getElementById('mis-err-cgv');
+        if (cgvWrap) cgvWrap.classList.toggle('has-error', false);
+        if (cgvErr) cgvErr.textContent = '';
+      }
+    });
 
     // Copier message
     var copyBtn = document.getElementById('mis-copy-msg');

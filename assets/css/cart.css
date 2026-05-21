@@ -3,12 +3,13 @@
    Cohérent avec street.css (tokens .street-*, palette IT)
 ========================================================= */
 
-/* ------ FAB flottant ------ */
+/* ------ FAB panier : centré dans le header (mobile uniquement) ------ */
 .mis-cart-fab {
   position: fixed;
-  right: 18px;
-  bottom: 110px; /* au-dessus de la mascotte flottante (.street-mascot bottom:16px + ~80px) */
-  width: 60px; height: 60px;
+  top: 14px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 52px; height: 52px;
   border: none;
   border-radius: 999px;
   background: var(--red, #C8102E);
@@ -16,15 +17,15 @@
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  box-shadow: 0 14px 32px -10px rgba(200,16,46,.55), 0 0 0 2px rgba(244,233,214,.18);
+  box-shadow: 0 8px 24px -6px rgba(200,16,46,.55), 0 0 0 2px rgba(244,233,214,.18);
   cursor: pointer;
-  z-index: 60;
+  z-index: 110; /* au-dessus du header (z-index header ~100) */
   transition: transform .2s ease, box-shadow .2s ease;
   -webkit-tap-highlight-color: transparent;
 }
-.mis-cart-fab:hover { transform: translateY(-2px) scale(1.04); }
+.mis-cart-fab:hover { transform: translateX(-50%) translateY(-2px) scale(1.04); }
 .mis-cart-fab:focus-visible { outline: 3px solid var(--gold, #F5B335); outline-offset: 3px; }
-.mis-cart-fab svg { width: 26px; height: 26px; fill: currentColor; }
+.mis-cart-fab svg { width: 24px; height: 24px; fill: currentColor; }
 
 .mis-cart-fab .mis-cart-count {
   position: absolute;
@@ -48,9 +49,10 @@
   100% { transform: scale(1); }
 }
 
+/* Desktop : le header a déjà un bouton "Mon panier" dans la nav,
+   le FAB devient redondant → on le masque. */
 @media (min-width: 768px) {
-  .mis-cart-fab { right: 28px; bottom: 130px; width: 66px; height: 66px; }
-  .mis-cart-fab svg { width: 28px; height: 28px; }
+  .mis-cart-fab { display: none; }
 }
 
 /* ------ Backdrop ------ */
@@ -974,3 +976,56 @@ body.mis-cart-open { overflow: hidden; }
   .mis-combo-btn-confirm,
   .mis-combo-radio-row { transition: none !important; }
 }
+
+/* =========================================================
+   CGV — Checkbox obligatoire avant paiement
+========================================================= */
+.mis-cgv-check {
+  margin: 12px 0 6px;
+  padding: 12px 14px;
+  border-radius: 8px;
+  border: 1.5px solid rgba(14,14,15,.12);
+  background: rgba(14,14,15,.03);
+  transition: border-color .2s;
+}
+.mis-cgv-check.has-error {
+  border-color: #C8102E;
+  background: rgba(200,16,46,.04);
+}
+.mis-cgv-label {
+  display: flex;
+  align-items: flex-start;
+  gap: 10px;
+  cursor: pointer;
+  font-size: 13px;
+  line-height: 1.4;
+  color: #0E0E0F;
+}
+.mis-cgv-label input[type="checkbox"] {
+  flex-shrink: 0;
+  width: 18px;
+  height: 18px;
+  margin-top: 1px;
+  accent-color: #008C45;
+  cursor: pointer;
+}
+.mis-cgv-label a {
+  color: #008C45;
+  text-decoration: underline;
+  font-weight: 600;
+}
+.mis-cgv-label a:hover { color: #00622F; }
+#mis-cgv-wrap .mis-field-error {
+  display: block;
+  margin-top: 6px;
+  font-size: 12px;
+  color: #C8102E;
+  font-weight: 500;
+}
+/* Bouton Payer désactivé tant que CGV non cochées */
+#mis-submit-btn:disabled {
+  opacity: .45;
+  cursor: not-allowed;
+  pointer-events: none;
+}
+
