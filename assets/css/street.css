@@ -1979,6 +1979,33 @@ button { font: inherit; background: none; border: 0; cursor: pointer; color: inh
 .footer-mentions a { color: rgba(244,233,214,.5); }
 .footer-mentions a:hover { color: var(--gold); }
 
+/* Mini-badge PWA install — discret, footer */
+.mis-pwa-install-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  padding: 6px 12px;
+  border-radius: 999px;
+  background: rgba(244,233,214,.06);
+  border: 1px solid rgba(244,233,214,.18);
+  color: rgba(244,233,214,.65);
+  font-family: 'Inter', sans-serif;
+  font-size: 11px;
+  font-weight: 600;
+  letter-spacing: .05em;
+  cursor: pointer;
+  transition: background .2s, color .2s, border-color .2s, transform .2s;
+}
+.mis-pwa-install-badge:hover {
+  background: rgba(244,233,214,.12);
+  border-color: rgba(244,233,214,.35);
+  color: var(--cream);
+  transform: translateY(-1px);
+}
+.mis-pwa-install-badge:active { transform: translateY(0); }
+.mis-pwa-install-badge svg { opacity: .8; }
+.mis-pwa-install-badge[hidden] { display: none; }
+
 /* =========================================================
    17B. PAGES LEGALES
 ========================================================= */
