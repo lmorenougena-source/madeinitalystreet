@@ -114,7 +114,7 @@ button { font: inherit; background: none; border: 0; cursor: pointer; color: inh
   mix-blend-mode: overlay;
   background-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='320' height='320'><filter id='n'><feTurbulence type='fractalNoise' baseFrequency='0.92' numOctaves='2' stitchTiles='stitch'/><feColorMatrix values='0 0 0 0 1  0 0 0 0 .95  0 0 0 0 .85  0 0 0 .85 0'/></filter><rect width='100%25' height='100%25' filter='url(%23n)'/></svg>");
   background-size: 320px 320px;
-  animation: streetGrain 8s steps(8) infinite;
+  /* animation désactivée pour perf (overlay full screen → cost global) */
 }
 @keyframes streetGrain {
   0%   { transform: translate(0,0); }
@@ -2992,19 +2992,10 @@ button { font: inherit; background: none; border: 0; cursor: pointer; color: inh
   display: none; /* animation filter:blur() + skew = très coûteux, effet à peine visible */
 }
 
-/* --- Fumée ultra-réaliste : SVG turbulence + particules CSS --- */
+/* --- Fumée désactivée : trop coûteuse en compositing (SVG filter +
+       mix-blend-mode + 5 particules avec blur animé). Demande user. --- */
 .hero-smoke {
-  position: absolute;
-  left: -4%;
-  right: -4%;
-  top: 8%;
-  bottom: 8%;
-  pointer-events: none;
-  z-index: 2;
-  mix-blend-mode: screen;
-  overflow: visible;
-  transform: scale(1.28);
-  transform-origin: center;
+  display: none !important;
 }
 
 /* Base volumétrique SVG */
