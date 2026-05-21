@@ -6,6 +6,47 @@
 (function () {
   'use strict';
 
+  /* ---------- Vercel Analytics shim + helper track() ---------- */
+  // Queue les events avant que le script Vercel soit chargé (CSP-safe : pas d'inline)
+  window.va = window.va || function () { (window.vaq = window.vaq || []).push(arguments); };
+  window.misTrack = function (name, props) {
+    try { window.va('event', { name: name, data: props || {} }); } catch (_) {}
+  };
+
+  /* ---------- Tracking automatique des clics importants ---------- */
+  document.addEventListener('click', function (e) {
+    var t = e.target;
+    if (!t || !t.closest) return;
+
+    // Click-to-call (tous les liens tel:)
+    var telLink = t.closest('a[href^="tel:"]');
+    if (telLink) {
+      window.misTrack('phone_call', { from: location.pathname });
+      return;
+    }
+
+    // Click sur WhatsApp
+    var waLink = t.closest('a[href*="wa.me/"], a[href*="whatsapp.com"]');
+    if (waLink) {
+      window.misTrack('whatsapp_click', { from: location.pathname });
+      return;
+    }
+
+    // Click sur Google Maps (footer ou contact)
+    var mapsLink = t.closest('a[href*="google.com/maps"], a[href*="maps.app.goo.gl"]');
+    if (mapsLink) {
+      window.misTrack('maps_click', { from: location.pathname });
+      return;
+    }
+
+    // CTA "Commander" / "Voir la carte" sur la home
+    var ctaBtn = t.closest('.street-hero-ctas a, .street-mobile-sticky-cta, [data-mis-open]');
+    if (ctaBtn) {
+      var label = (ctaBtn.textContent || '').trim().slice(0, 40);
+      window.misTrack('cta_click', { label: label, from: location.pathname });
+    }
+  });
+
   /* ---------- Service Worker (PWA) ---------- */
   if ('serviceWorker' in navigator && location.protocol === 'https:') {
     window.addEventListener('load', function () {
@@ -25,8 +66,11 @@
   });
   document.addEventListener('click', function (e) {
     if (e.target && e.target.id === 'mis-pwa-install' && deferredInstall) {
+      window.misTrack && window.misTrack('pwa_install_prompted');
       deferredInstall.prompt();
-      deferredInstall.userChoice.finally(function () {
+      deferredInstall.userChoice.then(function (choice) {
+        window.misTrack && window.misTrack('pwa_install_choice', { outcome: choice.outcome });
+      }).finally(function () {
         deferredInstall = null;
         var btn = document.getElementById('mis-pwa-install');
         if (btn) btn.hidden = true;

@@ -118,6 +118,21 @@
   function renderOrder(data) {
     lastPayload = data;
     lastErrorPayload = null;
+
+    // Tracking conversion : paiement confirmé (1x par session uniquement)
+    try {
+      var trackedKey = 'mis_tracked_' + (data.pickup_code || data.session_id || '');
+      if (!sessionStorage.getItem(trackedKey)) {
+        sessionStorage.setItem(trackedKey, '1');
+        window.misTrack && window.misTrack('purchase', {
+          pickup_code: data.pickup_code,
+          total: data.total,
+          currency: data.currency,
+          items_count: (data.items || []).length
+        });
+      }
+    } catch (_) {}
+
     var content = $('#content');
     if (!content) return;
     content.replaceChildren();

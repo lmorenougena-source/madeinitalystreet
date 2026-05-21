@@ -530,6 +530,12 @@
     var validated = validateLocal(data);
     if (!validated) return;
 
+    var snap = Cart.snapshot();
+    window.misTrack && window.misTrack('checkout_submit', {
+      items_count: snap.items.length,
+      total: snap.total
+    });
+
     var submitBtn = document.getElementById('mis-submit-btn');
     var origText = submitBtn.innerHTML;
     submitBtn.disabled = true;
@@ -596,6 +602,11 @@
 
     document.getElementById('mis-checkout-btn').addEventListener('click', function () {
       if (Cart.snapshot().items.length === 0) return;
+      var snap = Cart.snapshot();
+      window.misTrack && window.misTrack('begin_checkout', {
+        items_count: snap.items.length,
+        total: snap.total
+      });
       populateSlots();
       setView('checkout');
     });
@@ -655,6 +666,12 @@
       if (!product) return;
       var ok = Cart.addItem(product);
       if (ok) {
+        // Tracking conversion : ajout au panier
+        window.misTrack && window.misTrack('add_to_cart', {
+          product_id: product.id,
+          product_name: product.name,
+          price: product.price
+        });
         showToast(tt('cart.addedToast', { name: product.name }));
         $fab.classList.add('is-bump');
         setTimeout(function () { $fab.classList.remove('is-bump'); }, 400);

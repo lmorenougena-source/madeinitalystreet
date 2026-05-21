@@ -13,6 +13,7 @@
     <xhtml:link rel="alternate" hreflang="it" href="https://madeinitalystreet.fr/?lang=it"/>
     <xhtml:link rel="alternate" hreflang="pt" href="https://madeinitalystreet.fr/?lang=pt"/>
     <xhtml:link rel="alternate" hreflang="de" href="https://madeinitalystreet.fr/?lang=de"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://madeinitalystreet.fr/"/>
   </url>
 
   <url>
@@ -26,13 +27,42 @@
     <xhtml:link rel="alternate" hreflang="it" href="https://madeinitalystreet.fr/carte.html?lang=it"/>
     <xhtml:link rel="alternate" hreflang="pt" href="https://madeinitalystreet.fr/carte.html?lang=pt"/>
     <xhtml:link rel="alternate" hreflang="de" href="https://madeinitalystreet.fr/carte.html?lang=de"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://madeinitalystreet.fr/carte.html"/>
   </url>
 
   <url>
     <loc>https://madeinitalystreet.fr/allergenes.html</loc>
     <lastmod>2026-05-21</lastmod>
     <changefreq>monthly</changefreq>
-    <priority>0.5</priority>
+    <priority>0.6</priority>
+  </url>
+
+  <url>
+    <loc>https://madeinitalystreet.fr/mentions-legales.html</loc>
+    <lastmod>2026-05-21</lastmod>
+    <changefreq>yearly</changefreq>
+    <priority>0.3</priority>
+  </url>
+
+  <url>
+    <loc>https://madeinitalystreet.fr/cgv.html</loc>
+    <lastmod>2026-05-21</lastmod>
+    <changefreq>yearly</changefreq>
+    <priority>0.3</priority>
+  </url>
+
+  <url>
+    <loc>https://madeinitalystreet.fr/politique-confidentialite.html</loc>
+    <lastmod>2026-05-21</lastmod>
+    <changefreq>yearly</changefreq>
+    <priority>0.3</priority>
+  </url>
+
+  <url>
+    <loc>https://madeinitalystreet.fr/cookies.html</loc>
+    <lastmod>2026-05-21</lastmod>
+    <changefreq>yearly</changefreq>
+    <priority>0.3</priority>
   </url>
 
 </urlset>
