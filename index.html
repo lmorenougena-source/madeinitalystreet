@@ -150,7 +150,7 @@
         crossorigin="anonymous" referrerpolicy="no-referrer" defer></script>
 
 <!-- Style custom Street -->
-<link rel="stylesheet" href="assets/css/street.css?v=20260521-no-drops" />
+<link rel="stylesheet" href="assets/css/street.css?v=20260521-cta-trust" />
 <link rel="stylesheet" href="assets/css/cart.css?v=20260520-i18n-v1" />
 </head>
 
@@ -384,17 +384,23 @@
       <span class="line l-red" data-i18n="hero.line3">Italien</span>
       <span class="line l-hand" data-i18n="hero.line4">à Lourdes</span>
     </h1>
+    <p class="street-hero-subtitle" data-i18n="hero.subtitle">Smash burgers · panini · loaded fries · prêt en 12 min</p>
         <!-- Badge statut en temps reel : "Ouvert · Ferme a 14h30" / "Ferme · Rouvre a 18h30" -->
     <div class="mis-status-pill mis-status-hero" data-mis-open-status></div>
     <div class="street-hero-ctas">
-      <a href="#contact" class="street-btn street-btn-primary street-btn-lg">
-        <span data-i18n="hero.cta.order">Commander</span>
-        <svg width="20" height="20"><use href="#i-arrow"/></svg>
+      <a href="carte.html" class="street-btn street-btn-primary street-btn-lg">
+        <svg width="20" height="20"><use href="#i-cart"/></svg>
+        <span data-i18n="hero.cta.orderOnline">Commander en ligne</span>
       </a>
       <a href="carte.html" class="street-btn street-btn-outline street-btn-lg" data-i18n="hero.cta.menu">
-        Notre carte
+        Voir le menu
       </a>
     </div>
+    <!-- Trust line : note Google 4,5/5 cliquable vers la vraie fiche Google Maps -->
+    <a href="https://www.google.com/maps/place/Made+in+Italy+-+Street+Food/@43.0952088,-0.0524727,17z/data=!3m1!4b1!4m6!3m5!1s0xd57d7fbc57b097f:0x7498c0206cf87753!8m2!3d43.0952088!4d-0.0524727" target="_blank" rel="noopener noreferrer" class="street-hero-trust">
+      <span class="trust-stars" aria-hidden="true">★★★★★</span>
+      <span class="trust-rating"><strong>4,5/5</strong> <span data-i18n="hero.trust.on">sur Google</span> · <span data-i18n="hero.trust.count">46 avis</span></span>
+    </a>
   </div>
 
   <!-- Bande déchirée crème -->
@@ -444,11 +450,12 @@
 <!-- =========================================================
      MARQUEE
 ========================================================= -->
-<section class="street-marquee" aria-hidden="true">
+<section class="street-marquee" aria-label="Bandeau défilant : nos spécialités">
   <div class="street-marquee-track">
     <span><i class="star">★</i> <span data-i18n="mq.burgers">Smash Burgers</span></span>
     <span><i class="star">★</i> <span data-i18n="mq.panini">Panini</span></span>
     <span><i class="star">★</i> <span data-i18n="mq.fries">Loaded Fries</span></span>
+    <span><i class="star">★</i> <strong data-i18n="mq.googleRating">4,5/5 sur Google · 46 avis</strong></span>
     <span><i class="star">★</i> <span data-i18n="mq.combos">Combos Maison</span></span>
     <span><i class="star">★</i> <span data-i18n="mq.cc">Click &amp; Collect</span></span>
     <span><i class="star">★</i> <span data-i18n="mq.delivery">Livraison</span></span>
@@ -456,6 +463,7 @@
     <span><i class="star">★</i> <span data-i18n="mq.burgers">Smash Burgers</span></span>
     <span><i class="star">★</i> <span data-i18n="mq.panini">Panini</span></span>
     <span><i class="star">★</i> <span data-i18n="mq.fries">Loaded Fries</span></span>
+    <span><i class="star">★</i> <strong data-i18n="mq.googleRating">4,5/5 sur Google · 46 avis</strong></span>
     <span><i class="star">★</i> <span data-i18n="mq.combos">Combos Maison</span></span>
     <span><i class="star">★</i> <span data-i18n="mq.cc">Click &amp; Collect</span></span>
     <span><i class="star">★</i> <span data-i18n="mq.delivery">Livraison</span></span>
@@ -1061,6 +1069,16 @@
     </div>
   </div>
 </footer>
+
+<!-- =========================================================
+     STICKY MOBILE CTA — visible uniquement < 768px
+     Toujours visible en bas de l'écran pour pousser à la commande
+========================================================= -->
+<a href="carte.html" class="street-mobile-sticky-cta" aria-label="Commander en ligne">
+  <svg width="22" height="22" aria-hidden="true"><use href="#i-cart"/></svg>
+  <span class="cta-main" data-i18n="mobile.cta.orderOnline">Commander en ligne</span>
+  <span class="cta-time" data-i18n="mobile.cta.ready">· prêt en 12 min</span>
+</a>
 
 <!-- =========================================================
      MASCOTTE FLOTTANTE (style Nobinobi)

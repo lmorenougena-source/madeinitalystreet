@@ -726,9 +726,57 @@ button { font: inherit; background: none; border: 0; cursor: pointer; color: inh
 }
 .street-hero-sub strong { color: var(--gold); font-weight: 700; }
 
+/* Sous-titre hero (USP : "Smash burgers · panini · loaded fries · prêt en 12 min") */
+.street-hero-subtitle {
+  margin: 14px 0 22px;
+  font-family: 'Inter', sans-serif;
+  font-size: clamp(.95rem, 1.6vw, 1.15rem);
+  font-weight: 500;
+  letter-spacing: .01em;
+  color: var(--cream);
+  opacity: .92;
+  max-width: 560px;
+  text-shadow: 0 2px 12px rgba(0,0,0,.5);
+}
+
 .street-hero-ctas {
   display: flex; flex-wrap: wrap; gap: 12px;
+  margin-bottom: 20px;
+}
+
+/* Trust line sous les CTAs : ★★★★★ 4,5/5 sur Google · 46 avis (cliquable) */
+.street-hero-trust {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  padding: 10px 16px;
+  background: rgba(244,233,214,.08);
+  border: 1px solid rgba(244,233,214,.18);
+  border-radius: var(--r-full);
+  backdrop-filter: blur(6px);
+  -webkit-backdrop-filter: blur(6px);
+  color: var(--cream);
+  text-decoration: none;
+  font-family: 'Inter', sans-serif;
+  font-size: .92rem;
+  letter-spacing: .01em;
   margin-bottom: 36px;
+  transition: background .25s var(--ease), transform .25s var(--ease);
+  width: fit-content;
+}
+.street-hero-trust:hover {
+  background: rgba(244,233,214,.16);
+  transform: translateY(-2px);
+}
+.street-hero-trust .trust-stars {
+  color: #F5B335;
+  font-size: 1.05rem;
+  letter-spacing: 1px;
+  filter: drop-shadow(0 1px 2px rgba(0,0,0,.4));
+}
+.street-hero-trust .trust-rating strong {
+  font-weight: 800;
+  color: var(--gold-soft);
 }
 
 /* Hero badges-line (100% fait maison etc) */
@@ -3092,4 +3140,69 @@ button { font: inherit; background: none; border: 0; cursor: pointer; color: inh
   }
   .hero-smoke  { left: -12%; right: -12%; top: 6%; bottom: 6%; width: auto; transform: scale(1.35); }
   .hero-condensation { left: 35%; top: 8%; width: 45%; }
+}
+
+/* =========================================================
+   STICKY MOBILE CTA — bouton "Commander en ligne" toujours visible
+   Affiché uniquement sur mobile (< 768px). Pousse à la conversion.
+========================================================= */
+.street-mobile-sticky-cta {
+  display: none; /* caché par défaut, activé en mobile */
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  z-index: 90; /* sous le drawer panier (z 100) et la mascotte */
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  padding: 16px 20px calc(16px + env(safe-area-inset-bottom));
+  background: linear-gradient(135deg, var(--red) 0%, var(--red-deep) 100%);
+  color: var(--cream);
+  font-family: 'Inter', sans-serif;
+  font-weight: 800;
+  font-size: .98rem;
+  letter-spacing: .01em;
+  text-transform: uppercase;
+  text-decoration: none;
+  box-shadow: 0 -10px 30px rgba(0,0,0,.4);
+  transition: filter .2s var(--ease);
+  will-change: transform;
+  transform: translateZ(0);
+}
+.street-mobile-sticky-cta:active {
+  filter: brightness(1.1);
+}
+.street-mobile-sticky-cta svg {
+  flex-shrink: 0;
+  stroke: var(--cream);
+}
+.street-mobile-sticky-cta .cta-time {
+  font-weight: 500;
+  font-size: .82rem;
+  text-transform: none;
+  opacity: .85;
+  letter-spacing: 0;
+}
+
+/* Activation mobile uniquement */
+@media (max-width: 768px) {
+  .street-mobile-sticky-cta {
+    display: inline-flex;
+  }
+  /* Évite que le footer / mascotte / mentions soient masqués par le sticky */
+  body {
+    padding-bottom: 70px;
+  }
+  /* Décale la mascotte flottante pour qu'elle ne chevauche pas le sticky */
+  .street-mascot {
+    bottom: 85px !important;
+  }
+}
+
+/* Désactivation si l'utilisateur préfère pas d'animations agressives */
+@media (prefers-reduced-motion: reduce) {
+  .street-mobile-sticky-cta {
+    transition: none;
+  }
 }

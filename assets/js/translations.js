@@ -38,8 +38,16 @@
       'hero.line2': 'Street Food',
       'hero.line3': 'Italien',
       'hero.line4': 'à Lourdes',
+      'hero.subtitle': 'Smash burgers · panini · loaded fries · prêt en 12 min',
       'hero.cta.order': 'Commander',
-      'hero.cta.menu': 'Notre carte',
+      'hero.cta.orderOnline': 'Commander en ligne',
+      'hero.cta.menu': 'Voir le menu',
+      'hero.trust.on': 'sur Google',
+      'hero.trust.count': '46 avis',
+
+      // Sticky mobile CTA
+      'mobile.cta.orderOnline': 'Commander en ligne',
+      'mobile.cta.ready': '· prêt en 12 min',
 
       // Marquee
       'mq.burgers': 'Smash Burgers',
@@ -49,6 +57,7 @@
       'mq.cc': 'Click & Collect',
       'mq.delivery': 'Livraison',
       'mq.amore': 'Fatto con Amore',
+      'mq.googleRating': '4,5/5 sur Google · 46 avis',
 
       // Triptyque
       'tri.concept.title': 'Le concept',
@@ -400,8 +409,15 @@
       'hero.line2': 'Italian',
       'hero.line3': 'Street Food',
       'hero.line4': 'spot in Lourdes',
+      'hero.subtitle': 'Smash burgers · panini · loaded fries · ready in 12 min',
       'hero.cta.order': 'Order now',
+      'hero.cta.orderOnline': 'Order online',
       'hero.cta.menu': 'See the menu',
+      'hero.trust.on': 'on Google',
+      'hero.trust.count': '46 reviews',
+
+      'mobile.cta.orderOnline': 'Order online',
+      'mobile.cta.ready': '· ready in 12 min',
 
       'mq.burgers': 'Smash Burgers',
       'mq.panini': 'Panini',
@@ -410,6 +426,7 @@
       'mq.cc': 'Click & Collect',
       'mq.delivery': 'Delivery',
       'mq.amore': 'Fatto con Amore',
+      'mq.googleRating': '4.5/5 on Google · 46 reviews',
 
       'tri.concept.title': 'The concept',
       'tri.concept.desc': 'Authentic Italy meets the street food energy. Mama\'s recipes, local ingredients, Italian passion.',
@@ -740,8 +757,15 @@
       'hero.line2': 'Street Food',
       'hero.line3': 'Italiano',
       'hero.line4': 'en Lourdes',
+      'hero.subtitle': 'Smash burgers · panini · loaded fries · listo en 12 min',
       'hero.cta.order': 'Pedir ahora',
-      'hero.cta.menu': 'Nuestra carta',
+      'hero.cta.orderOnline': 'Pedir en línea',
+      'hero.cta.menu': 'Ver la carta',
+      'hero.trust.on': 'en Google',
+      'hero.trust.count': '46 reseñas',
+
+      'mobile.cta.orderOnline': 'Pedir en línea',
+      'mobile.cta.ready': '· listo en 12 min',
 
       'mq.burgers': 'Smash Burgers',
       'mq.panini': 'Panini',
@@ -750,6 +774,7 @@
       'mq.cc': 'Click & Collect',
       'mq.delivery': 'Reparto',
       'mq.amore': 'Fatto con Amore',
+      'mq.googleRating': '4,5/5 en Google · 46 reseñas',
 
       'tri.concept.title': 'El concepto',
       'tri.concept.desc': 'La Italia auténtica que se cruza con la energía de la comida callejera. Recetas de la mamma, ingredientes locales, pasión italiana.',
@@ -1080,8 +1105,15 @@
       'hero.line2': 'Street Food',
       'hero.line3': 'Italiano',
       'hero.line4': 'a Lourdes',
+      'hero.subtitle': 'Smash burger · panini · loaded fries · pronto in 12 min',
       'hero.cta.order': 'Ordina',
-      'hero.cta.menu': 'Il nostro menu',
+      'hero.cta.orderOnline': 'Ordina online',
+      'hero.cta.menu': 'Vedi il menu',
+      'hero.trust.on': 'su Google',
+      'hero.trust.count': '46 recensioni',
+
+      'mobile.cta.orderOnline': 'Ordina online',
+      'mobile.cta.ready': '· pronto in 12 min',
 
       'mq.burgers': 'Smash Burger',
       'mq.panini': 'Panini',
@@ -1090,6 +1122,7 @@
       'mq.cc': 'Click & Collect',
       'mq.delivery': 'Consegna',
       'mq.amore': 'Fatto con Amore',
+      'mq.googleRating': '4,5/5 su Google · 46 recensioni',
 
       'tri.concept.title': 'Il concept',
       'tri.concept.desc': "L'Italia autentica che incontra l'energia dello street food. Ricette della mamma, ingredienti locali, passione italiana.",
@@ -1420,8 +1453,15 @@
       'hero.line2': 'Street Food',
       'hero.line3': 'Italiano',
       'hero.line4': 'em Lourdes',
+      'hero.subtitle': 'Smash burgers · panini · loaded fries · pronto em 12 min',
       'hero.cta.order': 'Encomendar',
-      'hero.cta.menu': 'O nosso menu',
+      'hero.cta.orderOnline': 'Encomendar online',
+      'hero.cta.menu': 'Ver o menu',
+      'hero.trust.on': 'no Google',
+      'hero.trust.count': '46 avaliações',
+
+      'mobile.cta.orderOnline': 'Encomendar online',
+      'mobile.cta.ready': '· pronto em 12 min',
 
       'mq.burgers': 'Smash Burgers',
       'mq.panini': 'Panini',
@@ -1430,6 +1470,7 @@
       'mq.cc': 'Click & Collect',
       'mq.delivery': 'Entrega',
       'mq.amore': 'Fatto con Amore',
+      'mq.googleRating': '4,5/5 no Google · 46 avaliações',
 
       'tri.concept.title': 'O conceito',
       'tri.concept.desc': 'A Itália autêntica encontra a energia da comida de rua. Receitas da mamma, ingredientes locais, paixão italiana.',
@@ -1760,8 +1801,15 @@
       'hero.line2': 'italienische',
       'hero.line3': 'Street Food',
       'hero.line4': 'Spot in Lourdes',
+      'hero.subtitle': 'Smash Burgers · Panini · Loaded Fries · in 12 Min. fertig',
       'hero.cta.order': 'Bestellen',
-      'hero.cta.menu': 'Unsere Karte',
+      'hero.cta.orderOnline': 'Online bestellen',
+      'hero.cta.menu': 'Karte ansehen',
+      'hero.trust.on': 'auf Google',
+      'hero.trust.count': '46 Bewertungen',
+
+      'mobile.cta.orderOnline': 'Online bestellen',
+      'mobile.cta.ready': '· in 12 Min. fertig',
 
       'mq.burgers': 'Smash Burgers',
       'mq.panini': 'Panini',
@@ -1770,6 +1818,7 @@
       'mq.cc': 'Click & Collect',
       'mq.delivery': 'Lieferung',
       'mq.amore': 'Fatto con Amore',
+      'mq.googleRating': '4,5/5 auf Google · 46 Bewertungen',
 
       'tri.concept.title': 'Das Konzept',
       'tri.concept.desc': 'Das authentische Italien trifft auf die Energie von Street Food. Mammas Rezepte, lokale Zutaten, italienische Leidenschaft.',
