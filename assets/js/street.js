@@ -6,6 +6,34 @@
 (function () {
   'use strict';
 
+  /* ---------- Service Worker (PWA) ---------- */
+  if ('serviceWorker' in navigator && location.protocol === 'https:') {
+    window.addEventListener('load', function () {
+      navigator.serviceWorker.register('/sw.js').catch(function (err) {
+        console.warn('SW register failed:', err);
+      });
+    });
+  }
+
+  /* ---------- PWA install prompt (Android/Chrome) ---------- */
+  var deferredInstall = null;
+  window.addEventListener('beforeinstallprompt', function (e) {
+    e.preventDefault();
+    deferredInstall = e;
+    var btn = document.getElementById('mis-pwa-install');
+    if (btn) btn.hidden = false;
+  });
+  document.addEventListener('click', function (e) {
+    if (e.target && e.target.id === 'mis-pwa-install' && deferredInstall) {
+      deferredInstall.prompt();
+      deferredInstall.userChoice.finally(function () {
+        deferredInstall = null;
+        var btn = document.getElementById('mis-pwa-install');
+        if (btn) btn.hidden = true;
+      });
+    }
+  });
+
   /* ---------- Année dynamique footer ---------- */
   const yearEl = document.getElementById('street-year');
   if (yearEl) yearEl.textContent = new Date().getFullYear();

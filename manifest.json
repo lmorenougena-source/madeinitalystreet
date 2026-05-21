@@ -1,0 +1,50 @@
+{
+  "name": "Made in Italy Street",
+  "short_name": "MIS",
+  "description": "Italian Street Food & Smash Burgers à Lourdes. Commande Click & Collect en 12 min.",
+  "lang": "fr",
+  "dir": "ltr",
+  "start_url": "/?source=pwa",
+  "scope": "/",
+  "display": "standalone",
+  "orientation": "portrait",
+  "background_color": "#0E0E0F",
+  "theme_color": "#C8102E",
+  "categories": ["food", "shopping", "lifestyle"],
+  "icons": [
+    {
+      "src": "assets/img/icon-192.png",
+      "sizes": "192x192",
+      "type": "image/png",
+      "purpose": "any"
+    },
+    {
+      "src": "assets/img/icon-512.png",
+      "sizes": "512x512",
+      "type": "image/png",
+      "purpose": "any"
+    },
+    {
+      "src": "assets/img/icon-maskable-512.png",
+      "sizes": "512x512",
+      "type": "image/png",
+      "purpose": "maskable"
+    }
+  ],
+  "shortcuts": [
+    {
+      "name": "Voir la carte",
+      "short_name": "Carte",
+      "description": "Smash burgers, panini, loaded fries",
+      "url": "/carte.html?source=pwa-shortcut",
+      "icons": [{ "src": "assets/img/icon-192.png", "sizes": "192x192" }]
+    },
+    {
+      "name": "Click & Collect",
+      "short_name": "Commander",
+      "description": "Commander en ligne",
+      "url": "/carte.html?source=pwa-cc",
+      "icons": [{ "src": "assets/img/icon-192.png", "sizes": "192x192" }]
+    }
+  ]
+}
