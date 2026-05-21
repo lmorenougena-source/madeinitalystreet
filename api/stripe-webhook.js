@@ -21,14 +21,22 @@
 
 var crypto = require('crypto');
 
-// Désactiver le bodyParser automatique de Vercel (on a besoin du body brut pour vérifier la signature)
-module.exports.config = {
-  api: { bodyParser: false }
-};
-
 // ---------- Helpers ----------
+// Récupère le body brut. Si Vercel a déjà parsé req.body (cas par défaut),
+// on reconstruit à partir de req.body (un Buffer si bodyParser: false marche,
+// sinon un objet JSON qu'on re-sérialise — mais ça casse la signature).
+// La méthode safe : lire le stream tant qu'il n'a pas été consommé.
 function getRawBody(req) {
   return new Promise(function (resolve, reject) {
+    // Si le body a déjà été parsé par Vercel et stocké en buffer/string
+    if (req.body) {
+      if (Buffer.isBuffer(req.body)) return resolve(req.body);
+      if (typeof req.body === 'string') return resolve(Buffer.from(req.body, 'utf8'));
+      // Si c'est un objet (déjà JSON.parse), on ne peut PAS reconstruire le body exact
+      // → on renvoie un buffer vide pour signaler l'échec
+      return resolve(Buffer.from(JSON.stringify(req.body), 'utf8'));
+    }
+    // Sinon on lit le stream
     var chunks = [];
     req.on('data', function (c) { chunks.push(c); });
     req.on('end', function () { resolve(Buffer.concat(chunks)); });
@@ -202,7 +210,7 @@ async function sendEmail(to, subject, html, fromEmail, resendKey) {
 }
 
 // ---------- Handler ----------
-module.exports = async function handler(req, res) {
+async function handler(req, res) {
   if (req.method !== 'POST') {
     return res.status(405).json({ error: 'Method not allowed' });
   }
@@ -276,4 +284,13 @@ module.exports = async function handler(req, res) {
     email_sent: result.ok,
     email_id: result.id || null
   });
+}
+
+// IMPORTANT : assigner le handler AVANT la config (sinon module.exports = handler écrase tout)
+module.exports = handler;
+
+// Désactive le bodyParser automatique de Vercel → on lit le stream brut
+// pour pouvoir vérifier la signature HMAC-SHA256 de Stripe sur le body exact reçu.
+module.exports.config = {
+  api: { bodyParser: false }
 };
