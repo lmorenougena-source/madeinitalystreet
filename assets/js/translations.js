@@ -189,6 +189,7 @@
       'cm.title': 'Notre carte',
       'cm.subtitle': 'Smash burgers, panini généreux, loaded fries, antipasti, dolci. Tout est préparé sur place, fatto con amore.',
       'cm.notice': 'Nous travaillons avec des produits frais, nous avons parfois des produits indisponibles dû au rythme des saisons.',
+      'cm.callForAllergy': 'Allergie ou question ? Appelez-nous : 06 95 28 60 59',
 
       // Carte tabs
       'tab.burgers': 'Burgers',
@@ -547,6 +548,7 @@
       'cm.title': 'Our menu',
       'cm.subtitle': 'Smash burgers, generous panini, loaded fries, antipasti, dolci. Everything is made on site, fatto con amore.',
       'cm.notice': 'We work with fresh produce, so some items may be unavailable depending on the season.',
+      'cm.callForAllergy': 'Allergy or question? Call us: +33 6 95 28 60 59',
 
       'tab.burgers': 'Burgers',
       'tab.panini': 'Panini',
@@ -895,6 +897,7 @@
       'cm.title': 'Nuestra carta',
       'cm.subtitle': 'Smash burgers, panini generosos, loaded fries, antipasti, dolci. Todo se prepara aquí, fatto con amore.',
       'cm.notice': 'Trabajamos con productos frescos, a veces algún producto no está disponible según la temporada.',
+      'cm.callForAllergy': '¿Alergia o pregunta? Llámenos: +33 6 95 28 60 59',
 
       'tab.burgers': 'Burgers',
       'tab.panini': 'Panini',
@@ -1243,6 +1246,7 @@
       'cm.title': 'Il nostro menu',
       'cm.subtitle': 'Smash burger, panini generosi, loaded fries, antipasti, dolci. Tutto preparato sul posto, fatto con amore.',
       'cm.notice': 'Lavoriamo con prodotti freschi, a volte alcuni prodotti possono essere non disponibili in base alla stagione.',
+      'cm.callForAllergy': 'Allergia o domanda? Chiamaci: +33 6 95 28 60 59',
 
       'tab.burgers': 'Burger',
       'tab.panini': 'Panini',
@@ -1591,6 +1595,7 @@
       'cm.title': 'O nosso menu',
       'cm.subtitle': 'Smash burgers, panini generosos, loaded fries, antipasti, dolci. Tudo preparado no local, fatto con amore.',
       'cm.notice': 'Trabalhamos com produtos frescos, por vezes alguns produtos não estão disponíveis conforme a estação.',
+      'cm.callForAllergy': 'Alergia ou pergunta? Ligue-nos: +33 6 95 28 60 59',
 
       'tab.burgers': 'Burgers',
       'tab.panini': 'Panini',
@@ -1939,6 +1944,7 @@
       'cm.title': 'Unsere Karte',
       'cm.subtitle': 'Smash Burgers, üppige Panini, Loaded Fries, Antipasti, Dolci. Alles vor Ort zubereitet, fatto con amore.',
       'cm.notice': 'Wir arbeiten mit frischen Produkten, manche sind je nach Saison nicht verfügbar.',
+      'cm.callForAllergy': 'Allergie oder Frage? Rufen Sie uns an: +33 6 95 28 60 59',
 
       'tab.burgers': 'Burgers',
       'tab.panini': 'Panini',
