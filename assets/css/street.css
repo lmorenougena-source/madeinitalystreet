@@ -467,7 +467,7 @@ button { font: inherit; background: none; border: 0; cursor: pointer; color: inh
 .street-logo-mark {
   width: 78px; height: 70px;
   flex-shrink: 0;
-  background: url("../img/logobadge.png") center / contain no-repeat;
+  background: url("../img/logobadge.webp") center / contain no-repeat;
   box-shadow: none;
 }
 .street-logo-mark svg { display: none; }
@@ -1200,7 +1200,7 @@ button { font: inherit; background: none; border: 0; cursor: pointer; color: inh
   position: absolute;
   top: -8%; right: -8%;
   width: 32%; height: 32%;
-  background: url("../img/logobadge.png") no-repeat center/contain;
+  background: url("../img/logobadge.webp") no-repeat center/contain;
   opacity: 0.28;
   pointer-events: none;
   z-index: 0;
@@ -2352,7 +2352,7 @@ button { font: inherit; background: none; border: 0; cursor: pointer; color: inh
   top: 52%;
   width: min(54vw, 620px);
   aspect-ratio: 538 / 496;
-  background: url("../img/logomascotte.png") center / contain no-repeat;
+  background: url("../img/logomascotte.webp") center / contain no-repeat;
   opacity: .13;
   transform: translateY(-48%) rotate(2deg);
   filter: drop-shadow(0 28px 42px rgba(0,0,0,.45));
@@ -2659,7 +2659,7 @@ button { font: inherit; background: none; border: 0; cursor: pointer; color: inh
   content: '';
   position: absolute;
   inset: 0;
-  background: url("../img/logobadge.png") no-repeat;
+  background: url("../img/logobadge.webp") no-repeat;
   background-size: 26%;
   background-position: right 10px top 10px;
   opacity: 0.28;

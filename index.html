@@ -18,7 +18,7 @@
 <link rel="alternate" hreflang="x-default" href="https://madeinitalystreet.fr/" />
 
 <!-- Preload critique : photo hero pour améliorer le LCP (Largest Contentful Paint) -->
-<link rel="preload" as="image" href="assets/img/hero-burger.png" fetchpriority="high" />
+<link rel="preload" as="image" href="assets/img/hero-burger.webp" fetchpriority="high" />
 
 <!-- Sécurité : durcissement headers (équivalents meta) -->
 <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'sha256-acIhgkqjDWmtTuJklt/4NgdOMsy7EIiB/W+0cnSXIYI=' https://cdn.jsdelivr.net https://cdnjs.cloudflare.com; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src 'self' https://fonts.gstatic.com; img-src 'self' data: blob:; connect-src 'self'; frame-ancestors 'none'; base-uri 'self'; form-action 'self'; object-src 'none'; upgrade-insecure-requests" />
@@ -131,12 +131,142 @@
 }
 </script>
 
+<!-- Schema FAQ : Rich Snippets "People Also Ask" sur Google -->
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": [
+    {
+      "@type": "Question",
+      "name": "Comment passer commande en Click & Collect ?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Choisissez vos produits dans la carte en ligne, validez votre panier, payez en ligne de manière sécurisée via Stripe, puis récupérez votre commande au restaurant en 12 minutes en moyenne."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Quels sont les horaires d'ouverture ?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Made in Italy Street est ouvert du mardi au dimanche de 11h30 à 14h30 et de 18h30 à 22h30. Fermé le lundi."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Où se trouve Made in Italy Street ?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Made in Italy Street est situé au 102 rue de la Grotte, 65100 Lourdes, en France, à proximité du sanctuaire."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Quels moyens de paiement acceptez-vous ?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Paiement en ligne sécurisé par carte bancaire (Visa, Mastercard, American Express), Apple Pay et Google Pay via Stripe. Paiement sur place également accepté."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Proposez-vous des options pour les allergies alimentaires ?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Oui, la liste complète des allergènes est disponible sur notre page Allergènes. Pour les allergies sévères, contactez-nous directement par téléphone au +33 6 95 28 60 59 avant de commander."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Quelle est la durée de préparation d'une commande ?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Toutes nos commandes sont préparées en 12 minutes en moyenne. Vous recevez un créneau de retrait précis lors de la confirmation."
+      }
+    }
+  ]
+}
+</script>
+
+<!-- Schema Menu : structure le menu pour Google Rich Results -->
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "Menu",
+  "name": "Carte Made in Italy Street",
+  "inLanguage": "fr",
+  "hasMenuSection": [
+    {
+      "@type": "MenuSection",
+      "name": "Smash Burgers",
+      "hasMenuItem": [
+        {
+          "@type": "MenuItem",
+          "name": "Burger Italiano",
+          "description": "Sauce maison, pancetta, mozzarella, roquette",
+          "offers": { "@type": "Offer", "price": "13.90", "priceCurrency": "EUR" }
+        },
+        {
+          "@type": "MenuItem",
+          "name": "Burger Diavolo",
+          "description": "Sauce piquante calabraise, 'nduja, mozzarella fumée",
+          "offers": { "@type": "Offer", "price": "14.50", "priceCurrency": "EUR" }
+        },
+        {
+          "@type": "MenuItem",
+          "name": "Double Smash Burger",
+          "description": "Deux steaks smashed, cheddar fondu, oignons caramélisés",
+          "offers": { "@type": "Offer", "price": "15.90", "priceCurrency": "EUR" }
+        }
+      ]
+    },
+    {
+      "@type": "MenuSection",
+      "name": "Panini",
+      "hasMenuItem": [
+        {
+          "@type": "MenuItem",
+          "name": "Panino Caprese",
+          "description": "Mozzarella, tomate, basilic, huile d'olive",
+          "offers": { "@type": "Offer", "price": "9.90", "priceCurrency": "EUR" }
+        },
+        {
+          "@type": "MenuItem",
+          "name": "Panino Parma",
+          "description": "Jambon de Parme 18 mois, mozzarella, roquette",
+          "offers": { "@type": "Offer", "price": "11.50", "priceCurrency": "EUR" }
+        }
+      ]
+    },
+    {
+      "@type": "MenuSection",
+      "name": "Loaded Fries",
+      "hasMenuItem": [
+        {
+          "@type": "MenuItem",
+          "name": "Fries Tartufo",
+          "description": "Frites maison, crème de truffe, parmesan",
+          "offers": { "@type": "Offer", "price": "8.90", "priceCurrency": "EUR" }
+        },
+        {
+          "@type": "MenuItem",
+          "name": "Fries Parmigiano",
+          "description": "Frites maison, parmesan râpé, herbes",
+          "offers": { "@type": "Offer", "price": "7.50", "priceCurrency": "EUR" }
+        }
+      ]
+    }
+  ]
+}
+</script>
+
 <link rel="icon" href="assets/img/favicon.svg" type="image/svg+xml" />
 
 <!-- Fonts premium -->
 <link rel="preconnect" href="https://fonts.googleapis.com" />
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-<link href="https://fonts.googleapis.com/css2?family=Anton&family=Bebas+Neue&family=Caveat+Brush&family=Inter:wght@400;500;600;700;800;900&family=Rubik+Dirt&family=Lilita+One&family=Permanent+Marker&family=Playfair+Display:ital,wght@0,500;0,700;0,900;1,500&display=swap" rel="stylesheet" />
+<link href="https://fonts.googleapis.com/css2?family=Anton&family=Bebas+Neue&family=Caveat+Brush&family=Inter:wght@400;500;600;700;800;900&family=Rubik+Dirt&family=Lilita+One&family=Permanent+Marker&display=swap" rel="stylesheet" />
 
 <!-- Motion stack premium (SRI: hashes SHA-384 vérifiés) -->
 <script src="https://cdn.jsdelivr.net/npm/lenis@1.1.18/dist/lenis.min.js"
@@ -333,7 +463,7 @@
 
   <!-- Photo burger + effets atmosphériques -->
   <div class="hero-bg" aria-hidden="true">
-    <img src="assets/img/hero-burger.png" class="hero-bg-img" alt="Smash Burger Made in Italy Street">
+    <img src="assets/img/hero-burger.webp" class="hero-bg-img" alt="Smash Burger Made in Italy Street">
     <div class="hero-overlay"></div>
     <div class="hero-heat"></div>
 
@@ -451,10 +581,10 @@
 ========================================================= -->
 <section class="street-marquee street-marquee-img" aria-label="Bandeau défilant : Made in Italy Street">
   <div class="street-marquee-img-track">
-    <img src="assets/img/bannierelogo.png" alt="Made in Italy Street — Smash Burgers, Panini, Loaded Fries à Lourdes" width="2844" height="668" draggable="false">
-    <img src="assets/img/bannierelogo.png" alt="" aria-hidden="true" width="2844" height="668" draggable="false">
-    <img src="assets/img/bannierelogo.png" alt="" aria-hidden="true" width="2844" height="668" draggable="false">
-    <img src="assets/img/bannierelogo.png" alt="" aria-hidden="true" width="2844" height="668" draggable="false">
+    <img src="assets/img/bannierelogo.webp" alt="Made in Italy Street — Smash Burgers, Panini, Loaded Fries à Lourdes" width="2844" height="668" draggable="false">
+    <img src="assets/img/bannierelogo.webp" alt="" aria-hidden="true" width="2844" height="668" draggable="false">
+    <img src="assets/img/bannierelogo.webp" alt="" aria-hidden="true" width="2844" height="668" draggable="false">
+    <img src="assets/img/bannierelogo.webp" alt="" aria-hidden="true" width="2844" height="668" draggable="false">
   </div>
 </section>
 
