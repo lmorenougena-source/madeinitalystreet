@@ -22,25 +22,29 @@
 var crypto = require('crypto');
 
 // ---------- Helpers ----------
-// Récupère le body brut. Si Vercel a déjà parsé req.body (cas par défaut),
-// on reconstruit à partir de req.body (un Buffer si bodyParser: false marche,
-// sinon un objet JSON qu'on re-sérialise — mais ça casse la signature).
-// La méthode safe : lire le stream tant qu'il n'a pas été consommé.
+// Lit le body brut. IMPORTANT : ne JAMAIS accéder à req.body avant ça,
+// car ça déclenche le parsing auto de Vercel qui consomme le stream.
 function getRawBody(req) {
   return new Promise(function (resolve, reject) {
-    // Si le body a déjà été parsé par Vercel et stocké en buffer/string
-    if (req.body) {
+    var chunks = [];
+    var hasData = false;
+    req.on('data', function (c) { hasData = true; chunks.push(c); });
+    req.on('end', function () {
+      if (hasData) return resolve(Buffer.concat(chunks));
+      // Le stream est vide → soit body vide, soit déjà consommé par Vercel
+      // Fallback : on essaie req.body (peut être string, Buffer ou objet déjà parsé)
       if (Buffer.isBuffer(req.body)) return resolve(req.body);
       if (typeof req.body === 'string') return resolve(Buffer.from(req.body, 'utf8'));
-      // Si c'est un objet (déjà JSON.parse), on ne peut PAS reconstruire le body exact
-      // → on renvoie un buffer vide pour signaler l'échec
-      return resolve(Buffer.from(JSON.stringify(req.body), 'utf8'));
-    }
-    // Sinon on lit le stream
-    var chunks = [];
-    req.on('data', function (c) { chunks.push(c); });
-    req.on('end', function () { resolve(Buffer.concat(chunks)); });
+      if (req.body && typeof req.body === 'object') return resolve(Buffer.from(JSON.stringify(req.body), 'utf8'));
+      resolve(Buffer.alloc(0));
+    });
     req.on('error', reject);
+    // Si le stream est déjà fermé/consommé, déclencher manuellement 'end'
+    if (req.readable === false || req.complete === true) {
+      setTimeout(function () {
+        req.emit('end');
+      }, 0);
+    }
   });
 }
 
@@ -230,12 +234,21 @@ async function handler(req, res) {
   try {
     rawBody = await getRawBody(req);
   } catch (e) {
+    console.error('getRawBody error:', e);
     return res.status(400).json({ error: 'Body illisible' });
   }
+
+  // DEBUG : log pour comprendre ce que Vercel nous donne
+  console.log('[webhook] raw body length:', rawBody.length);
+  console.log('[webhook] req.body type:', typeof req.body);
+  console.log('[webhook] req.readable:', req.readable, 'complete:', req.complete);
+  console.log('[webhook] has stripe-signature:', !!req.headers['stripe-signature']);
+  console.log('[webhook] secret length:', (SECRET || '').length);
 
   // Vérifier la signature Stripe
   var sig = req.headers['stripe-signature'];
   if (!verifyStripeSignature(rawBody, sig, SECRET)) {
+    console.error('[webhook] Signature mismatch. Raw body preview:', rawBody.toString('utf8').slice(0, 200));
     return res.status(400).json({ error: 'Signature invalide' });
   }
 
