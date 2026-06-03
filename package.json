@@ -10,5 +10,8 @@
   "engines": {
     "node": "20.x"
   },
-  "license": "UNLICENSED"
+  "license": "UNLICENSED",
+  "dependencies": {
+    "@vercel/analytics": "^2.0.1"
+  }
 }
